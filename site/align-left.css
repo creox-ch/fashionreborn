@@ -1,0 +1,19 @@
+/* Frankenplatz — основная и единственная версия: центровка контента по левой стороне.
+   !important нужен: стили компонентов инжектятся ds.bundle.js после этого файла. */
+.hero{text-align:left}
+.hero .sub,.hero .micro{margin-left:0;margin-right:0}
+.kit .center{text-align:left}
+.kit .cta-mid{align-items:flex-start;text-align:left}
+.fp-band--final{text-align:left !important}
+.fp-band--final .fp-band__body{margin-left:0 !important;margin-right:0 !important}
+.fp-eyebrow--center{justify-content:flex-start !important}
+.fp-foot{text-align:left !important}
+
+/* единый боковой отступ: ≥60px на десктопе, сужается только у мобильных краёв */
+:root{--fp-gutter:clamp(20px,6vw,80px)}
+/* всё выравнивается по футтеру: колонка max 1240px по центру с минимальным
+   боковым зазором. Контент, шапка и футер стоят на одной левой/правой линии. */
+.fp-top,.fp-foot{box-sizing:border-box}
+.kit .inner,.tp-wrap,.sp-wrap,.cw-wrap{max-width:none !important;width:min(1240px, 100% - var(--fp-gutter) * 2) !important;margin-left:auto !important;margin-right:auto !important;padding-left:0 !important;padding-right:0 !important}
+.fp-top{padding-left:max(var(--fp-gutter),(100% - 1240px) / 2) !important;padding-right:max(var(--fp-gutter),(100% - 1240px) / 2) !important}
+.fp-foot{padding-left:max(var(--fp-gutter),(100% - 1240px) / 2) !important;padding-right:max(var(--fp-gutter),(100% - 1240px) / 2) !important}

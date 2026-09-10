@@ -1,0 +1,125 @@
+/* Маркет: положение вешалки, бегущей строки и коров.
+   Значения зафиксированы по настройкам в cow-tuner.html на ширинах
+   360 / 390 / 430 / 768 / 900 / 1280 / 1440 / 1920 и ЛИНЕЙНО интерполированы
+   между ними через calc(px + vw) — поэтому промежуточные ширины не «прыгают».
+   Файл подключается последним, поэтому переопределяет правила в <style> страницы. */
+body{overflow-x:clip}
+.kit .bm-apply__body{position:relative;z-index:2}
+
+/* вешалка, мобильный/планшет.
+   Вертикальный подъём снят: ниже 900px вешалка встаёт ПОД текстом. Прежние
+   значения (−20…−177px) настраивались, когда в hero было две кнопки; третья
+   перенесла ряд на вторую строку, и поднятая вешалка легла на кнопки.
+   Подтяжка бегущей строки ниже ослаблена ровно на снятый подъём — стык
+   вешалки и строки остался прежним. Горизонтальный сдвиг тоже снят: под
+   текстом вешалка стоит по центру, а не жмётся к правому краю. */
+@media(max-width:899.98px){
+  .kit .bm-hero__rack{margin-left:auto;margin-right:auto}
+  .kit .bm-hero__rack img{margin:0 auto}
+}
+@media(max-width:360px){
+  .kit .bm-hero__rack{width:312px;height:334px;overflow:hidden;transform:none}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .bm-hero__rack{width:calc(24px + 80vw);height:calc(-902px + 343.33vw);overflow:hidden;transform:none}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .bm-hero__rack{width:calc(-54px + 100vw);height:calc(-89.5px + 135vw);overflow:hidden;transform:none}
+}
+@media(min-width:430.02px) and (max-width:768px){
+  .kit .bm-hero__rack{width:calc(388.72px + -2.96vw);height:calc(513.9px + -5.33vw);overflow:hidden;transform:none}
+}
+@media(min-width:768.02px) and (max-width:899.98px){
+  .kit .bm-hero__rack{width:366px;height:473px;overflow:hidden;transform:none}
+}
+
+/* вешалка, десктоп 900–1280 (дальше — базовые стили страницы) */
+@media(min-width:900px) and (max-width:1279.98px){
+  .kit .bm-hero__rack{width:calc(624.89px + -9.21vw);transform:translate(calc(672px + -55vw),calc(-64.95px + 2.11vw))}
+}
+
+/* бегущая строка: подъём, контент под ней поднимается следом */
+@media(max-width:360px){
+  .kit .bm-marq{transform:translateY(-24px);margin-bottom:-24px}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .bm-marq{transform:translateY(calc(432px + -126.66vw));margin-bottom:calc(432px + -126.66vw)}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .bm-marq{transform:translateY(calc(-32.75px + -7.5vw));margin-bottom:calc(-32.75px + -7.5vw)}
+}
+@media(min-width:430.02px) and (max-width:768px){
+  .kit .bm-marq{transform:translateY(calc(-47.19px + -4.14vw));margin-bottom:calc(-47.19px + -4.14vw)}
+}
+@media(min-width:768.02px) and (max-width:899.98px){
+  .kit .bm-marq{transform:translateY(-79px);margin-bottom:-79px}
+}
+
+/* коровы в блоке «Участие» */
+@media(max-width:360px){
+  .kit .bm-apply__cows{width:285px;max-width:none;transform:translate(-1px,-17px)}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .bm-apply__cows{width:calc(117px + 46.67vw);max-width:none;transform:translate(calc(-37px + 10vw),calc(-257px + 66.67vw))}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .bm-apply__cows{width:calc(-32.5px + 85vw);max-width:none;transform:translate(calc(-7.75px + 2.5vw),calc(81px + -20vw))}
+}
+@media(min-width:430.02px) and (max-width:768px){
+  .kit .bm-apply__cows{width:calc(341.91px + -2.07vw);max-width:none;transform:translate(calc(-33.89px + 8.58vw),calc(-22.81px + 4.14vw))}
+}
+@media(min-width:768.02px) and (max-width:900px){
+  .kit .bm-apply__cows{width:calc(227.09px + 12.88vw);max-width:none;transform:translate(calc(66.91px + -4.55vw),calc(-66.64px + 9.85vw))}
+}
+@media(min-width:900.02px) and (max-width:1280px){
+  .kit .bm-apply__cows{width:calc(89.58px + 28.16vw);max-width:none;transform:translate(calc(82.84px + -6.32vw),calc(76.47px + -6.05vw))}
+}
+@media(min-width:1280.02px) and (max-width:1440px){
+  .kit .bm-apply__cows{width:calc(82px + 28.75vw);max-width:none;transform:translate(2px,calc(-361px + 28.13vw))}
+}
+@media(min-width:1440.02px) and (max-width:1920px){
+  .kit .bm-apply__cows{width:496px;max-width:none;transform:translate(calc(-1px + 0.21vw),calc(65px + -1.46vw))}
+}
+@media(min-width:1920.02px){
+  .kit .bm-apply__cows{width:496px;max-width:none;transform:translate(3px,37px)}
+}
+
+/* кадр коров на мобильном: обрезка снизу, к 520px обрезка сходит в ноль */
+@media(max-width:360px){
+  .kit .bm-apply__cows{height:415px;overflow:hidden}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .bm-apply__cows{height:calc(127px + 80vw);overflow:hidden}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .bm-apply__cows{height:calc(-48.5px + 125vw);overflow:hidden}
+}
+@media(min-width:430.02px) and (max-width:520px){
+  .kit .bm-apply__cows{height:calc(364.78px + 28.89vw);overflow:hidden}
+}
+
+/* запас высоты блока под корову; к 768px сходит к естественной высоте */
+@media(max-width:360px){
+  .kit .bm-apply--split{min-height:1251px}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .bm-apply--split{min-height:calc(1431px + -50vw)}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .bm-apply--split{min-height:calc(1304.25px + -17.5vw)}
+}
+@media(min-width:430.02px) and (max-width:610px){
+  .kit .bm-apply--split{min-height:1229px}
+}
+@media(min-width:610.02px) and (max-width:768px){
+  .kit .bm-apply--split{min-height:calc(3147.85px + -314.56vw)}
+}
+
+/* форма не заходит под корову: ширина = контейнер минус корова (+прозрачный край) */
+@media(min-width:560.02px) and (max-width:899.98px){
+  .kit .bm-apply .bm-form,.kit .bm-apply .bm-cta-row{max-width:max(300px,calc(100% - 278.6px + 2.19vw))}
+}
+/* уже 360px текст растёт — запас высоты блока растёт следом */
+@media(max-width:360px){
+  .kit .bm-apply--split{min-height:calc(1971px + -200vw)}
+}

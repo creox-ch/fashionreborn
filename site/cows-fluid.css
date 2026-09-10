@@ -1,0 +1,64 @@
+/* Страница коров: пара в герое — зафиксировано по cow-tuner.html (360/390/430/768/900/1280),
+   между анкерами линейная интерполяция calc(px + vw). */
+@media(max-width:360px){
+  .kit .ch-hero__cows{width:456.8px;transform:translate(-79.5px,-22.8px)}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .ch-hero__cows{width:calc(368px + 24.67vw);transform:translate(calc(-167.1px + 24.33vw),calc(-237.6px + 59.67vw))}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .ch-hero__cows{width:calc(405.7px + 15vw);transform:translate(calc(-213.6px + 36.25vw),calc(-7.83px + 0.75vw))}
+}
+@media(min-width:430.02px) and (max-width:768px){
+  .kit .ch-hero__cows{width:calc(271.7px + 46.15vw);transform:translate(calc(-120.4px + 14.59vw),calc(-44.3px + 9.23vw))}
+}
+@media(min-width:768.02px) and (max-width:899.98px){
+  .kit .ch-hero__cows{width:626.2px;transform:translate(-8.4px,26.6px)}
+}
+/* 900–1280: коровы стоят справа и плавно уменьшаются — одна непрерывная
+   формула вместо анкеров тюнера, стыкуется с полосой ≥1280 (703px / 68.7 / 66
+   при 1280); прежние анкеры давали разрыв на стыке. Ниже 900px — прежняя
+   стопка: коровы уходят вниз. */
+@media(min-width:900px) and (max-width:1280px){
+  .kit .ch-hero__cows{width:calc(-168.5px + 68.09vw);max-width:none;transform:translate(calc(-60.6px + 10.1vw),calc(-58.2px + 9.71vw))}
+}
+@media(min-width:1280.02px){
+  /* опущено относительно прежнего -2.2px: с ним верх картинки уходил выше hero
+     и рога срезал overflow:hidden */
+  .kit .ch-hero__cows{width:62.34%;max-width:none;transform:translate(68.7px,66px)}
+}
+
+/* Болтающие коровы в финальной плашке «Форум о деньгах» — по cow-tuner.html
+   (360/390/430/768/900/1280/1440/1920), между анкерами интерполяция calc(px + vw). */
+@media(max-width:360px){
+  .kit .ch-final__cows{width:367.8px;margin-left:calc(50% - 183.9px);transform:translate(0px,-21.6px)}
+  .kit .ch-final{min-height:703px}
+}
+@media(min-width:360.02px) and (max-width:390px){
+  .kit .ch-final__cows{width:calc(7.8px + 100vw);margin-left:calc(50% - 3.9px - 50vw);transform:translate(0px,calc(24px + -12.67vw))}
+  .kit .ch-final{min-height:calc(823px + -33.33vw)}
+}
+@media(min-width:390.02px) and (max-width:430px){
+  .kit .ch-final__cows{width:calc(377.33px + 5.25vw);margin-left:calc(50% - 188.66px - 2.63vw);transform:translate(0px,calc(-74.15px + 12.5vw))}
+  .kit .ch-final{min-height:calc(800.25px + -27.5vw)}
+}
+@media(min-width:430.02px) and (max-width:768px){
+  .kit .ch-final__cows{width:calc(183.37px + 50.36vw);max-width:none;margin-left:calc(50% - 91.69px - 25.18vw);transform:translate(0px,calc(-41.52px + 4.91vw))}
+  .kit .ch-final{min-height:calc(675.64px + 1.48vw)}
+}
+@media(min-width:768.02px) and (max-width:899.98px){
+  .kit .ch-final__cows{width:570.1px;max-width:none;margin-left:calc(50% - 285.05px);transform:translate(0px,-3.8px)}
+  .kit .ch-final{min-height:687px}
+}
+@media(min-width:900px) and (max-width:1280px){
+  .kit .ch-final__cows{width:calc(173.76px + 19.82vw);transform:translate(calc(162.44px + -14.03vw),calc(-92.83px + 17.95vw))}
+}
+@media(min-width:1280.02px) and (max-width:1440px){
+  .kit .ch-final__cows{width:calc(-555.81px + 76.81vw);transform:translate(calc(77.3px + -7.38vw),calc(-1088.7px + 95.75vw))}
+}
+@media(min-width:1440.02px) and (max-width:1920px){
+  .kit .ch-final__cows{width:calc(405.1px + 10.08vw);transform:translate(calc(-73px + 3.06vw),calc(183.6px + 7.4vw))}
+}
+@media(min-width:1920.02px){
+  .kit .ch-final__cows{width:598.7px;transform:translate(-14.2px,325.6px)}
+}

@@ -1,0 +1,327 @@
+/* Frankenplatz marketing UI kit — shared page layout CSS.
+   Linked by index.html / day1.html / day2.html / speakers.html. */
+.kit{position:relative;z-index:1}
+/* адаптив: страховка от горизонтального скролла + масштаб медиа */
+html,body{overflow-x:clip}
+.kit img,.kit svg,.kit video{max-width:100%}
+/* градиентные пятна медленно плавают по фону сами (чуть приглушены) */
+.kit .fp-glow--violet{opacity:.20}
+.kit .fp-glow--amber{opacity:.26}
+@media (prefers-reduced-motion: no-preference){
+  .fp-glow--violet{animation:fp-drift-a 20s ease-in-out infinite alternate}
+  .fp-glow--amber{animation:fp-drift-b 26s ease-in-out infinite alternate}
+}
+@keyframes fp-drift-a{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(55vw,30vh) scale(1.25)}
+  100%{transform:translate(15vw,70vh) scale(.9)}
+}
+@keyframes fp-drift-b{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(-45vw,-35vh) scale(1.2)}
+/* телефон: пятна не плавают — большой блюр + fixed заметно тормозят прокрутку */
+@media (max-width:767px){.fp-glow--violet,.fp-glow--amber{animation:none!important}.fp-glow{filter:blur(60px)}}
+
+  100%{transform:translate(-10vw,-65vh) scale(.9)}
+}
+.kit .inner{max-width:1240px;margin:0 auto;padding:0 26px}
+.kit section{padding:64px 0;position:relative}
+.kit h2{font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4.4vw,48px);color:#fff;
+  margin:0 0 16px;line-height:1.08;letter-spacing:-.02em}
+.kit .lead{font-size:19px;color:var(--muted);max-width:none;margin:0 0 8px;line-height:1.55}
+.kit .lead strong{color:#fff}
+.kit .para{font-size:17px;color:var(--muted);max-width:none;margin:24px 0 0;line-height:1.55}
+.kit .para strong{color:#fff}
+.kit .grid{display:grid;gap:16px;margin-top:34px}
+.kit .g2{grid-template-columns:1fr 1fr}
+.kit .g3{grid-template-columns:repeat(3,1fr)}
+.kit .gauto{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.kit .statrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:34px}
+.kit .center{text-align:center}
+
+/* hero */
+.hero{padding:104px 0 96px;text-align:center;background:var(--grad-hero)}
+/* на главной над заголовком ещё корова — компенсируем её высоту, чтобы контент везде начинался одинаково */
+.hero:has(.cow){padding-top:32px}
+.hero .cow{font-size:64px;display:block;margin-bottom:8px;animation:fp-float 5s ease-in-out infinite}
+@keyframes fp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(42px,7.2vw,80px);color:#fff;
+  margin:22px 0;letter-spacing:-.03em;line-height:1.04;
+  overflow-wrap:normal;word-break:normal;hyphens:none;-webkit-hyphens:none}
+/* Заголовок главного блока — одна шкала на всех страницах форума и маркета.
+   Раньше сплит-герой главной был на 4px мельче остальных страниц. */
+/* Деление длинного слова по слогам (мягкий перенос) разрешаем ТОЛЬКО ниже 480px.
+   Шире 480 — слово переносится целиком (без деления), чтобы не выглядело странно. */
+@media (max-width:480px){
+  .hero h1{hyphens:manual;-webkit-hyphens:manual}
+}
+.hero .hl{background:var(--grad-gold-lila);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* лид главного блока: мера строки и цвет — как у .tp-lead / .sp-lead / .cw-lead,
+   кегль на ступень крупнее токена (герой держит первый экран) */
+.hero .sub{font-size:22px;color:var(--muted);max-width:56ch;margin:0 auto 18px;line-height:1.55}
+.hero .tagline{margin-top:28px;font-family:var(--font-display);font-weight:700;line-height:1.18;
+  font-size:clamp(22px,3.4vw,30px);background:var(--grad-gold-lila);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .micro{margin-top:22px;font-size:13.5px;color:var(--muted-2);max-width:620px;margin-left:auto;margin-right:auto}
+
+/* day card (program) */
+.day ul{padding:0;list-style:none;margin:14px 0 0}
+.day li{padding-left:24px;position:relative;margin-bottom:9px;font-size:15px;color:var(--muted)}
+.day li::before{content:"→";position:absolute;left:0;color:var(--lila)}
+.day .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.day h3{font-family:var(--font-body);font-weight:700;font-size:21px;color:#fff;margin:0 0 6px}
+.day .sub{font-size:15px;color:var(--muted);margin:0}
+.day ul{margin-bottom:22px}
+.day__more{margin:auto -26px -26px;padding:18px 26px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;
+  font-family:var(--font-body);font-weight:700;font-size:15px;color:#fff;
+  border-radius:0 0 22px 22px;transition:background var(--dur-base),color var(--dur-base)}
+.day__more:hover{background:rgba(230,180,80,.08);color:var(--gold)}
+.day__arrow{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+  border-radius:50%;background:var(--grad-gold);color:var(--ink-on-gold);font-size:15px;flex:none;
+  transition:transform var(--dur-base)}
+.day__more:hover .day__arrow{transform:translateX(3px)}
+
+/* topic / speaker-type card */
+.sp h3{font-family:var(--font-body);font-weight:700;font-size:19px;color:#fff;margin:0 0 8px}
+.sp p{font-size:15px;color:var(--muted);margin:0;line-height:1.5}
+.sp .ex{margin-top:14px;font-size:13.5px;color:var(--muted-2);border-top:1px solid var(--line);padding-top:12px}
+.sp .ex b{color:var(--lila-bright);font-weight:600}
+
+/* chakra colour-coding for the four speaker types (test only) */
+.sp{--acc:#D8B879;--acc-bg:rgba(216,184,121,.10);--acc-bd:rgba(216,184,121,.26);--acc-glow:rgba(216,184,121,.22);position:relative;overflow:hidden}
+.sp--practik{--acc:#D8B879;--acc-bg:rgba(216,184,121,.10);--acc-bd:rgba(216,184,121,.26);--acc-glow:rgba(216,184,121,.22)}
+.sp--spec{--acc:#86A9CE;--acc-bg:rgba(134,169,206,.10);--acc-bd:rgba(134,169,206,.26);--acc-glow:rgba(134,169,206,.22)}
+.sp--story{--acc:#7FBBA0;--acc-bg:rgba(127,187,160,.10);--acc-bd:rgba(127,187,160,.26);--acc-glow:rgba(127,187,160,.22)}
+.sp--insp{--acc:#AE93DA;--acc-bg:rgba(174,147,218,.11);--acc-bd:rgba(174,147,218,.28);--acc-glow:rgba(174,147,218,.24)}
+.sp::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc);opacity:.7}
+.kit .sp.fp-card{border-color:var(--acc-bd)}
+.kit .sp.fp-card:hover{transform:translateY(-4px);border-color:var(--acc);box-shadow:0 18px 46px -20px var(--acc-glow)}
+.sp .fp-badge{color:var(--acc);background:var(--acc-bg);border:1px solid var(--acc-bd)}
+.sp .ex{border-top-color:var(--acc-bd)}
+.sp .ex b{color:var(--acc)}
+
+/* inspiration card */
+.insp .k{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  background:var(--grad-gold-lila);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.insp .t{font-family:var(--font-body);font-weight:700;font-size:18px;color:#fff;margin-bottom:6px}
+.insp .d{font-size:15px;color:var(--muted);margin:0;line-height:1.5}
+
+.calcnote{margin-top:24px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;
+  background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+
+/* — карточки калькуляторов: узор в углу проявляется на ховере + hover-цвет кнопки (тест) — */
+.kit .calc-card{overflow:hidden;z-index:0}
+.calc-deco{position:absolute;right:-24px;bottom:-26px;width:174px;height:174px;color:#C4A5F2;
+  opacity:0;transform:translate(10px,10px);transition:opacity .5s ease,transform .6s cubic-bezier(.3,.8,.4,1);
+  pointer-events:none;z-index:-1;
+  -webkit-mask-image:linear-gradient(315deg,#000 30%,rgba(0,0,0,0) 72%);
+  mask-image:linear-gradient(315deg,#000 30%,rgba(0,0,0,0) 72%)}
+.calc-deco svg{width:100%;height:100%;display:block;overflow:visible}
+.kit .calc-card:hover .calc-deco{opacity:.5;transform:translate(0,0)}
+/* точная посадка узоров по темам */
+.calc-deco--people{bottom:-40px}
+.calc-deco--house{bottom:-34px}
+.calc-deco--money{right:-28px}
+.calc-deco--chart{right:-19px;bottom:-34px}
+.kit .calc-card .fp-btn--ghost:hover{background:var(--grad-gold);color:var(--ink-on-gold);border-color:transparent}
+
+
+/* confirmed speaker CTA tile */
+.conf-cta{background:var(--grad-card-gold);border:1px solid var(--line);border-radius:22px;
+  padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.conf-cta h3{font-family:var(--font-display);font-size:22px;color:var(--gold);margin:0 0 10px;line-height:1.1}
+.conf-cta p{font-size:15px;color:var(--muted);margin:0 0 auto}
+
+/* modal */
+.fp-modal-bg{position:fixed;inset:0;background:rgba(10,5,16,.72);backdrop-filter:blur(6px);z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:24px}
+.fp-modal{background:var(--panel);border:1px solid var(--line-strong);border-radius:24px;max-width:440px;width:100%;
+  padding:32px;position:relative}
+.fp-modal h3{font-family:var(--font-display);font-weight:700;font-size:24px;color:#fff;margin:0 0 6px}
+.fp-modal .x{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1}
+.fp-modal .barwrap{height:10px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin:18px 0 8px}
+.fp-modal .bar{height:100%;background:var(--grad-gold);border-radius:6px}
+
+@media(max-width:720px){
+  .kit .g2,.kit .g3{grid-template-columns:1fr}
+  .hero{padding:100px 0 48px}
+  .hero:has(.cow){padding-top:60px}
+  .hero h1{margin:16px 0}
+  .kit section{padding:34px 0}
+  .kit .inner{padding:0 20px}
+  .kit h2{font-size:clamp(26px,7vw,34px)}
+  .kit .lead{font-size:17px}
+  .kit .para{font-size:16px}
+  .hero .sub{font-size:17px}
+  .hero .cow{font-size:52px}
+  .hero .tagline{font-size:clamp(20px,6.4vw,26px)}
+  .kit .statrow{grid-template-columns:1fr 1fr}
+  /* тап-таргеты */
+  .day__more{padding:16px 22px}
+  .day__more,.conf-cta h3{font-size:15px}
+}
+
+/* планшет: сетки в 2 колонки, а не сразу в одну */
+@media(min-width:721px) and (max-width:1000px){
+  .kit .g3{grid-template-columns:1fr 1fr}
+  .kit .inner{padding:0 24px}
+}
+
+/* узкий телефон */
+@media(max-width:430px){
+  .kit .statrow{grid-template-columns:1fr}
+  .kit .inner{padding:0 16px}
+  .hero h1{font-size:clamp(28px,8.4vw,44px)}
+  .hero{padding:96px 0 44px}
+  .hero:has(.cow){padding-top:52px}
+  .day__more{margin:auto -20px -22px;padding:15px 20px}
+}
+
+/* ============================================================
+   МOTION & INTERACTIONS (общая логика для всех тест-страниц)
+   Управляется kit.js. Всё уважает prefers-reduced-motion.
+   ============================================================ */
+
+/* 2 · появление секций/карточек при скролле */
+@media (prefers-reduced-motion: no-preference){
+  .kit .fp-reveal{opacity:0}
+  .kit .fp-reveal.fp-in{opacity:1; animation:fp-rise .9s ease both}
+  @keyframes fp-rise{
+    from{opacity:0}
+    to{opacity:1}
+  }
+}
+
+/* 3 · микровзаимодействия: карточки приподнимаются и теплеют, кнопки светятся */
+@media (prefers-reduced-motion: no-preference){
+  .kit .fp-card, .kit .fp-stat, .kit .conf-cta{
+    transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  }
+  .kit .fp-card:hover, .kit .fp-stat:hover, .kit .conf-cta:hover{
+    transform:translateY(-5px);
+    border-color:var(--line-strong);
+    box-shadow:0 18px 44px -20px rgba(0,0,0,.65),
+               0 0 0 1px rgba(230,180,80,.14),
+               0 12px 40px -14px rgba(230,180,80,.16);
+  }
+  .kit .fp-btn{transition:transform .2s ease, box-shadow .3s ease, filter .3s ease}
+  .kit .fp-btn--gold:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 0 1px rgba(230,180,80,.45), 0 10px 34px -8px rgba(230,180,80,.55);
+  }
+  .kit .fp-btn--ghost:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 0 1px var(--line-strong), 0 10px 28px -12px rgba(185,139,255,.45);
+  }
+}
+
+/* 4 · встроенный CTA-блок в естественных точках страницы */
+.kit .cta-mid{
+  margin-top:42px; display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center;
+}
+.kit .cta-mid__note{
+  margin:0; font-size:15px; line-height:1.5; color:var(--muted); max-width:540px;
+}
+.kit .cta-mid__note b{color:var(--gold); font-weight:700}
+
+/* ============================================================
+   ФИНАЛЬНЫЙ ПОЛИШ — вход героя, шиммер, ритм секций, стаггеры,
+   магнитные кнопки. Всё на transform/opacity, под reduced-motion.
+   ============================================================ */
+
+/* — разделители между секциями убраны по просьбе (тестовая версия) — */
+.kit section + section::before{content:none}
+
+@media (prefers-reduced-motion: no-preference){
+  /* — вход героя: бейдж → заголовок → подзаголовок → тег → кнопка.
+     базовое состояние — видимое (редактор/печать не проигрывают анимации),
+     скрытие живёт только в первом кадре fp-rise (fill:backwards) — */
+  .hero .inner > *{animation:fp-rise .9s ease backwards}
+  .hero .inner > *:nth-child(1){animation-delay:.06s}
+  .hero .inner > *:nth-child(2){animation-delay:.16s}
+  .hero .inner > *:nth-child(3){animation-delay:.26s}
+  .hero .inner > *:nth-child(4){animation-delay:.36s}
+  .hero .inner > *:nth-child(5){animation-delay:.46s}
+  .hero .inner > *:nth-child(6){animation-delay:.56s}
+
+  /* — лёгкий шиммер на градиентных заголовках — */
+  .hero .hl, .kit .hl, .hero .tagline, .kit .tagline{
+    background-size:220% auto; animation:fp-shimmer 7s ease-in-out infinite;
+  }
+  /* тайплайн в hero — ещё и участник каскада входа: обе анимации сразу,
+     иначе шиммер перебивает fp-rise и текст остаётся с opacity:0 */
+  .hero .inner > .tagline{
+    animation:fp-rise .9s ease backwards, fp-shimmer 7s ease-in-out infinite;
+  }
+  @keyframes fp-shimmer{
+    0%{background-position:0% center}
+    50%{background-position:100% center}
+    100%{background-position:0% center}
+  }
+
+  /* — стаггер точек матрицы (только opacity: transform занят позицией) — */
+  .kit .rrm__frame .rrm__pt{opacity:0; transition:opacity .55s ease}
+  .kit .rrm__frame.fp-in .rrm__pt{opacity:1}
+
+  /* — стаггер строк таблиц / таймлайна / чек-листа — */
+  .kit .fp-stagger > *{opacity:0}
+  .kit .fp-stagger.fp-in > *{animation:fp-rise .8s ease both}
+
+  /* — магнитные кнопки двигаются мягко (через inline transform из kit.js) — */
+  .kit .fp-btn{transition:transform .18s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease, filter .3s ease}
+}
+
+/* — навигация: фиксы только для тестовой версии — */
+/* CTA сохраняет золотой фон на ховере (не перебивается общим link:hover) */
+.kit .fp-top__link--cta:hover{background:var(--grad-gold)}
+/* пункты меню не переносятся на две строки */
+.kit .fp-top__link{white-space:nowrap}
+/* оптика: line-height заголовка добавляет воздух сверху ленты — компенсируем */
+.kit .fp-band:not(.fp-band--final){padding-top:32px}
+/* раньше схлопываем в бургер-меню, чтобы «День 1 / День 2» не ломали ряд */
+@media(max-width:1000px){
+  .kit .fp-top__nav{display:none}
+  .kit .fp-top__burger{display:block}
+}
+
+/* — бургер-меню: иконка рисуется здесь же. Раньше глиф «☰» гасился тут
+   (font-size:0), а полоски жили в chrome.css — но его подключают не все
+   страницы (index.html, day1/day2 и др.), и кнопка становилась прозрачной:
+   нажать можно, увидеть нельзя. Значения — те же, что в chrome.css. — */
+.kit .fp-top__burger{font-size:0;padding:0;position:relative;color:#fff}
+.kit .fp-top__burger::before,.kit .fp-top__burger::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:2px;border-radius:2px;background:#fff;transform:translate(-50%,-50%);transition:transform .22s,box-shadow .22s}
+.kit .fp-top__burger::before{box-shadow:0 -6px 0 #fff,0 6px 0 #fff}
+.kit .fp-top__burger[aria-expanded="true"]::before{box-shadow:none;transform:translate(-50%,-50%) rotate(45deg)}
+.kit .fp-top__burger[aria-expanded="true"]::after{transform:translate(-50%,-50%) rotate(-45deg)}
+
+/* геометрия мобильного меню — одна на весь сайт, из компонента шапки */
+
+/* — пункты меню: крупнее — */
+.kit .fp-top__nav .fp-top__link{font-size:16px}
+
+/* — переключатель «Участникам | Спикерам»: перед кнопкой «Записаться», у каждой стороны своя подложка — */
+.kit .fp-seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;align-items:center;
+  padding:3px;margin:0 10px 0 4px;border:1px solid var(--line-strong);border-radius:var(--r-full);
+  background:rgba(255,255,255,.03)}
+.kit .fp-seg__opt{font-size:14px;color:var(--muted);text-decoration:none;
+  padding:7px 16px;text-align:center;white-space:nowrap;border-radius:var(--r-full);
+  background:rgba(255,255,255,.06);
+  transition:color .25s ease,background .25s ease,box-shadow .25s ease}
+.kit .fp-seg__opt:hover{color:#fff;background:rgba(255,255,255,.1)}
+.kit .fp-seg[data-on="0"] .fp-seg__opt:first-child,
+.kit .fp-seg[data-on="1"] .fp-seg__opt:last-child{
+  color:#fff;background:rgba(185,139,255,.22);box-shadow:inset 0 0 0 1px rgba(185,139,255,.55)}
+.kit .fp-top__menu .fp-seg{margin:6px 0 0}
+.kit .fp-top__menu .fp-seg .fp-seg__opt{font-size:16px;padding:12px 16px}
+
+/* — блеск (световой блик) на кнопках при ховере — */
+.kit .fp-top__link--cta,.kit .fp-btn{position:relative;overflow:hidden}
+.kit .fp-top__link--cta::before,.kit .fp-btn::before{
+  content:"";position:absolute;top:0;bottom:0;left:-75%;width:50%;
+  background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.55) 50%,transparent 100%);
+  transform:skewX(-20deg);pointer-events:none;
+}
+.kit .fp-btn--ghost::before{background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.28) 50%,transparent 100%)}
+.kit .fp-top__link--cta:hover::before,.kit .fp-btn:hover::before{animation:fp-cta-shine .7s ease}
+@keyframes fp-cta-shine{from{left:-75%}to{left:125%}}
+@media (prefers-reduced-motion: reduce){.kit .fp-top__link--cta::before,.kit .fp-btn::before{display:none}}

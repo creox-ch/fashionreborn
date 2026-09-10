@@ -1,0 +1,46 @@
+/* ============================================================
+   Frankenplatz — КОНТРАКТ ВЁРСТКИ (геометрия).
+   Здесь НЕТ цветов и НЕТ шрифтов — только колонка, отступы,
+   тач-минимумы и поведение медиа. Подключают страницы сторонних
+   форумов (trips/*), чтобы жить по нашим правилам вёрстки,
+   сохраняя свою палитру и типографику.
+
+   Каноничные брейкпоинты проекта:
+     480 · 640 · 768 · 900 · 1024 · 1280
+   В max-width-запросах используем на 1px меньше: 479 · 639 · 767 · 899 · 1023.
+   ============================================================ */
+
+:root{
+  --fp-gutter:clamp(20px,6vw,80px);   /* единый боковой зазор */
+  --fp-col:1240px;                    /* ширина контентной колонки */
+}
+
+/* Контентная колонка: одна левая/правая линия для контента, шапки и футера. */
+.fp-container{width:min(var(--fp-col),100% - var(--fp-gutter) * 2);margin-inline:auto}
+
+/* Шапка и футер встают на ту же линию, что и контент. */
+.fp-top,.fp-foot{box-sizing:border-box}
+.fp-top{padding-left:max(var(--fp-gutter),(100% - var(--fp-col)) / 2);padding-right:max(var(--fp-gutter),(100% - var(--fp-col)) / 2)}
+.fp-foot{padding-left:max(var(--fp-gutter),(100% - var(--fp-col)) / 2);padding-right:max(var(--fp-gutter),(100% - var(--fp-col)) / 2)}
+
+/* Медиа не вылезает за родителя и не дёргает вёрстку при загрузке. */
+img,video{max-width:100%;height:auto}
+iframe{max-width:100%}
+
+/* Длинные слова, ссылки и адреса не рвут строку наружу.
+   Дисплейные заголовки сюда НЕ входят: разрыв слова посередине на крупном
+   кегле выглядит как брак — там вместо переноса подгоняется размер. */
+p,li,td,th,dd,dt,figcaption{overflow-wrap:break-word}
+
+/* Тач-минимум 44px — для управляющих элементов. Ссылки внутри абзаца
+   сознательно исключены: там 44px ломает набор, а промах маловероятен. */
+button,summary,[role="button"]{min-height:44px}
+
+/* Чекбокс и радио: сам элемент 16px не нажать точно — увеличиваем и даём
+   подписи-обёртке ряд в 44px, чтобы попадала вся строка. */
+input[type="checkbox"],input[type="radio"]{width:20px;height:20px;flex:0 0 auto}
+label:has(> input[type="checkbox"]),label:has(> input[type="radio"]){display:flex;align-items:center;gap:10px;min-height:44px}
+
+/* Поле ввода мельче 16px заставляет iOS зумить страницу при фокусе. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,textarea{font-size:max(16px,1rem)}

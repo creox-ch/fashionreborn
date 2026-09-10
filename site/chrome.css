@@ -1,0 +1,111 @@
+html{overflow-x:clip}
+/* ============================================================
+   Frankenplatz — CANONICAL site chrome (header + footer).
+   Literal DS values (not var()) so the header/footer look
+   IDENTICAL on every page, independent of a page's own tokens.
+   ЕДИНСТВЕННЫЙ источник стилей шапки и футера для статических
+   страниц (trips.html, trips/*, brand-market.html) — правим здесь,
+   inline-копий на страницах больше нет.
+   Разметка: site/chrome.html.
+   Works without JS (desktop nav + footer render from CSS alone).
+   ============================================================ */
+
+/* ---------- TopBar ---------- */
+.fp-top{position:sticky;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px max(26px,(100% - 1240px)/2);background:rgba(20,10,31,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.10);box-sizing:border-box;min-height:0;overflow:visible}
+.fp-top::before,.fp-top::after{content:none;display:none}
+/* immunity from page-level bare element selectors (nav{}, header{}) */
+.fp-top .fp-top__nav{position:static;inset:auto;background:none;border:none;box-shadow:none;border-radius:0;clip-path:none;max-width:none;padding:0;margin:0 0 0 auto;min-height:0;height:auto;width:auto;backdrop-filter:none;-webkit-backdrop-filter:none}
+.fp-top__logo{font-family:"Unbounded","Manrope",system-ui,sans-serif;font-weight:800;font-size:18px;letter-spacing:.01em;color:#fff;display:flex;align-items:center;gap:9px;min-height:44px;text-decoration:none}
+.fp-top__nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+/* логотип: при наведении по надписи пробегает золото-лиловый градиент */
+.fp-top__logo{background-image:none;background-size:220% 100%;background-position:220% 0;-webkit-background-clip:border-box;background-clip:border-box}
+.fp-top__logo:hover,.fp-top__logo:focus-visible{background-image:linear-gradient(100deg,#fff 0%,var(--gold,#E6B450) 28%,var(--lila-bright,#B98BFF) 52%,#fff 78%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:fp-logo-sweep 2.8s ease-in-out infinite alternate}
+@keyframes fp-logo-sweep{from{background-position:220% 0}to{background-position:-20% 0}}
+@media(prefers-reduced-motion:reduce){.fp-top__logo:hover,.fp-top__logo:focus-visible{animation:none;background-position:60% 0}}
+.fp-top__link{font-family:"Manrope",system-ui,sans-serif;font-size:16px;color:#C3B7D4;text-decoration:none;padding:8px 13px;border-radius:10px;transition:color .18s,background .18s;white-space:nowrap}
+.fp-top__link:hover{color:#F5C969}
+.fp-top__link--active{color:#E6B450;font-weight:700}
+.fp-top__link--active:hover{color:#F5C969}
+.fp-top__link--cta{background:linear-gradient(135deg,#E6B450,#F5C969);color:#2A1A05;font-weight:700;border-radius:9999px;padding:12px 24px;font-size:16px}
+.fp-top__link--cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(230,180,80,.30);color:#2A1A05}
+/* — бургер: иконка полосками, значения дословно те же, что в site/kit.css.
+   Дублирование намеренное: kit.css достаёт только те страницы, где шапка лежит
+   внутри .kit, а trips.html с подстраницами и blog.html берут стили отсюда.
+   Там, где подключены оба файла, правила совпадают значение в значение. — */
+.fp-top__burger{display:none;position:relative;background:none;border:none;color:#fff;font-size:0;line-height:1;cursor:pointer;padding:0;min-width:44px;min-height:44px;border-radius:10px}
+.fp-top__burger::before,.fp-top__burger::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:2px;border-radius:2px;background:#fff;transform:translate(-50%,-50%);transition:transform .22s,box-shadow .22s}
+.fp-top__burger::before{box-shadow:0 -6px 0 #fff,0 6px 0 #fff}
+.fp-top__burger[aria-expanded="true"]::before{box-shadow:none;transform:translate(-50%,-50%) rotate(45deg)}
+.fp-top__burger[aria-expanded="true"]::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.fp-top__burger:hover{background:rgba(255,255,255,.06)}
+.fp-top__menu{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;gap:2px;padding:8px 16px 16px;background:rgba(20,10,31,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.10)}
+.fp-top__menu.is-open{display:flex}
+.fp-top__menu .fp-top__link{font-size:16px;padding:13px 12px}
+.fp-top__menu .fp-top__link--cta{text-align:center;margin-top:6px}
+@media (max-width:1279px){.fp-top__nav{display:none}.fp-top__burger{display:block}}
+/* мобильное меню — панель справа на всех «бургерных» ширинах */
+.fp-top__menu{left:auto;right:12px;width:min(86vw,340px);margin-top:8px;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:14px 16px 18px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+/* выезжает справа, а не появляется рывком */
+.fp-top__menu{display:flex;visibility:hidden;pointer-events:none;opacity:0;transform:translateX(22px);transition:transform .34s cubic-bezier(.2,.75,.2,1),opacity .22s ease,visibility .34s}
+.fp-top__menu.is-open{visibility:visible;pointer-events:auto;opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fp-top__menu{transition:none}}
+.fp-top__menu-foot{display:flex;flex-direction:column;gap:14px;margin-top:14px;padding-top:16px;border-top:1px solid rgba(255,255,255,.10)}
+.fp-top__menu-ig{align-self:flex-start;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(230,180,80,.34);border-radius:50%}
+.fp-top__menu-ig svg{width:22px;height:22px;fill:#E6B450}
+.fp-top__menu-cta{display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 18px;border-radius:999px;background:linear-gradient(135deg,#E6B450,#F5C969);color:#241703;font-weight:800;font-size:16px;text-decoration:none}
+.fp-top__menu-legal{margin:0;font-size:15px;line-height:1.5;color:#9C90AE}
+
+/* ---------- Footer ---------- */
+.fp-foot{background:#191026;border-top:1px solid rgba(255,255,255,.10);padding:64px clamp(24px,7vw,80px) 34px;font-family:"Manrope",system-ui,sans-serif;font-size:14px;color:#9A8BB3;text-align:left}
+.fp-foot::before,.fp-foot::after{content:none;display:none}
+.fp-foot nav{position:static;background:none;border:none;box-shadow:none;border-radius:0;padding:0;margin:0;backdrop-filter:none;-webkit-backdrop-filter:none;height:auto;min-height:0}
+.fp-foot form{margin:0;padding:0;background:none;border:none}
+.fp-foot__grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,.6fr) minmax(0,1.35fr);gap:40px;align-items:start}
+.fp-foot__name{font-family:"Unbounded","Manrope",system-ui,sans-serif;font-weight:700;font-size:20px;color:#fff;margin:0 0 8px}
+.fp-foot__name a{color:inherit;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.fp-foot__h{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#E6B450;margin:0 0 16px}
+.fp-foot__nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 44px}
+.fp-foot__nav a{color:#C3B7D4;text-decoration:none;font-size:15px;width:fit-content;min-height:44px;display:inline-flex;align-items:center}
+.fp-foot__nav a:hover{color:#fff}
+@media(hover:hover) and (pointer:fine){.fp-foot__nav a{min-height:26px}}
+.fp-foot__soc{display:flex;flex-direction:column;gap:2px}
+.fp-foot__soc a,.fp-foot__soc span{display:inline-flex;align-items:center;min-height:44px;gap:10px;color:#C3B7D4;text-decoration:none;font-size:15px;width:fit-content}
+.fp-foot__soc a:hover{color:#fff}
+@media(hover:hover) and (pointer:fine){.fp-foot__soc a,.fp-foot__soc span{min-height:26px}}
+.fp-foot__soc .soon{color:#9A8BB3}
+.fp-foot__form{display:flex;gap:8px;max-width:440px}
+.fp-foot__input{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:9999px;padding:10px 16px;color:#fff;font-size:16px;font-family:inherit;outline:none}
+.fp-foot__input::placeholder{color:#9A8BB3}
+.fp-foot__input:focus{border-color:#E6B450}
+.fp-foot__send{border:none;border-radius:9999px;padding:12px 18px;min-height:44px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#E6B450,#F5C969);color:#2A1A05}
+.fp-foot__send:hover{filter:brightness(1.08)}
+.fp-foot__done{font-size:14.5px;color:#E6B450;margin:0;line-height:1.5}
+.fp-foot__note{font-size:12.5px;color:#9A8BB3;margin:10px 0 0}
+.fp-foot__bottom{max-width:1240px;margin:48px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.10);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#9A8BB3}
+.fp-foot__bottom a{color:#E6B450;text-decoration:none}
+.fp-foot__bottom a:hover{text-decoration:underline}
+@media(max-width:1000px){.fp-foot__grid{grid-template-columns:minmax(0,1fr);gap:38px}}
+
+/* Флаг Швейцарии вместо эмодзи: вектор, поэтому резкий на любом кегле и
+   одинаковый во всех системах. Размер — по кеглю строки, как у символа. */
+.fp-flag{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.16em;flex:none}
+
+/* ── Меню в две строки на «средних» ширинах ────────────────────────────────
+   Между бургером (≤1279px) и просторным десктопом бывает полоса, где пунктов
+   больше, чем влезает в одну строку. Пункты НЕ сокращаем и не прячем: меню
+   переносится на вторую строку, строки центрируются относительно друг друга,
+   шапка подрастает по высоте. Одна строка ведёт себя как раньше — прижата
+   вправо, потому что при одной строке центрирование не даёт эффекта. */
+/* .fp-top НЕ переносим: в wrap-контейнере меню срывается целиком под логотип.
+   Сжимается и переносится само меню — логотип остаётся слева. */
+.fp-top .fp-top__nav,.fp-top__nav{flex:0 1 auto;min-width:0;flex-wrap:nowrap;margin-left:auto}
+.fp-top .fp-top__links,.fp-top__links{display:flex;flex-wrap:wrap;align-items:center;align-content:center;justify-content:center;gap:0px 10px;flex:0 1 auto;min-width:0}
+.fp-top .fp-top__nav > .fp-top__link--cta{flex:0 0 auto}
+/* сначала уплотняем интервалы — вторая строка появляется только когда реально нужна */
+@media (min-width:1280px) and (max-width:1599px){
+  .fp-top .fp-top__link{padding:8px 10px}
+  .fp-top .fp-top__link--cta{padding:12px 20px}
+  .fp-top .fp-top__links,.fp-top__links{gap:0px 6px}
+}
