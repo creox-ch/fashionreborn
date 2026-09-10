@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Спикер форума Frankenplatz — опыт, темы выступления и результат. Форум о деньгах в Швейцарии, Baden 2026.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frankenplatz">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Frankenplatz 2026 · Спикер">
+<meta property="og:description" content="Спикер форума Frankenplatz — опыт, темы выступления и результат. Форум о деньгах в Швейцарии, Baden 2026.">
+<meta property="og:url" content="https://frankenplatz.ch/speaker">
+<meta property="og:image" content="https://frankenplatz.ch/site/og/frankenplatz-spiker-shablon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Frankenplatz 2026 · Спикер">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frankenplatz 2026 · Спикер">
+<meta name="twitter:description" content="Спикер форума Frankenplatz — опыт, темы выступления и результат. Форум о деньгах в Швейцарии, Baden 2026.">
+<meta name="twitter:image" content="https://frankenplatz.ch/site/og/frankenplatz-spiker-shablon.jpg">
+<meta name="color-scheme" content="dark only">
+<title>Frankenplatz 2026 · Спикер</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site/kit.css?v=3">
+<link rel="stylesheet" href="site/experiments.css?v=4">
+<link rel="stylesheet" href="site/polish.css?v=5">
+<link rel="stylesheet" href="site/align-left.css">
+</head>
+<body>
+<div id="root"></div>
+
+<script src="site/vendor/react.js"></script>
+<script src="site/vendor/react-dom.js"></script>
+<script src="site/vendor/babel-standalone.js"></script>
+<script src="site/ds.bundle.js"></script>
+<script src="site/nav.js"></script>
+<script src="site/speakers-data.js?v=3"></script>
+<script type="text/babel" src="site/speakers-ui.jsx?v=3"></script>
+<script type="text/babel" src="site/SpeakerDetail.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById("root")).render(<SpeakerDetail/>);
+  requestAnimationFrame(() => requestAnimationFrame(() => { if (window.FPReArm) window.FPReArm(); }));
+</script>
+<script src="site/effects.js"></script>
+<script src="site/typograf.js"></script>
+<script src="site/cookie-consent.js"></script>
+<script src="site/nbsp.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Билеты на Frankenplatz 2026 — форум о деньгах в Швейцарии. Baden, 24–25 октября. VIP / Premium / Standard, Early Bird −25% до объявления всех спикеров.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frankenplatz">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Билеты · Frankenplatz 2026">
+<meta property="og:description" content="Билеты на Frankenplatz 2026 — форум о деньгах в Швейцарии. Baden, 24–25 октября. VIP / Premium / Standard, Early Bird −25% до объявления всех спикеров.">
+<meta property="og:url" content="https://frankenplatz.ch/tickets">
+<link rel="canonical" href="https://frankenplatz.ch/tickets">
+<meta property="og:image" content="https://frankenplatz.ch/site/og/frankenplatz-bilety-early-bird.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Билеты · Frankenplatz 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Билеты · Frankenplatz 2026">
+<meta name="twitter:description" content="Билеты на Frankenplatz 2026 — форум о деньгах в Швейцарии. Baden, 24–25 октября. VIP / Premium / Standard, Early Bird −25% до объявления всех спикеров.">
+<meta name="twitter:image" content="https://frankenplatz.ch/site/og/frankenplatz-bilety-early-bird.jpg">
+<meta name="color-scheme" content="dark only">
+<title>Билеты · Frankenplatz 2026</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site/kit.css?v=3">
+<link rel="stylesheet" href="site/experiments.css?v=4">
+<link rel="stylesheet" href="site/polish.css?v=5">
+<link rel="stylesheet" href="site/align-left.css">
+<link rel="stylesheet" href="site/chrome.css">
+<style>
+.fp-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-body);font-weight:var(--fw-bold);font-size:16px;text-decoration:none;padding:16px 30px;border-radius:var(--r-full);border:none;cursor:pointer;transition:transform var(--dur-btn),box-shadow var(--dur-btn),background var(--dur-btn);white-space:nowrap;line-height:1}
+.fp-btn--gold{background:var(--grad-gold);color:var(--ink-on-gold)}
+.fp-btn--gold:hover{transform:var(--lift);box-shadow:var(--shadow-gold)}
+.fp-btn--ghost{background:var(--glass);color:#fff;border:1px solid var(--line);backdrop-filter:blur(var(--blur-glass))}
+.fp-btn--ghost:hover{background:var(--glass-2);transform:var(--lift)}
+.fp-badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-size:13px;font-weight:var(--fw-semibold);padding:8px 16px;border-radius:var(--r-round);line-height:1;white-space:nowrap}
+.fp-badge--lila{color:var(--lila-bright);background:rgba(154,111,212,.12);border:1px solid rgba(154,111,212,.30)}
+.fp-badge__dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.fp-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12.5px;font-weight:var(--fw-bold);letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.fp-eyebrow::before{content:"";width:26px;height:1.5px;background:var(--gold);display:inline-block;flex:none}
+.fp-foot{position:relative;z-index:1}
+.fp-foot__name{margin:16px 0 8px}
+a{color:var(--lila-bright)}a:hover{color:var(--gold-bright)}
+
+/* ——— Early Bird плашка ——— */
+.kit .tk-eb{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:26px;padding:16px 22px;border-radius:18px;
+  border:1px solid rgba(230,180,80,.38);background:linear-gradient(135deg,rgba(230,180,80,.14),rgba(185,139,255,.10))}
+.kit .tk-eb__pill{font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--ink-on-gold);background:var(--grad-gold);padding:7px 14px;border-radius:999px;line-height:1;white-space:nowrap}
+.kit .tk-eb__txt{font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted);margin:0}
+.kit .tk-eb__txt b{color:#fff}
+
+/* ——— легенда категорий ——— */
+.kit .tk-legend{display:grid;gap:14px;margin-top:30px}
+@media(min-width:720px){.kit .tk-legend{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kit .tk-leg{padding-top:14px;border-top:2px solid var(--gold)}
+.kit .tk-leg__n{font-family:var(--font-display);font-weight:800;font-size:var(--fs-h3);color:#fff;margin:0 0 4px}
+.kit .tk-leg__d{margin:0;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted)}
+.kit .tk-leg--premium{border-top-color:var(--lila-bright)}
+.kit .tk-leg--standard{border-top-color:var(--muted-2)}
+
+/* ——— сетка карточек-дней ——— */
+.kit .tk-grid{display:grid;gap:20px;margin-top:34px}
+@media(min-width:900px){.kit .tk-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}}
+.kit .tk-card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--glass);padding:26px clamp(20px,2.6vw,28px) 24px;overflow:hidden}
+.kit .tk-card--pack{border-color:rgba(230,180,80,.42);background:linear-gradient(160deg,rgba(230,180,80,.12),rgba(185,139,255,.08))}
+.kit .tk-card__top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;margin-bottom:14px}
+.kit .tk-card h3{font-family:var(--font-display);font-weight:800;font-size:clamp(22px,2.6vw,27px);color:#fff;margin:0;letter-spacing:-.01em}
+.kit .tk-card__seg{font-family:var(--font-body);font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+.kit .tk-card__date{margin:0 0 18px;font-size:var(--fs-sm);color:var(--muted-2)}
+.kit .tk-rows{list-style:none;margin:0;padding:0}
+.kit .tk-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.kit .tk-row:first-child{border-top:none}
+.kit .tk-row__cat{font-family:var(--font-display);font-weight:700;font-size:16px;color:#fff}
+.kit .tk-row__cat span{display:block;font-family:var(--font-body);font-weight:600;font-size:11.5px;letter-spacing:.06em;color:var(--muted-2)}
+.kit .tk-price{text-align:right;white-space:nowrap;line-height:1}
+.kit .tk-price__eb{font-family:var(--font-display);font-weight:800;font-size:clamp(20px,2.4vw,24px);color:var(--gold)}
+.kit .tk-price__cur{font-size:13px;font-weight:700;color:var(--gold);margin-left:3px}
+.kit .tk-price__was{display:block;margin-top:3px;font-size:13px;color:var(--muted-2);text-decoration:line-through}
+.kit .tk-pack-note{margin:14px 0 0;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted)}
+.kit .tk-pack-note b{color:var(--gold)}
+.kit .tk-save{display:inline-block;margin-top:4px;font-family:var(--font-display);font-weight:800;font-size:13px;color:var(--ink-on-gold);background:var(--grad-gold);padding:5px 11px;border-radius:999px}
+
+/* ——— ланч ——— */
+.kit .tk-lunch{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:var(--glass);padding:24px 26px;display:grid;gap:6px 22px}
+@media(min-width:640px){.kit .tk-lunch{grid-template-columns:auto 1fr;align-items:center}}
+.kit .tk-lunch__price{font-family:var(--font-display);font-weight:800;font-size:clamp(22px,3vw,30px);color:#fff}
+.kit .tk-lunch__price span{color:var(--gold)}
+.kit .tk-lunch__d{margin:0;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted)}
+.kit .tk-lunch__d b{color:#fff}
+
+/* ——— мелкий шрифт ——— */
+.kit .tk-fine{margin-top:26px;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted-2);max-width:70ch}
+.kit .tk-fine b{color:var(--muted)}
+
+/* ——— кнопка покупки + модалка ——— */
+.kit .tk-buy-row{margin-top:18px}
+.kit .tk-buy{width:100%;border:0;border-radius:999px;padding:13px 22px;cursor:pointer;font:800 15px var(--font-body);color:var(--ink-on-gold);background:var(--grad-gold)}
+.kit .tk-card--pack .tk-buy{box-shadow:0 8px 24px rgba(230,180,80,.22)}
+.tk-modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,5,18,.74);backdrop-filter:blur(6px);overflow-y:auto}
+.tk-modal__card{position:relative;margin:auto;width:100%;max-width:460px;background:#1A0E28;border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:20px;padding:26px 24px}
+.tk-modal__x{position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-strong,rgba(255,255,255,.16));background:rgba(255,255,255,.05);color:var(--muted,#C3B7D4);font-size:19px;line-height:1;cursor:pointer}
+.tk-modal h3{font-family:var(--font-display);font-weight:800;font-size:22px;color:#fff;margin:0 0 4px}
+.tk-modal__sub{font-size:13px;color:var(--muted,#C3B7D4);margin:0 0 16px}
+.tk-opt{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line,rgba(255,255,255,.10));border-radius:12px;margin-bottom:8px;cursor:pointer}
+.tk-opt.is-on{border-color:var(--gold,#E6B450);background:rgba(230,180,80,.08)}
+.tk-opt input{accent-color:var(--gold,#E6B450);width:18px;height:18px;flex:none}
+.tk-opt__cat{font-family:var(--font-display);font-weight:700;color:#fff;flex:1}
+.tk-opt__cat span{display:block;font-family:var(--font-body);font-weight:600;font-size:11.5px;color:var(--muted-2,#9A8BB3)}
+.tk-opt__price{font-family:var(--font-display);font-weight:800;color:var(--gold,#E6B450)}
+.tk-opt__price s{display:block;font-size:11px;font-weight:600;color:var(--muted-2,#9A8BB3)}
+.tk-lunch-opt{display:flex;align-items:flex-start;gap:10px;margin:14px 0 4px;font-size:13.5px;color:var(--muted,#C3B7D4);cursor:pointer}
+.tk-lunch-opt input{accent-color:var(--gold,#E6B450);width:17px;height:17px;margin-top:1px;flex:none}
+.tk-field{width:100%;background:rgba(0,0,0,.20);border:1px solid var(--line-strong,rgba(255,255,255,.16));border-radius:12px;padding:12px 14px;color:var(--ink,#F3EEF9);font:inherit;font-size:15px;margin-top:8px;box-sizing:border-box}
+.tk-field:focus{outline:none;border-color:var(--gold,#E6B450)}
+.tk-consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--muted-2,#9A8BB3);margin-top:12px;line-height:1.45;cursor:pointer}
+.tk-consent input{accent-color:var(--gold,#E6B450);width:16px;height:16px;margin-top:1px;flex:none}
+.tk-consent a{color:var(--lila-bright,#B98BFF)}
+.tk-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 2px;font-family:var(--font-display);color:#fff}
+.tk-total b{font-size:24px;font-weight:800}
+.tk-pay{width:100%;border:0;border-radius:999px;padding:15px 22px;margin-top:12px;cursor:pointer;font:800 16px var(--font-body);color:var(--ink-on-gold);background:var(--grad-gold)}
+.tk-pay:disabled{opacity:.55;cursor:default}
+.tk-msg{font-size:13px;line-height:1.5;margin-top:10px}
+.tk-msg.err{color:#FF7A8A}
+.kit .tk-banner{margin-top:26px;padding:16px 22px;border-radius:16px;border:1px solid;font-size:14.5px;line-height:1.5}
+.kit .tk-banner--ok{border-color:rgba(139,229,155,.4);background:rgba(139,229,155,.08);color:#B7F0C4}
+.kit .tk-banner--warn{border-color:rgba(255,122,138,.4);background:rgba(255,122,138,.08);color:#FFB3BC}
+
+/* ——— включено во все билеты / состав / лотерея ——— */
+.kit .tk-inc{margin-top:30px;border:1px solid var(--line);border-radius:20px;background:var(--glass);padding:22px 26px}
+.kit .tk-inc__h{margin:0;font-family:var(--font-display);font-weight:800;font-size:17px;color:#fff}
+.kit .tk-inc ul{list-style:none;display:grid;gap:9px 24px;margin:14px 0 0;padding:0}
+@media(min-width:720px){.kit .tk-inc ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kit .tk-inc li,.kit .tk-feat li{position:relative;padding-left:22px;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--muted)}
+.kit .tk-inc li::before,.kit .tk-feat li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.kit .tk-feat{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:9px}
+.kit .tk-price__old{font-size:13.5px;color:var(--muted-2);margin-right:8px}
+.kit .tk-note{margin:16px 0 0;padding:12px 14px;border-radius:12px;border:1px dashed rgba(230,180,80,.45);background:rgba(230,180,80,.07);font-size:13px;line-height:1.5;color:var(--muted)}
+.kit .tk-note b{color:var(--gold)}
+.kit .tk-buy-row3{display:grid;gap:14px;margin-top:26px}
+@media(min-width:900px){.kit .tk-buy-row3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.kit .tk-lotto{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:var(--glass);padding:22px 26px;display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline}
+.kit .tk-lotto__big{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.4vw,25px);color:#fff}
+.kit .tk-lotto__big span{color:var(--gold)}
+.kit .tk-lotto__d{margin:0;font-size:var(--fs-sm);color:var(--muted)}
+
+/* ——— финальная плашка ——— */
+.kit .tk-final{border:1px solid rgba(230,180,80,.35);border-radius:24px;background:linear-gradient(135deg,rgba(230,180,80,.12),rgba(185,139,255,.10));padding:clamp(28px,4vw,44px)}
+.kit .tk-final h2{margin-top:0}
+.kit .tk-final p{font-size:var(--fs-body);line-height:var(--lh-body);color:var(--muted);max-width:600px}
+.kit .tk-final b{color:#fff}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://frankenplatz.ch/#event",
+  "name": "Frankenplatz 2026 — форум о деньгах в Швейцарии",
+  "description": "Билеты на Frankenplatz 2026: VIP / Premium / Standard, один или оба дня. Baden, 24–25 октября 2026. Early Bird −25% до объявления всех спикеров.",
+  "startDate": "2026-10-24",
+  "endDate": "2026-10-25",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "inLanguage": "ru",
+  "url": "https://frankenplatz.ch/tickets",
+  "image": "https://frankenplatz.ch/site/og/frankenplatz-bilety-early-bird.jpg",
+  "location": {
+    "@type": "Place",
+    "name": "Konnex",
+    "url": "https://konnex-baden.ch/",
+    "address": { "@type": "PostalAddress", "streetAddress": "Brown Boveri Strasse 7", "postalCode": "5400", "addressLocality": "Baden", "addressRegion": "AG", "addressCountry": "CH" }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Kseniia Chudina Art + Event",
+    "url": "https://frankenplatz.ch/",
+    "email": "info@frankenplatz.ch"
+  },
+  "offers": [
+    { "@type": "Offer", "name": "Standard · День 1", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "112", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "Standard · День 2", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "164", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "Standard · Оба дня", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "239", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "Premium · День 1", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "149", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "Premium · День 2", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "217", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "Premium · Оба дня", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "314", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "VIP · День 1", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "209", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "VIP · День 2", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "277", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" },
+    { "@type": "Offer", "name": "VIP · Оба дня", "url": "https://frankenplatz.ch/tickets", "priceCurrency": "CHF", "price": "412", "availability": "https://schema.org/InStock", "validFrom": "2026-08-15" }
+  ]
+}
+</script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#140A1F">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#140A1F"></rect><text x="600" y="400" font-size="220" text-anchor="middle" dominant-baseline="central">🎟️</text></svg>
+</template>
+
+<div class="kit">
+  <div class="fp-backdrop"></div>
+  <div class="fp-glow fp-glow--violet"></div>
+  <div class="fp-glow fp-glow--amber"></div>
+
+  <header class="fp-top">
+    <a class="fp-top__logo" href="/">Frankenplatz.ch</a>
+    <nav class="fp-top__nav"><div class="fp-top__links">
+      <a class="fp-top__link" href="/#program">Программа</a>
+      <a class="fp-top__link" href="/day1">День №1</a>
+      <a class="fp-top__link" href="/day2">День №2</a>
+      <a class="fp-top__link" href="/calculators">Калькуляторы</a>
+      <a class="fp-top__link" href="/brand-market">Маркет</a>
+      <a class="fp-top__link" href="/collaboration">Сотрудничество</a>
+      <a class="fp-top__link" href="/trips">Другие форумы</a></div>
+      <a class="fp-top__link fp-top__link--cta" href="#buy">Купить билет</a>
+    </nav>
+    <button class="fp-top__burger" aria-label="Меню" aria-expanded="false"></button>
+    <div class="fp-top__menu">
+      <a class="fp-top__link" href="/#program">Программа</a>
+      <a class="fp-top__link" href="/day1">День №1</a>
+      <a class="fp-top__link" href="/day2">День №2</a>
+      <a class="fp-top__link" href="/calculators">Калькуляторы</a>
+      <a class="fp-top__link" href="/brand-market">Маркет</a>
+      <a class="fp-top__link" href="/collaboration">Сотрудничество</a>
+      <a class="fp-top__link" href="/trips">Другие форумы</a>
+      <a class="fp-top__link fp-top__link--cta" href="#buy">Купить билет</a>
+    </div>
+  </header>
+
+  <header class="hero gridbg" data-screen-label="Hero">
+    <div class="inner">
+      <span class="fp-badge fp-badge--lila"><span class="fp-badge__dot"></span>Frankenplatz · 24–25 октября 2026 · зал 300 мест</span>
+      <h1 style="margin:20px 0 0">Билеты<br><span class="hl">на форум</span></h1>
+      <p class="sub" style="margin-top:18px">Два дня о деньгах в Швейцарии: пенсия, налоги, инвестиции, бизнес. Выбери день и ряд — и будь среди своих. 15 минут от Zürich HB.</p>
+      <div class="tk-eb">
+        <span class="tk-eb__pill">Early Bird −25%</span>
+        <p class="tk-eb__txt"><b>На все билеты — до объявления всех спикеров.</b> Дальше — обычная цена; на ланч скидка не действует.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="gridbg" id="buy" data-screen-label="Билеты">
+    <div class="inner">
+      <div class="fp-eyebrow">Билеты · CHF</div>
+      <h2>Три категории<br>— один зал на 300 мест</h2>
+      <p class="lead">Крупная цифра — актуальная цена Early Bird. Зачёркнутая серым — обычная, после объявления всех спикеров.</p>
+      <div class="tk-inc">
+        <p class="tk-inc__h">Включено во все билеты</p>
+        <ul>
+          <li>Доступ ко всем лекциям дня вживую</li>
+          <li>Кофе-брейк и аперо</li>
+          <li>Вопрос спикеру онлайн — ответ после форума</li>
+          <li>Онлайн-платформа нетворкинга</li>
+          <li>Общая офлайн-зона нетворкинга на форуме</li>
+          <li>Участие в лотерее</li>
+        </ul>
+      </div>
+
+      <div class="tk-grid">
+        <article class="tk-card">
+          <div class="tk-card__top"><h3>Standard</h3><span class="tk-card__seg">ряды 9–20 · 180 мест</span></div>
+          <ul class="tk-feat">
+            <li>Свободная рассадка в своей зоне</li>
+            <li>Всё, что включено во все билеты</li>
+            <li>Лотерея: 10 призов</li>
+          </ul>
+          <ul class="tk-rows">
+            <li class="tk-row"><span class="tk-row__cat">День 1<span>База 🇨🇭 финансов · 24.10</span></span><span class="tk-price"><s class="tk-price__old">149</s><span class="tk-price__eb">112</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">День 2<span>LvL UP · 25.10</span></span><span class="tk-price"><s class="tk-price__old">219</s><span class="tk-price__eb">164</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">Оба дня<span>База + LvL UP</span></span><span class="tk-price"><s class="tk-price__old">319</s><span class="tk-price__eb">239</span><span class="tk-price__cur">CHF</span></span></li>
+          </ul>
+          <div class="tk-buy-row"><button type="button" class="tk-buy" data-cat="standard">Купить Standard →</button></div>
+        </article>
+        <article class="tk-card">
+          <div class="tk-card__top"><h3>Premium</h3><span class="tk-card__seg">ряды 4–8 · 75 мест</span></div>
+          <ul class="tk-feat">
+            <li>Всё из Standard</li>
+            <li>Места ближе к сцене</li>
+            <li>Записи лекций и материалы спикеров после форума</li>
+            <li>Приоритетный ответ на вопросы</li>
+            <li>Отдельная зона нетворкинга (Premium + VIP)</li>
+            <li>Лотерея: 5 призов</li>
+          </ul>
+          <ul class="tk-rows">
+            <li class="tk-row"><span class="tk-row__cat">День 1<span>База 🇨🇭 финансов · 24.10</span></span><span class="tk-price"><s class="tk-price__old">199</s><span class="tk-price__eb">149</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">День 2<span>LvL UP · 25.10</span></span><span class="tk-price"><s class="tk-price__old">289</s><span class="tk-price__eb">217</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">Оба дня<span>База + LvL UP</span></span><span class="tk-price"><s class="tk-price__old">419</s><span class="tk-price__eb">314</span><span class="tk-price__cur">CHF</span></span></li>
+          </ul>
+          <div class="tk-buy-row"><button type="button" class="tk-buy" data-cat="premium">Купить Premium →</button></div>
+        </article>
+        <article class="tk-card tk-card--pack">
+          <div class="tk-card__top"><h3>VIP</h3><span class="tk-card__seg">ряды 1–3 · 45 мест</span></div>
+          <ul class="tk-feat">
+            <li>Всё из Premium</li>
+            <li>Первые ряды, именная рассадка от центра к краям</li>
+            <li>Приоритет в вопросах спикерам — голосом из первого ряда и первоочередной ответ онлайн</li>
+            <li>Полезные подарки от партнёров</li>
+            <li>Отдельный нетворкинг + мини-афтепати со спикерами</li>
+            <li>Лотерея: 3 приза</li>
+          </ul>
+          <ul class="tk-rows">
+            <li class="tk-row"><span class="tk-row__cat">День 1<span>База 🇨🇭 финансов · 24.10</span></span><span class="tk-price"><s class="tk-price__old">279</s><span class="tk-price__eb">209</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">День 2<span>LvL UP · 25.10</span></span><span class="tk-price"><s class="tk-price__old">369</s><span class="tk-price__eb">277</span><span class="tk-price__cur">CHF</span></span></li>
+            <li class="tk-row"><span class="tk-row__cat">Оба дня<span>База + LvL UP · экономия до 99</span></span><span class="tk-price"><s class="tk-price__old">549</s><span class="tk-price__eb">412</span><span class="tk-price__cur">CHF</span></span></li>
+          </ul>
+          <p class="tk-note"><b>Места идут от центра к краям</b> — первые купившие VIP получают центр, дальше по мере заполнения.</p>
+          <div class="tk-buy-row"><button type="button" class="tk-buy" data-cat="vip">Купить VIP →</button></div>
+        </article>
+      </div>
+
+      <div class="tk-lotto">
+        <div class="tk-lotto__big">Лотерея · <span>18 призов</span> · фонд более 5'000 CHF</div>
+        <p class="tk-lotto__d">Распределение по зонам: VIP — 3, Premium — 5, Standard — 10.</p>
+      </div>
+
+      <div class="tk-lunch">
+        <div class="tk-lunch__price">+35 CHF<span> / день</span></div>
+        <p class="tk-lunch__d">К любому билету можно добавить <b>ланч</b> — обед на площадке. За два дня — <b>+70 CHF</b> (по ланчу на каждый день). Ланч оформляется как доп при покупке; <b>Early Bird на ланч не распространяется</b>.</p>
+      </div>
+
+      <p class="tk-fine"><b>Все цены в CHF, без НДС.</b> Early Bird −25% действует на билеты (не на ланч) до объявления всех спикеров. Всего 300 мест: VIP 45 · Premium 75 · Standard 180 — количество в каждой категории ограничено.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Бартер">
+    <div class="inner">
+      <div class="tk-final">
+        <div class="fp-eyebrow">Бартер</div>
+        <h2>Хочу участвовать бартером</h2>
+        <p>Есть чем вложиться вместо денег? Предложи услугу (дизайн, съёмка, перевод, тексты, SMM) или помощь на площадке — взамен участие в форуме.</p>
+        <div class="ch-cta-row" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+          <a class="fp-btn fp-btn--gold" href="/collaboration">Оставить заявку →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="fp-foot">
+    <div class="fp-foot__grid">
+      <div>
+        <p class="fp-foot__name"><a href="/">Frankenplatz.ch</a></p>
+      </div>
+      <nav>
+        <p class="fp-foot__h">Страницы</p>
+        <div class="fp-foot__nav">
+          <a href="/">Форум</a>
+          <a href="/day1">День 1</a>
+          <a href="/day2">День 2</a>
+          <a href="/tickets">Билеты</a>
+        </div>
+      </nav>
+      <div>
+        <p class="fp-foot__h">Соцсети</p>
+        <div class="fp-foot__soc">
+          <a href="https://www.instagram.com/frankenplatz.ch/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div>
+        <p class="fp-foot__h">Новости форума</p>
+        <form class="fp-foot__form">
+          <input class="fp-foot__input" type="email" required placeholder="Твой e-mail" aria-label="E-mail">
+          <button class="fp-foot__send" type="submit">Подписаться</button>
+        </form>
+        <p class="fp-foot__note">Никакого спама — только программа и спикеры.</p>
+      </div>
+    </div>
+    <div class="fp-foot__bottom">
+      <span>© 2026 Frankenplatz.ch · Форум о деньгах в Швейцарии · 24–25.10.2026 · Baden <svg class="fp-flag" viewBox="0 0 32 32" role="img" aria-label="Швейцария"><rect width="32" height="32" fill="#FF0000"></rect><rect x="13" y="6" width="6" height="20" fill="#FFFFFF"></rect><rect x="6" y="13" width="20" height="6" fill="#FFFFFF"></rect></svg> · 15 мин от Zürich HB</span>
+      <span class="fp-foot__legal"><a href="/legal#impressum">Impressum</a> · <a href="/legal#agb">AGB</a> · <a href="/legal#datenschutz">Datenschutz</a></span>
+      <span><a href="https://www.instagram.com/frankenplatz.ch/" target="_blank" rel="noopener">@frankenplatz.ch</a></span>
+    </div>
+  </footer>
+</div>
+
+<script src="site/chrome.js" defer></script>
+<script src="site/newsletter-form.js"></script>
+<!-- Покупка билета → slswiss-tickets /api/forum/create → Payrexx -->
+<script src="site/tickets-buy.js"></script>
+<script src="site/cookie-consent.js"></script>
+<!-- «Быстрые ответы»: кнопка вопросов (form_key=question) -->
+<script src="site/help-widget.js" defer></script>
+<script src="site/nbsp.js" defer></script>
+</body>
+</html>
