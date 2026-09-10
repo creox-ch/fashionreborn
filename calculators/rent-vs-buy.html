@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Аренда или ипотека в Швейцарии: сравнение платежей и что остаётся вашим.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frankenplatz">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Frankenplatz · Аренда или ипотека">
+<meta property="og:description" content="Аренда или ипотека в Швейцарии: сравнение платежей и что остаётся вашим.">
+<meta property="og:url" content="https://frankenplatz.ch/calculators/rent-vs-buy">
+<link rel="canonical" href="https://frankenplatz.ch/calculators/rent-vs-buy">
+<meta property="og:image" content="https://frankenplatz.ch/site/og/frankenplatz-kalkulyator-arenda-ili-ipoteka.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Frankenplatz · Аренда или ипотека">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frankenplatz · Аренда или ипотека">
+<meta name="twitter:description" content="Аренда или ипотека в Швейцарии: сравнение платежей и что остаётся вашим.">
+<meta name="twitter:image" content="https://frankenplatz.ch/site/og/frankenplatz-kalkulyator-arenda-ili-ipoteka.jpg">
+<title>Frankenplatz · Аренда или ипотека</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap");
+  :root{
+    --ink:#F3EEF9;--ink-2:#2A1B3D;--paper:#231634;--paper-2:#1C1029;
+    --line:rgba(255,255,255,.12);--amber:#E6B450;--amber-dark:#F5C969;--amber-soft:rgba(230,180,80,.12);--ok:#8BE59B;
+    --ok-soft:rgba(139,229,155,.12);--muted:#C3B7D4;--danger:#FF7A8A;
+    --gold:#E6B450;--gold-bright:#F5C969;--lila:#9A6FD4;--lila-bright:#B98BFF;--inkraise:#3B2358;
+    color-scheme:dark only;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  img,video,iframe{max-width:100%;height:auto}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:"Manrope",system-ui,sans-serif;background:#140A1F;
+    color:var(--ink);line-height:1.55;padding:clamp(12px,3vw,40px);position:relative;min-height:100vh;-webkit-font-smoothing:antialiased}
+  .card{max-width:600px;margin:0 auto;background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.16);border-radius:26px;overflow:hidden;
+    box-shadow:0 50px 130px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(22px)}
+  .top{background:linear-gradient(160deg,rgba(123,63,228,.28),rgba(230,180,80,.08));color:#FFFFFF;padding:26px clamp(18px,5vw,34px) 24px;
+    border-bottom:1px solid rgba(255,255,255,.16)}
+  .brand{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.32em;
+    text-transform:uppercase;color:#C3B7D4;font-weight:600}
+  .topbar{display:flex;justify-content:space-between;align-items:center}
+  .langsw{display:flex;gap:2px;border:1px solid rgba(255,255,255,.25);border-radius:20px}
+  .langsw button{font-family:"Manrope",sans-serif;font-size:11px;font-weight:700;
+    letter-spacing:.05em;padding:5px 10px;background:transparent;border:none;cursor:pointer;
+    color:#C3B7D4}
+  .langsw button.on{background:var(--amber);color:#2A1A05;border-radius:20px}
+  .top h1{font-size:clamp(30px,6.5vw,46px);line-height:1.08;margin-top:8px;font-weight:700;letter-spacing:-.02em}
+  .top h1 b{color:var(--amber);font-weight:700}
+  .sub{font-size:13.5px;color:#C3B7D4;margin-top:11px;font-family:"Manrope",sans-serif}
+  .body{padding:clamp(18px,5vw,34px)}
+  .step-label{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);font-weight:700;margin:30px 0 18px;
+    display:flex;align-items:center;gap:10px}
+  .step-label:first-child{margin-top:0}
+  .step-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  .step-label .n{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+    background:var(--inkraise);color:#FFFFFF;border-radius:50%;font-size:11px;flex:0 0 auto}
+  .field{margin-bottom:24px}
+  .field > label{display:block;font-family:"Manrope",sans-serif;font-size:14px;
+    font-weight:600;margin-bottom:4px;color:var(--ink)}
+  .hint{font-size:12.5px;color:var(--muted);margin-bottom:12px;font-family:"Manrope",sans-serif}
+  .combo{display:flex;align-items:center;gap:14px}
+  .combo input[type=range]{flex:1;accent-color:var(--amber);height:4px}
+  .numwrap{position:relative;display:flex;align-items:center;flex:0 0 auto}
+  .numwrap input{width:150px;font-family:"Manrope",sans-serif;font-size:16px;
+    font-weight:700;padding:9px 56px 9px 11px;border:1.5px solid rgba(255,255,255,.22);background:var(--paper-2);
+    color:var(--ink);text-align:left;-moz-appearance:textfield;border-radius:11px}
+  .numwrap input[type=number]::-webkit-outer-spin-button,
+  .numwrap input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .numwrap .unit{position:absolute;right:11px;font-size:11px;color:var(--muted);
+    font-family:"Manrope",sans-serif;pointer-events:none}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .split .sub-f label{display:block;font-family:"Manrope",sans-serif;font-size:12.5px;
+    font-weight:600;margin-bottom:6px;color:var(--ink)}
+  .split .numwrap input{width:100%}
+  .star{color:var(--amber);font-weight:700;cursor:help}
+  .footnote{font-family:"Manrope",sans-serif;font-size:12px;color:var(--muted);
+    background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:12px;padding:11px 14px;margin-top:8px;line-height:1.5}
+  .footnote b{color:var(--ink)}
+  .amortbar{margin-top:14px;font-family:"Manrope",sans-serif}
+  .amortbar .ab-track{position:relative;height:30px;background:var(--paper-2);border:1.5px solid rgba(255,255,255,.22);border-radius:10px;
+    display:flex;overflow:hidden}
+  .amortbar .ab-first{background:rgba(185,139,255,.4);height:100%}
+  .amortbar .ab-second{background:var(--amber-soft);height:100%}
+  .amortbar .ab-mark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--danger);left:67%}
+  .amortbar .ab-marklbl{position:absolute;top:-18px;left:67%;transform:translateX(-50%);
+    font-size:10px;font-weight:700;color:var(--danger);white-space:nowrap}
+  .amortbar .ab-legend{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:8px;gap:10px}
+  .amortbar .ab-legend span b{color:var(--ink)}
+  .amortbar .ab-verdict{font-size:12.5px;line-height:1.5;margin-top:10px;padding:11px 14px;border-radius:12px;
+    border-left:3px solid var(--amber);background:var(--amber-soft)}
+  .amortbar .ab-verdict.none{border-color:var(--ok);background:var(--ok-soft)}
+  .amortbar .ab-hint{font-size:12px;line-height:1.55;color:var(--muted);margin-top:10px;
+    padding:11px 14px;border:1px dashed var(--line);border-radius:12px}
+  .amortbar .ab-hint b{color:var(--ink)}
+  .amortbar .ab-verdict b{color:var(--ink)}
+  .downsum{font-family:"Manrope",sans-serif;font-size:12.5px;color:var(--muted);margin-top:10px}
+  .downsum .downhint-empty{color:var(--amber-dark,#9a6410);font-style:italic}
+  .downsum b{color:var(--ink)}
+  .downwarn{color:var(--danger);font-weight:600}
+  .quickset{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .quickset button{font-family:"Manrope",sans-serif;font-size:11.5px;font-weight:600;
+    padding:7px 12px;background:var(--paper-2);border:1px solid rgba(255,255,255,.22);border-radius:20px;cursor:pointer;color:var(--ink)}
+  .quickset button:hover{background:var(--inkraise);color:#FFFFFF}
+  .seg{display:flex;gap:0;border:1px solid rgba(255,255,255,.22);border-radius:12px;overflow:hidden}
+  .seg button{flex:1;font-family:"Manrope",sans-serif;font-size:12.5px;font-weight:600;
+    padding:9px 8px;background:var(--paper-2);border:none;border-right:1px solid rgba(255,255,255,.22);
+    cursor:pointer;color:var(--ink)}
+  .seg button:last-child{border-right:none}
+  .seg button.on{background:var(--inkraise);color:#FFFFFF}
+  .seg3 button{font-size:11.5px;padding:9px 5px}
+  #dayCosts{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .daycosts-h{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:10px}
+  .dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .dc-f label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:3px;line-height:1.3}
+  .dc-f .numwrap{display:flex;align-items:center;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:var(--paper-2)}
+  .dc-f .numwrap input{width:100%;border:none;background:transparent;font-size:16px;padding:10px 8px;font-family:"Unbounded","Manrope",sans-serif}
+  .dc-f .numwrap .unit{font-size:11px;color:var(--muted);padding-right:8px;white-space:nowrap}
+  .yieldbox{margin-top:22px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;overflow:hidden;background:var(--paper-2)}
+  .yieldbox .yb-h{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;font-weight:700;color:#FFFFFF;background:var(--inkraise);padding:11px 16px}
+  .yieldbox .yb-b{padding:16px}
+  .yieldbox .yb-hero{text-align:center;padding:16px 12px 18px;margin:-16px -16px 6px;
+    border-bottom:1.5px solid rgba(255,255,255,.22)}
+  .yieldbox .yb-hero.pos{background:var(--ok-soft)}
+  .yieldbox .yb-hero.neg{background:rgba(255,122,138,.12)}
+  .yieldbox .yb-hero-lbl{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);font-weight:600}
+  .yieldbox .yb-hero-num{font-family:"Unbounded","Manrope",sans-serif;font-size:34px;font-weight:700;line-height:1.1;margin:4px 0}
+  .yieldbox .yb-hero.pos .yb-hero-num{color:var(--ok)}
+  .yieldbox .yb-hero.neg .yb-hero-num{color:var(--danger)}
+  .yieldbox .yb-hero-sub{font-size:12px;color:var(--muted)}
+  .yieldbox .yb-row{display:flex;justify-content:space-between;align-items:baseline;
+    padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+  .yieldbox .yb-row:last-of-type{border-bottom:none}
+  .yieldbox .yb-row .k{color:var(--muted)}
+  .yieldbox .yb-row .v{font-weight:700;color:var(--ink)}
+  .yieldbox .yb-verdict{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.5;border-left:3px solid var(--amber);background:var(--amber-soft)}
+  .yieldbox .yb-verdict.ok{border-color:var(--ok);background:var(--ok-soft)}
+  .yieldbox .yb-colhead{display:flex;justify-content:flex-end;font-family:"Manrope",sans-serif;
+    font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-bottom:4px}
+  .yieldbox .yb-sec{font-family:"Manrope",sans-serif;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:700;color:var(--amber-dark,#9a6410);margin:14px 0 2px}
+  .yieldbox .yb-sec:first-child{margin-top:0}
+  .yieldbox .yb-row.sub .k{padding-left:12px;color:var(--muted);font-size:13px}
+  .yieldbox .yb-row.strong .k{color:var(--ink);font-weight:600}
+  .yieldbox .yb-row.strong .v{font-size:14.5px}
+  .yieldbox .yb-row.cap .k::after{content:" \u21bb";color:var(--ok)}
+  .yieldbox .yb-row .v .pos{color:var(--ok)}
+  .yieldbox .yb-row .v .neg{color:var(--danger)}
+  .yieldbox .yb-ref{font-size:11.5px;line-height:1.5;color:var(--muted);margin-top:12px;
+    padding:11px 13px;border:1px dashed var(--line);border-radius:12px}
+  .yieldbox .yb-ref b{color:var(--ink)}
+  .yieldbox .yb-verdict b{color:var(--ink)}
+  .go{width:100%;font-family:"Manrope",sans-serif;font-size:15px;font-weight:700;
+    letter-spacing:.04em;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#2A1A05;border:none;border-radius:40px;cursor:pointer;
+    text-transform:uppercase;margin-top:14px;transition:transform .2s,box-shadow .2s}
+  .go:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(230,180,80,.34)}
+  .startbtn{display:block;width:100%;text-align:center;font-family:"Manrope",sans-serif;font-size:16px;font-weight:700;padding:16px 34px;border:none;border-radius:40px;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#2A1A05;transition:transform .2s,box-shadow .2s;margin-top:18px}
+  .startbtn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(230,180,80,.34)}
+  .result{margin-top:34px;display:none}
+  .result.show{display:block}
+  .res-head{border-top:2px solid rgba(255,255,255,.25);padding-top:24px}
+  .verdict{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}
+  .payout{border:1.5px solid rgba(255,255,255,.22);border-radius:14px;overflow:hidden;margin-bottom:14px}
+  .payout .prow{display:flex;justify-content:space-between;align-items:flex-start;padding:13px 16px;
+    border-bottom:1px solid var(--line);font-family:"Manrope",sans-serif}
+  .payout .prow:last-child{border-bottom:none}
+  .payout .prow .pk{max-width:64%}
+  .payout .prow .pk .pt{font-size:13.5px;font-weight:700;color:var(--ink)}
+  .payout .prow .pk .pd{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .payout .prow .pv{font-size:16px;font-weight:700;text-align:right;white-space:nowrap}
+  .payout .prow .pv .pm{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:2px}
+  .payout .prow.burn .pv{color:var(--danger)}
+  .payout .prow.cap{background:var(--ok-soft)}
+  .payout .prow.cap .pv{color:var(--ok)}
+  .payout .prow.cap .pk .pt::before{content:"\2794 ";color:var(--ok)}
+  .payout .prow.total{background:var(--inkraise)}
+  .payout .prow.total .pk .pt,.payout .prow.total .pv{color:#FFFFFF}
+  .tag{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:1px;font-weight:700}
+  .tag.t-burn{background:rgba(255,122,138,.18);color:var(--danger)}
+  .tag.t-cap{background:rgba(139,229,155,.18);color:var(--ok)}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;overflow:hidden;margin:18px 0 8px}
+  .vs .col{padding:16px 14px;text-align:center}
+  .vs .col.rent{background:var(--paper-2)}
+  .vs .col.own{background:var(--inkraise);color:#FFFFFF}
+  .vs .mid{display:flex;align-items:center;justify-content:center;padding:0 10px;background:var(--inkraise);
+    color:var(--amber);font-family:"Manrope",sans-serif;font-weight:700;font-size:13px}
+  .vs .lbl{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;opacity:.7;margin-bottom:8px}
+  .vs .big{font-size:clamp(20px,5.5vw,28px);font-weight:700;line-height:1}
+  .vs .small{font-family:"Manrope",sans-serif;font-size:11px;margin-top:6px;opacity:.75}
+  .insight{font-family:"Manrope",sans-serif;font-size:13.5px;line-height:1.55;
+    padding:14px 16px;background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:12px;margin-top:14px}
+  .insight b{color:var(--ink)}
+  .horizons{margin-top:30px}
+  .htabs{display:flex;border:1.5px solid rgba(255,255,255,.22);border-radius:12px 12px 0 0;overflow:hidden}
+  .htabs button{flex:1;font-family:"Manrope",sans-serif;font-size:13px;font-weight:600;
+    padding:11px 8px;background:var(--paper-2);border:none;border-right:1px solid var(--line);cursor:pointer;color:var(--ink)}
+  .htabs button:last-child{border-right:none}
+  .htabs button.on{background:var(--inkraise);color:#FFFFFF}
+  .hbody{border:1.5px solid rgba(255,255,255,.22);border-top:none;border-radius:0 0 12px 12px;padding:20px 18px}
+  .hrow{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;
+    border-bottom:1px solid var(--line);font-family:"Manrope",sans-serif}
+  .hrow:last-child{border-bottom:none}
+  .hrow .k{font-size:13px;color:var(--muted);max-width:62%}
+  .hrow .k b{color:var(--ink)}
+  .hrow .v{font-size:17px;font-weight:700}
+  .hrow.burn .v{color:var(--danger)}
+  .hrow.cap .v{color:var(--ok)}
+  .hrow.sub{padding:7px 0}
+  .hrow.sub .k{font-size:12px}
+  .hrow.htotal{border-top:2px solid rgba(255,255,255,.25);border-bottom:none;margin-top:4px;padding-top:12px}
+  .hrow.htotal .k{font-size:13px;color:var(--ink);font-weight:700;max-width:60%}
+  .hrow.htotal .v{font-size:19px;color:var(--ok)}
+  .hgroup{font-family:"Manrope",sans-serif;font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);font-weight:700;margin:14px 0 2px}
+  .hgroup:first-child{margin-top:0}
+  .hsum{font-family:"Manrope",sans-serif;font-size:13px;line-height:1.55;margin-top:16px;color:var(--ink)}
+  .hsum b{color:var(--amber)}
+  .bankcheck{margin-top:30px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper-2)}
+  .bankcheck .bc-h{background:var(--inkraise);color:#FFFFFF;padding:11px 16px;
+    font-family:"Manrope",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+  .bankcheck .bc-b{padding:16px}
+  .bankcheck .bc-num{font-size:clamp(26px,7vw,36px);font-weight:700;color:var(--ink);line-height:1}
+  .bankcheck .bc-num .cur{font-size:.4em;color:var(--amber);font-family:"Manrope",sans-serif;
+    margin-left:6px;vertical-align:.3em}
+  .bankcheck .bc-note{font-family:"Manrope",sans-serif;font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.55}
+  .bankcheck .bc-note b{color:var(--ink)}
+  .hh{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+  .hh label{display:block;font-family:"Manrope",sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  .hh .hint{margin-bottom:10px}
+  .hh .verdict-line{font-family:"Manrope",sans-serif;font-size:13.5px;margin-top:12px;line-height:1.55;
+    padding:12px 14px;border-radius:12px;border-left:3px solid var(--amber);background:var(--amber-soft)}
+  .hh .verdict-line.ok{border-color:var(--ok);background:var(--ok-soft)}
+  .hh .verdict-line b{color:var(--ink)}
+  .growthnote{font-family:"Manrope",sans-serif;font-size:12.5px;line-height:1.55;
+    margin-top:14px;padding:13px 15px;border-radius:12px;background:var(--ok-soft);border-left:3px solid var(--ok)}
+  .growthnote .gt{font-weight:700;color:var(--ok);font-size:13px;margin-bottom:4px}
+  .growthnote b{color:var(--ink)}
+  .growthnote .gref{color:var(--muted);font-size:11.5px;margin-top:6px}
+  .earlier{font-family:"Manrope",sans-serif;font-size:13px;line-height:1.55;
+    margin-top:14px;padding:13px 15px;border-radius:12px;background:var(--inkraise);color:#FFFFFF}
+  .earlier b{color:var(--amber)}
+  .taxbox{margin-top:30px;border:1.5px solid rgba(255,255,255,.22);border-radius:16px;overflow:hidden}
+  .taxbox .tx-h{background:var(--inkraise);color:#FFFFFF;padding:11px 16px;
+    font-family:"Manrope",sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+  .taxbox .tx-b{padding:16px}
+  .taxbox .tx-field{margin-bottom:14px}
+  .taxbox .tx-field label{display:block;font-family:"Manrope",sans-serif;font-size:13px;
+    font-weight:600;color:var(--ink);margin-bottom:4px}
+  .tx-result{font-family:"Manrope",sans-serif;margin-top:14px;padding:14px 15px;border-radius:12px;border-left:3px solid var(--amber);background:var(--amber-soft)}
+  .tx-result.save{border-color:var(--ok);background:var(--ok-soft)}
+  .tx-result .txr-lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+  .tx-result .txr-num{font-size:24px;font-weight:700;color:var(--ink);line-height:1}
+  .tx-result .txr-note{font-size:12.5px;color:var(--ink);margin-top:8px;line-height:1.55}
+  .tx-result .txr-note b{color:var(--ink)}
+  .tx2029{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper-2)}
+  .tx2029 .tx2029-h{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:700;color:#FFFFFF;background:var(--inkraise);padding:9px 14px}
+  .tx2029 .tx2029-row{font-family:"Manrope",sans-serif;font-size:12.5px;line-height:1.5;
+    color:var(--ink);padding:11px 14px;border-bottom:1px solid var(--line)}
+  .tx2029 .tx2029-row b{color:var(--ink)}
+  .tx2029 .tx2029-row.save{background:var(--ok-soft)}
+  .tx2029 .tx2029-ref{font-family:"Manrope",sans-serif;font-size:11.5px;line-height:1.5;
+    color:var(--muted);padding:11px 14px}
+  .tx2029 .tx2029-ref b{color:var(--ink)}
+  .tx-ref{font-family:"Manrope",sans-serif;font-size:11.5px;color:var(--muted);
+    margin-top:12px;line-height:1.55;padding-top:12px;border-top:1px solid var(--line)}
+  .tx-ref b{color:var(--ink)}
+  .disclaimer{font-family:"Manrope",sans-serif;font-size:11.5px;color:var(--muted);
+    margin-top:24px;padding-top:16px;border-top:1px solid var(--line);line-height:1.55}
+  .backdrop{position:fixed;inset:0;z-index:-2;background:radial-gradient(90% 60% at 50% -5%,#241138 0%,#170B23 45%,#140A1F 100%)}
+  .orb{position:fixed;border-radius:50%;filter:blur(120px);z-index:-1;pointer-events:none}
+  .orb.v{width:520px;height:520px;left:-160px;top:-140px;background:rgba(123,63,228,.28);opacity:.5}
+  .orb.a{width:560px;height:560px;right:-180px;bottom:-160px;background:rgba(198,138,46,.20);opacity:.5}
+  .pattern{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1;background-size:80px 80px;background-image:linear-gradient(rgba(230,180,80,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(230,180,80,.075) 1px,transparent 1px)}
+  .pat-x{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(6 8) scale(0.62)' stroke='%23E6B450'%3E%3Cpath d='M8 34 L35 12 L62 34 M15 30 V60 H55 V30 M28 60 V44 H42 V60'/%3E%3C/g%3E%3Cg transform='translate(78 74) scale(0.62)' stroke='%23B98BFF'%3E%3Cpath d='M8 34 L35 12 L62 34 M15 30 V60 H55 V30 M28 60 V44 H42 V60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+  .top h1{font-family:"Unbounded","Manrope",sans-serif;font-weight:700;letter-spacing:-.02em}
+  .top h1 b{background:linear-gradient(92deg,var(--gold) 0%,var(--gold-bright) 35%,var(--lila-bright) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-weight:700}
+  .bc-num,.vs .big,.yb-hero-num,.tx-result .txr-num{font-family:"Unbounded","Manrope",sans-serif;letter-spacing:-.02em}
+  input,select,button{font-family:inherit}
+  input:focus{outline:none;border-color:var(--lila-bright)!important;box-shadow:0 0 0 3px rgba(185,139,255,.18)}
+  input[type=range]{accent-color:var(--gold)}
+  @media(min-width:820px){
+    body{display:flex;align-items:center;justify-content:center}
+    .card{max-width:780px;width:100%}
+    .top h1{font-size:48px}
+    .sub{font-size:16px}
+    .field > label{font-size:16.5px}
+    .hint{font-size:14px}
+    .step-label{font-size:13px}
+    .seg button,.htabs button{min-height:44px;font-size:14.5px}
+    .go{font-size:17px}
+    .footnote{font-size:13.5px}
+    .payout .prow .pk .pt{font-size:15px}
+    .payout .prow .pk .pd{font-size:13px}
+    .payout .prow .pv{font-size:17.5px}
+    .hrow .k{font-size:14.5px}
+    .yb-row{font-size:15px}
+    .insight,.hsum{font-size:15px}
+    .disclaimer,.tx-ref{font-size:12.5px}
+  }
+/* узкие экраны: плашки навигации не наезжают */
+@media(max-width:430px){
+  a[href="/calculators"][style*="position:fixed"],a[href="/"][style*="position:fixed"]{font-size:13px!important;padding:0 10px!important;gap:5px!important}
+  a[href="/calculators"][style*="position:fixed"]{left:12px!important}
+  a[href="/"][style*="position:fixed"]{right:12px!important}
+}
+@media(max-width:360px){
+  a[href="/"][style*="position:fixed"]{font-size:0!important;padding:0 12px!important;min-width:44px!important;justify-content:center!important}
+  a[href="/"][style*="position:fixed"]::after{content:"→";font-size:17px}
+}
+</style>
+</head>
+<body>
+<!-- Меню сайта. Подключено в начале <body> намеренно: скрипт строит шапку,
+     и в конце страницы она появлялась уже после первой отрисовки —
+     на полсекунды меню просто не было. При ре-синке дизайна вернуть сюда. -->
+<script src="../site/nav.js"></script>
+<script src="../site/calc-nav.js"></script>
+<a href="/calculators" style="position:fixed;top:18px;left:22px;z-index:50;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#C3B7D4;text-decoration:none;background:rgba(20,10,31,.55);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 16px;backdrop-filter:blur(8px);white-space:nowrap" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#C3B7D4'">← Все калькуляторы</a>
+<a href="/" style="position:fixed;top:18px;right:22px;z-index:50;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;font-size:15px;font-weight:700;color:#C3B7D4;text-decoration:none;background:rgba(20,10,31,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap">Frankenplatz.ch →</a>
+<div class="backdrop"></div>
+<div class="pattern"></div>
+<div class="orb v"></div>
+<div class="orb a"></div>
+<div class="card">
+  <div class="top">
+    <div class="topbar">
+      <div class="brand">Frankenplatz</div>
+      <div class="langsw" id="langsw">
+        <button data-lang="ru" class="on">RU</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+    <h1 data-i18n="h1">Аренда или <b>ипотека</b>:<br>куда уходят ваши деньги?</h1>
+    <div class="sub" data-i18n="sub">Сейчас вы платите за жильё каждый месяц и не получаете ничего. Посмотрим, что было бы при покупке — и сколько из платежа на самом деле остаётся вашим.</div>
+    <button class="startbtn" id="startBtn" data-i18n="start">Поехали</button>
+  </div>
+  <div class="body" id="body" style="display:none">
+
+    <div class="step-label" data-step="prop"><span class="n">1</span> <span data-i18n="step2">Что вы рассматриваете</span></div>
+    <div class="field">
+      <label data-i18n="propLabel">Тип жилья</label>
+      <div class="hint" data-i18n="propHint">Для себя — обычная ипотека. Второе жильё (дача): взнос от 40%. Под аренду — это инвестиция: взнос от 25%, и считаем доходность, а не сравнение с арендой.</div>
+      <div class="seg seg3" id="propSeg">
+        <button data-p="first" class="on" data-i18n="propFirst">Первое (для себя)</button>
+        <button data-p="second" data-i18n="propSecond">Второе (для себя)</button>
+        <button data-p="rent" data-i18n="propRent">Сдавать в аренду</button>
+      </div>
+    </div>
+    <div class="field" id="rentBox" style="display:none">
+      <label data-i18n="rentInLabel">Сколько планируете брать за аренду</label>
+      <div class="hint" data-i18n="rentInHint">Введите ожидаемую аренду — посчитаем доходность и насколько она покрывает ипотеку.</div>
+      <div class="seg" id="rentModeSeg">
+        <button data-rm="month" class="on" data-i18n="rentModeMonth">В месяц</button>
+        <button data-rm="day" data-i18n="rentModeDay">Посуточно</button>
+      </div>
+      <div class="combo" style="margin-top:10px">
+        <input type="range" id="rentInR" min="500" max="15000" step="100" value="2500">
+        <div class="numwrap"><input type="text" inputmode="decimal" id="rentInN" value="2500"><span class="unit" id="rentInUnit">CHF/мес</span></div>
+      </div>
+      <div class="hint" id="rentDayNote" style="display:none" data-i18n="rentDayNote">Посуточно считаем со средней загрузкой 60% (≈18 ночей в месяц) — типично для отпускного жилья.</div>
+      <div id="dayCosts" style="display:none">
+        <div class="daycosts-h" data-i18n="dayCostsHead">Расходы посуточной аренды (можно изменить)</div>
+        <div class="dc-grid">
+          <div class="dc-f">
+            <label data-i18n="dcOcc">Загрузка</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcOccN" value="60"><span class="unit">%</span></div>
+          </div>
+          <div class="dc-f">
+            <label data-i18n="dcPlatform">Платформа (Booking/Airbnb)</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcPlatformN" value="15"><span class="unit">%</span></div>
+          </div>
+          <div class="dc-f">
+            <label data-i18n="dcClean">Уборка/стирка за выезд</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcCleanN" value="120"><span class="unit">CHF</span></div>
+          </div>
+          <div class="dc-f">
+            <label data-i18n="dcStay">Средняя длина брони</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcStayN" value="3"><span class="unit" data-i18n="unitNights">ночей</span></div>
+          </div>
+          <div class="dc-f">
+            <label data-i18n="dcAds">Реклама в год</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcAdsN" value="1200"><span class="unit">CHF</span></div>
+          </div>
+          <div class="dc-f">
+            <label data-i18n="dcConsum">Расходники в месяц</label>
+            <div class="numwrap"><input type="text" inputmode="decimal" id="dcConsumN" value="80"><span class="unit">CHF</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="step1Block">
+    <div class="step-label" data-step="rent" id="rentStepLabel"><span class="n">2</span> <span data-i18n="step1">Сколько вы платите за аренду сейчас</span></div>
+    <div class="field">
+      <label data-i18n="rentLabel">Аренда в месяц</label>
+      <div class="hint" data-i18n="rentHint">Ваша текущая квартплата (брутто, со всеми Nebenkosten). С ней сравним покупку.</div>
+      <div class="combo">
+        <input type="range" id="rentR" min="800" max="6000" step="50" value="1900">
+        <div class="numwrap"><input type="text" inputmode="decimal" id="rentN" value="1900"><span class="unit" data-i18n="unitRent">CHF/мес</span></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="step-label" data-step="obj"><span class="n">3</span> <span data-i18n="step3b">Параметры объекта</span></div>
+    <div class="field">
+      <label data-i18n="priceLabel">Стоимость недвижимости</label>
+      <div class="hint" data-i18n="priceHint">Цена объекта, который хотели бы купить</div>
+      <div class="combo">
+        <input type="range" id="priceR" min="300" max="3000" step="10" value="680">
+        <div class="numwrap"><input type="text" inputmode="decimal" id="priceN" value="" placeholder="680"><span class="unit" data-i18n="unitKCHF">тыс. CHF</span></div>
+      </div>
+    </div>
+    <div class="field">
+      <label data-i18n="ageLabel">Возраст заёмщика</label>
+      <div class="hint" data-i18n="ageHint">Важно: 2-ю ипотеку нужно погасить за 15 лет ИЛИ до 65 лет (пенсия) — что раньше. Чем ближе к 65, тем короче срок и выше платёж.</div>
+      <div class="combo">
+        <input type="range" id="ageR" min="25" max="70" step="1" value="40">
+        <div class="numwrap"><input type="text" inputmode="decimal" id="ageN" value="40"><span class="unit" data-i18n="unitAge">лет</span></div>
+      </div>
+      <div class="footnote" id="ageNote" style="background:var(--paper-2);border-color:var(--line)"></div>
+    </div>
+    <div class="field">
+      <label data-i18n="rateLabel">Реальная ставка по ипотеке</label>
+      <div class="hint" data-i18n="rateHint">Сейчас в Швейцарии фикс на 10 лет — примерно 1,5–2,2%. Базовое значение 2%.</div>
+      <div class="combo">
+        <input type="range" id="rateR" min="0.5" max="4" step="0.1" value="2">
+        <div class="numwrap"><input type="text" inputmode="decimal" id="rateN" value="2" step="0.1"><span class="unit">%</span></div>
+      </div>
+    </div>
+
+    <div class="step-label" data-step="down"><span class="n">4</span> <span data-i18n="step3">Первоначальный взнос</span></div>
+    <div class="field">
+      <div class="hint" data-i18n="downHint" data-i18n-html="1">По закону минимум 20% от стоимости. По умолчанию делим пополам: 10% твёрдыми деньгами + 10% из пенсионной кассы<span class="star">*</span>. Можете изменить.</div>
+      <div class="split">
+        <div class="sub-f">
+          <label data-i18n="cashLabel" data-i18n-html="1">Твёрдые деньги<span class="star">**</span></label>
+          <div class="numwrap"><input type="text" inputmode="decimal" id="cashN" value="" placeholder="0"><span class="unit">CHF</span></div>
+        </div>
+        <div class="sub-f">
+          <label data-i18n="pensionLabel">Из пенсионной кассы *</label>
+          <div class="numwrap"><input type="text" inputmode="decimal" id="pensionN" value="" placeholder="0"><span class="unit">CHF</span></div>
+        </div>
+      </div>
+      <div class="quickset" id="quickset"></div>
+      <div class="downsum" id="downsum"></div>
+      <div class="footnote" data-i18n="footnote" data-i18n-html="1">
+        <b>* Пенсионная касса</b> — это 2-й столб (Pensionskasse) и Säule 3a. Их можно использовать на первый взнос. Но Säule 3a — это ещё и инструмент, который выгодно копить годами и при этом <b>экономить на налогах</b>: взносы вычитаются из налогооблагаемого дохода. Как выстроить это правильно — разбираем на форуме Frankenplatz.
+      </div>
+      <div class="footnote" data-i18n="footnoteHard" data-i18n-html="1">
+        <b>** Твёрдые деньги</b> — банк требует, чтобы минимум 10% цены были «твёрдыми»: сбережения, ценные бумаги или Säule 3a. И вот трюк, о котором мало кто знает: Säule 3a можно <b>не обналичивать, а заложить</b> — она засчитается как твёрдые деньги, но останется вашей и продолжит расти, и вы не платите налог на изъятие. Когда это выгодно, а когда нет — разбираем после регистрации на форуме Frankenplatz.
+      </div>
+      <div class="amortbar">
+        <div class="ab-track">
+          <div class="ab-first" id="abFirst" style="width:67%"></div>
+          <div class="ab-second" id="abSecond" style="width:13%"></div>
+          <div class="ab-mark"></div>
+          <div class="ab-marklbl">граница 67%</div>
+        </div>
+        <div class="ab-legend">
+          <span><b id="abFirstPct">67%</b> <span id="abFirstLeg" data-i18n="abFirstLeg">— 1-я ипотека (гасить не нужно)</span></span>
+          <span><b id="abSecondPct">13%</b> <span id="abSecondLeg" data-i18n="abSecondLeg">— 2-я (амортизация)</span></span>
+        </div>
+        <div class="ab-verdict" id="abVerdict"></div>
+        <div class="ab-hint" data-i18n="abHint" data-i18n-html="1">
+          <b>Что выгоднее — 20% или 33%?</b> Зависит от вас. Больший взнос = ниже платёж и меньше процентов банку, но и больше денег «заморожено» в стенах. Меньший взнос оставляет деньги свободными — если умеете вкладывать их выгоднее ставки по ипотеке, это может перевесить. Где ваша точка — считается индивидуально. Разберём ваш случай детально на форуме Frankenplatz.
+        </div>
+      </div>
+    </div>
+
+    <button class="go" id="go" data-i18n="go">Рассчитать</button>
+
+    <div class="result" id="result">
+
+      <div class="res-head" id="resHead">
+        <div class="verdict" data-i18n="vHeadPayout">Из чего состоит платёж по ипотеке</div>
+        <div class="payout" id="payout"></div>
+        <div class="hint" style="margin-top:-4px" data-i18n="vLegend" data-i18n-html="1">
+          <b style="color:var(--danger)">Красное</b> — деньги «в никуда», как аренда. <b style="color:var(--ok)">Зелёное</b> — остаётся вашим: амортизация (выкуп доли) и резерв на ремонт (отложенные деньги, на новом жилье годами почти не тратятся).
+        </div>
+      </div>
+
+      <div id="vsBlock">
+        <div class="verdict" style="margin-top:24px" data-i18n="vHeadVs">Расходы «в никуда»: аренда против ипотеки</div>
+        <div class="vs">
+          <div class="col rent">
+            <div class="lbl" data-i18n="vRentLbl">Аренда</div>
+            <div class="big" id="vsRent">0</div>
+            <div class="small" data-i18n="vRentSm">всё уходит арендодателю</div>
+          </div>
+          <div class="mid">vs</div>
+          <div class="col own">
+            <div class="lbl" data-i18n="vOwnLbl">Ипотека «в никуда»</div>
+            <div class="big" id="vsOwn">0</div>
+            <div class="small" data-i18n="vOwnSm">проценты + текущие расходы</div>
+          </div>
+        </div>
+        <div class="insight" id="insight"></div>
+      </div>
+
+      <div class="horizons" id="horizonsBlock">
+        <div class="verdict" data-i18n="vHeadHorizon">Что накопится за годы</div>
+        <div class="htabs" id="htabs">
+          <button data-y="5">5 лет</button>
+          <button data-y="10" class="on">10 лет</button>
+          <button data-y="15">15 лет</button>
+        </div>
+        <div class="hbody" id="hbody"></div>
+        <div class="hsum" id="hsum"></div>
+        <div class="growthnote" id="growthnote"></div>
+        <div class="earlier" id="earlier"></div>
+      </div>
+
+      <div class="bankcheck" id="bankcheckBlock">
+        <div class="bc-h" data-i18n="bcHead">Сколько нужно зарабатывать на эту квартиру</div>
+        <div class="bc-b">
+          <div class="bc-num"><span id="reqIncome">0</span><span class="cur" data-i18n="unitYear">CHF/год</span></div>
+          <div class="bc-note" id="reqNote"></div>
+          <div class="hh">
+            <label data-i18n="bcIncomeLbl">Ваш доход домохозяйства (брутто, в год)</label>
+            <div class="hint" data-i18n="bcIncomeHint">Домохозяйство — это общий доход всех, кто берёт ипотеку вместе: вы + супруг/партнёр, если подаёте вдвоём. Банк смотрит на сумму. Введите свою — посчитаем, на какую цену жилья вы примерно можете рассчитывать.</div>
+            <div class="combo">
+              <input type="range" id="hhR" min="50000" max="500000" step="5000" value="150000">
+              <div class="numwrap"><input type="text" inputmode="decimal" id="hhN" value="150000"><span class="unit" data-i18n="unitYear">CHF/год</span></div>
+            </div>
+            <div class="verdict-line" id="hhVerdict"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="yieldbox" id="yieldbox" style="display:none">
+        <div class="yb-h" data-i18n="ybHead">Доходность от аренды</div>
+        <div class="yb-b" id="ybBody"></div>
+      </div>
+
+      <div class="taxbox" id="taxboxBlock">
+        <div class="tx-h" data-i18n="txHead">Экономия на налогах · вычет процентов</div>
+        <div class="tx-b">
+          <div class="tx-field">
+            <label data-i18n="txMargLbl">Ваша предельная налоговая ставка</label>
+            <div class="hint" data-i18n="txMargHint">Сколько вы платите налога с последнего заработанного франка. По Швейцарии в среднем 25–35% в зависимости от кантона и дохода. Базово 30%.</div>
+            <div class="combo">
+              <input type="range" id="margR" min="20" max="42" step="1" value="30">
+              <div class="numwrap"><input type="text" inputmode="decimal" id="margN" value="30"><span class="unit">%</span></div>
+            </div>
+          </div>
+          <div class="tx-field">
+            <label data-i18n="txMarLbl">Семейный статус (для лимита вычета с 2029)</label>
+            <div class="seg" id="marSeg">
+              <button data-m="1" class="on" data-i18n="txMarried">Супруги</button>
+              <button data-m="0" data-i18n="txSingle">Один / одна</button>
+            </div>
+          </div>
+          <div class="tx-result" id="txResult"></div>
+          <div class="tx2029" id="tx2029"></div>
+          <div class="tx-ref">
+            <span data-i18n="txExplain" data-i18n-html="1"><b>Как работает «налоговый щит».</b> Проценты по ипотеке вычитаются из налогооблагаемого дохода и снижают налог. Но собственник платит налог на <b>Eigenmietwert</b> — условную аренду своего жилья (≈3,5% от 70% стоимости считается «доходом»). При низких ставках Eigenmietwert часто перевешивает вычет, и выгода превращается в небольшую доплату.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="report-capture"></div>
+
+      <div class="disclaimer" data-i18n="disclaimer">
+        Расчёт ориентировочный. Реальный платёж — по вашей ставке; требуемый доход банк считает по гипотетической 5% (проверяет, выдержите ли рост ставок), плюс содержание 1% и амортизация 2-й ипотеки за 15 лет. «Капитал» здесь — только погашенный долг (амортизация), без учёта изменения цены жилья. Реальные условия зависят от банка, кантона, типа пермита и истории. Это не финансовая консультация.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var CFG={CALC_RATE:0.05,MAINT:0.01,BURDEN:0.33,FIRST_CAP:0.67,AMORT_YEARS:15,MIN_DOWN:0.20,
+  GROWTH:0.025,EMW_TAXVALUE:0.70,EMW_RATE:0.035,MAINT_DEDUCT:0.0013,
+  EW_CAP_MARRIED:10000,EW_CAP_SINGLE:5000,EW_YEARS:10,
+  RETIRE_AGE:65,
+  SEC_MIN_DOWN:0.40,SEC_FLOOR:0.50,SEC_AMORT_YEARS:10,
+  RENT_MIN_DOWN:0.25,RENT_FLOOR:0.667,RENT_AMORT_YEARS:10};
+var married=true;
+var propType='first';   // 'first' | 'second' | 'rent'
+var rentMode='month';   // 'month' | 'day'
+var downTouched=false;  // пользователь сам менял взнос?
+var lastR=null;
+var lang='ru';
+// Словарь переводов. RU основной; DE и EN — вариативные.
+var I18N={
+ ru:{
+  h1:'Аренда или <b>ипотека</b>:<br>куда уходят ваши деньги?',
+  sub:'Сейчас вы платите за жильё каждый месяц и не получаете ничего. Посмотрим, что было бы при покупке — и сколько из платежа на самом деле остаётся вашим.',
+  step1:'Сколько вы платите за аренду сейчас', step3b:'Параметры объекта', unitKCHF:'тыс. CHF', downEmpty:'Введите стоимость недвижимости выше — взнос подставится автоматически.', rentLabel:'Аренда в месяц',
+  rentHint:'Ваша текущая квартплата (брутто, со всеми Nebenkosten)',
+  step2:'Что вы рассматриваете', propLabel:'Тип жилья',
+  propHint:'Для себя — обычная ипотека. Второе жильё (дача): взнос от 40%. Под аренду — это инвестиция: взнос от 25%, и считаем доходность, а не сравнение с арендой.',
+  propFirst:'Первое (для себя)', propSecond:'Второе (для себя)',
+  propRent:'Сдавать в аренду',
+  rentInLabel:'Сколько планируете брать за аренду', rentInHint:'Введите ожидаемую аренду — посчитаем доходность и насколько она покрывает ипотеку.',
+  rentModeMonth:'В месяц', rentModeDay:'Посуточно', unitDay:'CHF/ночь',
+  rentDayNote:'Посуточно считаем со средней загрузкой 60% (≈18 ночей в месяц) — типично для отпускного жилья.',
+  ybHead:'Доходность от аренды',
+  ageRetired:'<b>Вам {age}, это пенсионный возраст или старше.</b> Новую ипотеку после 65 дают, но строже: банк финансирует максимум 65% стоимости (а не 80%), считает доход по пенсии. Обычно нужен крупный взнос или капитал. Срок амортизации в расчёте взят минимальный.',
+  ageShort:'<b>Срок амортизации: {aY} лет</b> (а не {maxY}), потому что до 65 лет осталось {toR}. 2-ю ипотеку нужно успеть погасить к пенсии — поэтому платёж выше, чем у молодого заёмщика.',
+  ageFull:'<b>Срок амортизации: {maxY} лет.</b> До 65 у вас ещё {toR} лет — полный стандартный срок, амортизация распределяется максимально мягко.',
+  abMark:'граница {f}%',
+  abVerdNo:'<b>Амортизации нет.</b> Ваша ипотека ({loan}%) не превышает границу {f}% — обязательной амортизации нет, платёж ниже. Так считает и калькулятор Mobiliar при большом взносе.',
+  abVerdYes:'<b>Есть обязательная амортизация.</b> Часть ипотеки выше {f}% ({second} CHF) нужно гасить — примерно <b>{amortY} CHF/год</b> за {aY} лет. Не хотите её? Внесите взнос <b>{kill}%</b> или больше — тогда ипотека опустится до {f2}%, и обязательная амортизация исчезнет (но больше денег заморожено в жилье).',
+  bcPass:'С доходом <b>{hh} CHF</b> вы проходите по этой квартире. По этому доходу банк в принципе потянет жильё примерно до <b>{maxP} CHF</b> (при взносе 20%).',
+  bcFail:'С доходом <b>{hh} CHF</b> на эту квартиру банк, скорее всего, не одобрит — нужно ~{req}. По вашему доходу реально рассчитывать на жильё примерно до <b>{maxP} CHF</b> (при взносе 20%).',
+  insPos:'«Сгорающая» часть ипотеки на <b>{diff} CHF/год дешевле аренды</b> — это <b>{pct}% от вашей годовой аренды</b>. И аренда не строит никакого капитала: платёж по ипотеке выше только из-за амортизации, но эти деньги остаются <b>вашими</b>.',
+  insNeg:'Здесь чистые расходы по ипотеке выше аренды на <b>{diff} CHF/год</b> ({pct}% аренды). Но часть платежа (амортизация и резерв) — это не расход, а накопление в свою недвижимость.',
+  reqNote:'Это минимум брутто на домохозяйство. Важный момент: банк считает требуемый доход не по вашей ставке {rate}%, а по гипотетической <b>5%</b> — проверяет, выдержите ли вы рост ставок. Поэтому планка по доходу всегда заметно выше реального платежа: платить вы будете \u2248 {pay} CHF/мес, а доход банк требует как будто под 5%.',
+  txPre2029Save:'До 2029 · экономия в год', txPre2029Pay:'До 2029 · налоговый эффект в год', txSurcharge:'CHF доплаты', perYearShort:'год',
+  txPreSaveNote:'Это {pct}% от годовой аренды. При ставке {rate}% проценты ({int} CHF) перевешивают налог на Eigenmietwert ({emw} CHF).',
+  txPrePayNote:'Всего {pct}% от годовой аренды. При низкой ставке {rate}% налог на Eigenmietwert ({emw} CHF) выше вычета процентов ({int} CHF). «Щит» в плюс только при ставках выше ~3,5%.',
+  tx2029Head:'С 1 января 2029 — система меняется',
+  tx2029Normal:'<b>Обычный владелец:</b> Eigenmietwert исчезает, но и вычет процентов с содержанием тоже. Налоговый эффект около <b>0</b> — зато пропадает сегодняшняя доплата {drop}.',
+  tx2029First:'<b>Первый покупатель жилья ({who}):</b> Eigenmietwert исчезает, а проценты можно вычитать ещё 10 лет — но с лимитом. В 1-й год лимит вычета {cap} CHF, дальше падает на 10% ежегодно до нуля. Экономия в 1-й год ≈ <b>{y1} CHF</b>, суммарно за 10 лет ≈ <b>{cum} CHF</b>.',
+  tx2029Married:'супруги', tx2029Single:'один', tx2029RefMarried:'для супругов; одиноким 5 000', tx2029RefSingle:'для одиноких; супругам 10 000',
+  tx2029Ref:'<b>Точные параметры реформы:</b> вступает в силу 01.01.2029. Ersterwerberabzug — максимум {cap} CHF в первый год ({who2}), снижается на 10% каждый год, действует до 10 лет после покупки. Что это значит лично для вас и как успеть до 2029 — на форуме Frankenplatz.',
+  vHeadPayout:'Из чего состоит платёж по ипотеке', vLegend:'<b style="color:var(--danger)">Красное</b> — деньги «в никуда», как аренда. <b style="color:var(--ok)">Зелёное</b> — остаётся вашим: амортизация (выкуп доли) и резерв на ремонт (отложенные деньги, на новом жилье годами почти не тратятся).',
+  vHeadVs:'Расходы «в никуда»: аренда против ипотеки', vRentLbl:'Аренда', vRentSm:'всё уходит арендодателю', vOwnLbl:'Ипотека «в никуда»', vOwnSm:'проценты + текущие расходы', vHeadHorizon:'Что накопится за годы',
+  bcHead:'Сколько нужно зарабатывать на эту квартиру', bcIncomeLbl:'Ваш доход домохозяйства (брутто, в год)', bcIncomeHint:'Домохозяйство — это общий доход всех, кто берёт ипотеку вместе: вы + супруг/партнёр, если подаёте вдвоём. Банк смотрит на сумму. Введите свою — посчитаем, на какую цену жилья вы примерно можете рассчитывать.',
+  txHead:'Экономия на налогах · вычет процентов', txMargLbl:'Ваша предельная налоговая ставка', txMargHint:'Сколько вы платите налога с последнего заработанного франка. По Швейцарии в среднем 25–35% в зависимости от кантона и дохода. Базово 30%.', txMarLbl:'Семейный статус (для лимита вычета с 2029)', txMarried:'Супруги', txSingle:'Один / одна',
+  txExplain:'<b>Как работает «налоговый щит».</b> Проценты по ипотеке вычитаются из налогооблагаемого дохода и снижают налог. Но собственник платит налог на <b>Eigenmietwert</b> — условную аренду своего жилья (≈3,5% от 70% стоимости считается «доходом»). При низких ставках Eigenmietwert часто перевешивает вычет, и выгода превращается в небольшую доплату.',
+  growthHead:'Откуда прирост стоимости в таблице', growthBody:'Ориентир: за последние 10 лет квартиры в Швейцарии дорожали примерно на 3% в год, прогноз на 2026–2027 — около 2–3%. В расчёте взято консервативно {g}%/год.', growthRef:'Прошлый рост не гарантирует будущий, цены могут и падать — это справочная прикидка, а не обещание. Прирост — «бумажный», пока вы не продали жильё.',
+  poInterest:'Проценты банку', poInterestD:'Плата за кредит по ставке {rate}%. Это переплата — уходит банку, назад не вернётся.',
+  poMaintCur:'Содержание: текущие расходы', poMaintCurD:'Nebenkosten собственника, страховка дома, мелкий ремонт. Примерно половина от 1%. Это реально вытекает — но и в аренде вы платите похожее сверху.',
+  poMaintRes:'Содержание: резерв на ремонт', poMaintResD:'Вторая половина 1% — отложенные деньги на крупный ремонт (крыша, кухня, отопление раз в 15–20 лет). На новом жилье копится у вас на счету и годами почти не тратится. По сути это ваши же деньги.',
+  poAmort:'Амортизация', poAmortD:'Обязательное погашение 2-й ипотеки. Это не трата — вы выкупаете долю своей недвижимости. Деньги остаются вашими в виде капитала.',
+  poTotal:'Полный платёж владельца', tagBurn:'в никуда', tagRes:'ваш резерв', tagCap:'в капитал', perMo:'/мес',
+  hzBurnHead:'Расходы «в никуда» за {y} лет', hzRent:'<b>Аренда:</b> уйдёт целиком, не остаётся ничего', hzOwn:'<b>Ипотека:</b> проценты + текущие расходы',
+  hzTaxPay:'Налог: доплата (Eigenmietwert − вычет)', hzTaxSave:'Налог: экономия на вычете процентов',
+  hzCapHead:'Ваш капитал за {y} лет', hzAmortCap:'Амортизация (выкуп доли жилья)', hzGrowth:'Прирост стоимости жилья (~{g}%/год)', hzCapTotal:'Итого капитал владельца',
+  hzSumPos:'За {y} лет «сгорающая» часть ипотеки на <b>{saved} CHF</b> меньше аренды (это <b>{pct}%</b> от денег, что ушли бы за аренду). А капитал владельца за это время — около <b>{cap} CHF</b>, тогда как у арендатора он <b>равен нулю</b>.',
+  hzSumNeg:'По чистым расходам ипотека тут дороже аренды на {over} CHF за {y} лет, но капитал владельца за это время — около <b>{cap} CHF</b>, а у арендатора ноль.',
+  dayCostsHead:'Расходы посуточной аренды (можно изменить)', dcOcc:'Загрузка', dcPlatform:'Платформа (Booking/Airbnb)', dcClean:'Уборка/стирка за выезд', dcStay:'Средняя длина брони', dcAds:'Реклама в год', dcConsum:'Расходники в месяц', unitNights:'ночей',
+  ybOpexPlatform:'Платформа (Booking/Airbnb)', ybOpexClean:'Уборка и стирка', ybOpexAds:'Реклама', ybOpexConsum:'Расходники',
+  ybColMonthYear:'в месяц / в год', ybHeroLbl:'Ваш пассивный доход', ybHeroSub:'≈ {y} CHF в год чистыми вам на руки (после процентов и содержания, без учёта амортизации — она копит ваш капитал)', ybSecPayback:'Окупаемость вложений', ybInvested:'Вы вложили (взнос)', ybAnnualReturn:'Возврат в год (кэш + погашение долга)', ybPayback:'Окупится примерно за', ybSecIncome:'Доход', ybOpex:'Эксплуатация и управление (−9%)', ybSecCost:'Расходы владельца',
+  ybInterest:'Проценты по ипотеке', ybMaint:'Содержание (1%)', ybAmort:'Амортизация (гасим долг)', ybCostTotal:'Итого расходы',
+  ybSecFlow:'Денежный поток', ybCashflow:'Чистый поток (с амортизацией)', ybCashReal:'Живой кэш в кармане', ybSecYield:'Доходность',
+  ybRef:'<b>Как читать.</b> Пассивный доход — это живые деньги на руки после процентов и содержания. Амортизация ({amort} CHF/год, помечена ↻) сверху этого не трата, а погашение вашего же долга — поэтому в окупаемость она входит как возврат. Простой не считаем: в Швейцарии при съезде арендатор обычно сам ищет замену, квартира редко пустует. Налоги, рост стоимости и точные ставки — индивидуально, разбираем на форуме Frankenplatz.', ybGrossIncome:'Аренда в год (брутто)', ybNetIncome:'Чистыми после расходов (−15%)', ybOwnCost:'Расходы владельца в год', ybGrossYield:'Валовая доходность', ybEquityYield:'Доходность на вложенный капитал',
+  ybCoverYes:'Аренда покрывает ипотеку.', ybCoverYesTxt:'Доход покрывает расходы на {cover}% — остаётся плюс примерно {cf} CHF/год. Объект самоокупаемый. Точный расчёт с налогами и простоем — на форуме.',
+  ybCoverNo:'Аренды не хватает.', ybCoverNoTxt:'Доход покрывает расходы только на {cover}% — не хватает примерно {cf} CHF/год, разницу нужно доплачивать самому. Как вывести в плюс — разбираем на форуме.',
+  priceLabel:'Стоимость недвижимости', priceHint:'Цена объекта, который хотели бы купить',
+  ageLabel:'Возраст заёмщика',
+  ageHint:'Важно: 2-ю ипотеку нужно погасить за 15 лет ИЛИ до 65 лет (пенсия) — что раньше. Чем ближе к 65, тем короче срок и выше платёж.',
+  rateLabel:'Реальная ставка по ипотеке', rateHint:'Сейчас в Швейцарии фикс на 10 лет — примерно 1,5–2,2%. Базовое значение 2%.',
+  step3:'Первоначальный взнос',
+  downHint:'По закону минимум 20% от стоимости. По умолчанию делим пополам: 10% твёрдыми деньгами + 10% из пенсионной кассы*. Можете изменить.', downHintSecond:'Для второго жилья минимум <b>40%</b> и <b>только твёрдыми деньгами</b> — пенсионную кассу использовать нельзя. Можно внести больше, но не меньше.', downHintRent:'Для покупки под аренду минимум <b>25%</b> и <b>только твёрдыми деньгами</b> — пенсионную кассу использовать нельзя. Банк смотрит не на вашу зарплату, а на доход от аренды.',
+  cashLabel:'Твёрдые деньги<span class="star">**</span>', pensionLabel:'Из пенсионной кассы *',
+  set2020:'20% (10+10)', setAllCash:'20% твёрдыми', cashWord:'твёрдыми', noAmort:'(без амортизации)', abHint:'<b>Что выгоднее — 20% или 33%?</b> Зависит от вас. Больший взнос = ниже платёж и меньше процентов банку, но и больше денег «заморожено» в стенах. Меньший взнос оставляет деньги свободными — если умеете вкладывать их выгоднее ставки по ипотеке, это может перевесить. Где ваша точка — считается индивидуально. Разберём ваш случай детально на форуме Frankenplatz.',
+  footnote:'<b>* Пенсионная касса</b> — это 2-й столб (Pensionskasse) и Säule 3a. Их можно использовать на первый взнос. Но Säule 3a — это ещё и инструмент, который выгодно копить годами и при этом <b>экономить на налогах</b>: взносы вычитаются из налогооблагаемого дохода. Как выстроить это правильно — разбираем на форуме Frankenplatz.', footnoteHard:'<b>** Твёрдые деньги</b> — банк требует, чтобы минимум 10% цены были «твёрдыми»: сбережения, ценные бумаги или Säule 3a. И вот трюк, о котором мало кто знает: Säule 3a можно <b>не обналичивать, а заложить</b> — она засчитается как твёрдые деньги, но останется вашей и продолжит расти, и вы не платите налог на изъятие. Когда это выгодно, а когда нет — разбираем после регистрации на форуме Frankenplatz.',
+  abFirstLeg:'— ипотека без обязательного погашения', abSecondLeg:'— часть с амортизацией', abLegFirst:'— до {f}%: гасить не нужно', abLegSecond:'— выше {f}%: амортизация',
+  go:'Рассчитать',
+  start:'Поехали',
+  unitRent:'CHF/мес', unitYear:'CHF/год', unitMonth:'CHF/мес', unitAge:'лет', unitCHF:'CHF', unitPct:'%',
+  perMonth:'/мес', perYear:'/год', years:'лет',
+  earlier:'<b>Чем раньше начнёте — тем больше накопите.</b> И амортизация, и рост стоимости работают на сложном проценте: каждый год аренды — это год, который уже не отыграть. Те же деньги либо строят ваш капитал, либо уходят арендодателю.',
+  disclaimer:'Расчёт ориентировочный. Реальный платёж — по вашей ставке; требуемый доход банк считает по гипотетической 5% (проверяет, выдержите ли рост ставок), плюс содержание 1% и амортизация 2-й ипотеки за 15 лет. «Капитал» здесь — только погашенный долг (амортизация), без учёта изменения цены жилья. Реальные условия зависят от банка, кантона, типа пермита и истории. Это не финансовая консультация.'
+ },
+ de:{
+  h1:'Miete oder <b>Hypothek</b>:<br>wohin fliesst Ihr Geld?',
+  sub:'Heute zahlen Sie jeden Monat Miete und bekommen dafür nichts zurück. Schauen wir, wie es beim Kauf aussähe — und welcher Teil der Rate tatsächlich Ihnen bleibt.',
+  step1:'Was Sie heute an Miete zahlen', step3b:'Objektdaten', unitKCHF:'Tsd. CHF', downEmpty:'Geben Sie oben den Kaufpreis ein — das Eigenkapital wird automatisch gesetzt.', rentLabel:'Miete pro Monat',
+  rentHint:'Ihre aktuelle Miete (brutto, inkl. Nebenkosten)',
+  step2:'Was möchten Sie berechnen', propLabel:'Objektart',
+  propHint:'Für sich selbst — normale Hypothek. Zweitwohnung (Ferienhaus): Eigenkapital ab 40%. Zur Vermietung — eine Investition: Eigenkapital ab 25%, und wir rechnen die Rendite statt eines Mietvergleichs.',
+  propFirst:'Erstwohnsitz', propSecond:'Zweitwohnung',
+  propRent:'Vermieten',
+  rentInLabel:'Geplante Miete', rentInHint:'Geben Sie die erwartete Miete ein — wir berechnen die Rendite und wie weit sie die Hypothek deckt.',
+  rentModeMonth:'pro Monat', rentModeDay:'pro Nacht', unitDay:'CHF/Nacht',
+  rentDayNote:'Pro Nacht rechnen wir mit 60% Auslastung (≈18 Nächte/Monat) — typisch für Ferienobjekte.',
+  ybHead:'Mietrendite',
+  ageRetired:'<b>Sie sind {age} — Rentenalter oder älter.</b> Eine neue Hypothek gibt es auch nach 65, aber strenger: Die Bank finanziert höchstens 65% des Werts (statt 80%) und rechnet mit dem Renteneinkommen. Meist braucht es viel Eigenkapital. Die Amortisationsdauer ist hier minimal angesetzt.',
+  ageShort:'<b>Amortisationsdauer: {aY} Jahre</b> (statt {maxY}), weil bis 65 noch {toR} bleiben. Die 2. Hypothek muss bis zur Rente getilgt sein — daher ist die Rate höher als bei jungen Kreditnehmern.',
+  ageFull:'<b>Amortisationsdauer: {maxY} Jahre.</b> Bis 65 haben Sie noch {toR} Jahre — die volle Standarddauer, die Amortisation verteilt sich am sanftesten.',
+  abMark:'Grenze {f}%',
+  abVerdNo:'<b>Keine Amortisation.</b> Ihre Hypothek ({loan}%) übersteigt die Grenze {f}% nicht — keine Pflichtamortisation, tiefere Rate. So rechnet auch der Mobiliar-Rechner bei hohem Eigenkapital.',
+  abVerdYes:'<b>Pflichtamortisation vorhanden.</b> Der Teil über {f}% ({second} CHF) muss getilgt werden — rund <b>{amortY} CHF/Jahr</b> über {aY} Jahre. Nicht erwünscht? Zahlen Sie <b>{kill}%</b> oder mehr ein — dann sinkt die Hypothek auf {f2}% und die Pflichtamortisation entfällt (aber mehr Geld ist im Objekt gebunden).',
+  bcPass:'Mit einem Einkommen von <b>{hh} CHF</b> kommen Sie für dieses Objekt durch. Damit trägt die Bank grundsätzlich ein Objekt bis etwa <b>{maxP} CHF</b> (bei 20% Eigenkapital).',
+  bcFail:'Mit <b>{hh} CHF</b> wird die Bank dieses Objekt eher nicht bewilligen — nötig sind ~{req}. Mit Ihrem Einkommen ist realistisch ein Objekt bis etwa <b>{maxP} CHF</b> (bei 20% Eigenkapital).',
+  insPos:'Der «verbrennende» Teil der Hypothek ist <b>{diff} CHF/Jahr günstiger als Miete</b> — das sind <b>{pct}% Ihrer Jahresmiete</b>. Und Miete baut kein Kapital auf: Die Hypothekenrate ist nur wegen der Amortisation höher, aber dieses Geld bleibt <b>Ihres</b>.',
+  insNeg:'Hier sind die reinen Hypothekenkosten um <b>{diff} CHF/Jahr</b> höher als Miete ({pct}% der Miete). Aber ein Teil der Rate (Amortisation und Rücklage) ist keine Ausgabe, sondern Aufbau in Ihre Immobilie.',
+  reqNote:'Das ist das Brutto-Minimum pro Haushalt. Wichtig: Die Bank rechnet das nötige Einkommen nicht mit Ihrem Satz {rate}%, sondern mit kalkulatorischen <b>5%</b> — sie prüft, ob Sie steigende Zinsen tragen. Daher liegt die Einkommenshürde stets deutlich über der realen Rate: zahlen werden Sie \u2248 {pay} CHF/Mt., das Einkommen verlangt die Bank wie bei 5%.',
+  txPre2029Save:'Bis 2029 · Ersparnis pro Jahr', txPre2029Pay:'Bis 2029 · Steuereffekt pro Jahr', txSurcharge:'CHF Zuzahlung', perYearShort:'Jahr',
+  txPreSaveNote:'Das sind {pct}% der Jahresmiete. Beim Satz {rate}% überwiegen die Zinsen ({int} CHF) die Eigenmietwert-Steuer ({emw} CHF).',
+  txPrePayNote:'Insgesamt {pct}% der Jahresmiete. Beim tiefen Satz {rate}% ist die Eigenmietwert-Steuer ({emw} CHF) höher als der Zinsabzug ({int} CHF). Der «Schild» ist erst über ~3,5% positiv.',
+  tx2029Head:'Ab 1. Januar 2029 — das System ändert sich',
+  tx2029Normal:'<b>Normaler Eigentümer:</b> Der Eigenmietwert entfällt, aber auch der Zins- und Unterhaltsabzug. Steuereffekt etwa <b>0</b> — dafür entfällt die heutige Zuzahlung {drop}.',
+  tx2029First:'<b>Ersterwerber ({who}):</b> Der Eigenmietwert entfällt, Zinsen bleiben 10 Jahre abziehbar — aber limitiert. Im 1. Jahr Abzugslimite {cap} CHF, danach jährlich −10% bis null. Ersparnis im 1. Jahr ≈ <b>{y1} CHF</b>, über 10 Jahre ≈ <b>{cum} CHF</b>.',
+  tx2029Married:'Ehepaar', tx2029Single:'allein', tx2029RefMarried:'für Ehepaare; Alleinstehende 5 000', tx2029RefSingle:'für Alleinstehende; Ehepaare 10 000',
+  tx2029Ref:'<b>Genaue Reformparameter:</b> in Kraft ab 01.01.2029. Ersterwerberabzug — höchstens {cap} CHF im ersten Jahr ({who2}), sinkt jährlich um 10%, gilt bis 10 Jahre nach dem Kauf. Was das für Sie bedeutet und wie Sie es bis 2029 schaffen — am Frankenplatz-Forum.',
+  vHeadPayout:'Woraus die Hypothekenrate besteht', vLegend:'<b style="color:var(--danger)">Rot</b> — Geld «verloren», wie Miete. <b style="color:var(--ok)">Grün</b> — bleibt Ihres: Amortisation (Anteilskauf) und Reparaturrücklage (zurückgelegt, bei neuem Objekt jahrelang kaum gebraucht).',
+  vHeadVs:'«Verlorene» Kosten: Miete gegen Hypothek', vRentLbl:'Miete', vRentSm:'alles geht an den Vermieter', vOwnLbl:'Hypothek «verloren»', vOwnSm:'Zinsen + laufende Kosten', vHeadHorizon:'Was sich über die Jahre ansammelt',
+  bcHead:'Wie viel Sie für dieses Objekt verdienen müssen', bcIncomeLbl:'Ihr Haushaltseinkommen (brutto, pro Jahr)', bcIncomeHint:'Der Haushalt ist das gemeinsame Einkommen aller, die zusammen die Hypothek aufnehmen: Sie + Ehe-/Partner, falls zu zweit. Die Bank schaut auf die Summe. Geben Sie Ihre ein — wir schätzen, welchen Kaufpreis Sie sich etwa leisten können.',
+  txHead:'Steuerersparnis · Zinsabzug', txMargLbl:'Ihr Grenzsteuersatz', txMargHint:'Wie viel Steuer Sie auf den zuletzt verdienten Franken zahlen. In der Schweiz im Schnitt 25–35% je nach Kanton und Einkommen. Standard 30%.', txMarLbl:'Zivilstand (für Abzugslimite ab 2029)', txMarried:'Verheiratet', txSingle:'Alleinstehend',
+  txExplain:'<b>Wie der «Steuerschild» wirkt.</b> Hypothekarzinsen werden vom steuerbaren Einkommen abgezogen und senken die Steuer. Aber der Eigentümer versteuert den <b>Eigenmietwert</b> — die fiktive Miete des eigenen Objekts (≈3,5% von 70% des Werts gelten als «Einkommen»). Bei tiefen Zinsen überwiegt der Eigenmietwert oft den Abzug, und der Vorteil wird zu einer kleinen Zuzahlung.',
+  growthHead:'Woher die Wertsteigerung in der Tabelle kommt', growthBody:'Richtwert: In den letzten 10 Jahren stiegen Wohnungen in der Schweiz um rund 3% pro Jahr, Prognose 2026–2027 etwa 2–3%. In der Rechnung konservativ {g}%/Jahr.', growthRef:'Vergangenes Wachstum garantiert kein künftiges, Preise können auch fallen — eine grobe Schätzung, kein Versprechen. Der Zuwachs ist «auf dem Papier», bis Sie verkaufen.',
+  poInterest:'Zinsen an die Bank', poInterestD:'Kreditkosten zum Satz {rate}%. Das ist Mehraufwand — geht an die Bank und kommt nicht zurück.',
+  poMaintCur:'Unterhalt: laufende Kosten', poMaintCurD:'Nebenkosten des Eigentümers, Gebäudeversicherung, kleine Reparaturen. Etwa die Hälfte von 1%. Das fliesst real ab — aber auch bei Miete zahlen Sie Ähnliches obendrauf.',
+  poMaintRes:'Unterhalt: Reparaturrücklage', poMaintResD:'Die zweite Hälfte von 1% — zurückgelegtes Geld für grosse Reparaturen (Dach, Küche, Heizung alle 15–20 Jahre). Bei einem neuen Objekt liegt es auf Ihrem Konto und wird jahrelang kaum gebraucht. Im Grunde Ihr eigenes Geld.',
+  poAmort:'Amortisation', poAmortD:'Pflichttilgung der 2. Hypothek. Keine Ausgabe — Sie kaufen einen Anteil Ihrer Immobilie zurück. Das Geld bleibt als Kapital Ihres.',
+  poTotal:'Gesamtzahlung des Eigentümers', tagBurn:'verloren', tagRes:'Ihre Rücklage', tagCap:'zu Kapital', perMo:'/Mt.',
+  hzBurnHead:'«Verlorene» Kosten über {y} Jahre', hzRent:'<b>Miete:</b> komplett weg, nichts bleibt', hzOwn:'<b>Hypothek:</b> Zinsen + laufende Kosten',
+  hzTaxPay:'Steuer: Zuzahlung (Eigenmietwert − Abzug)', hzTaxSave:'Steuer: Ersparnis durch Zinsabzug',
+  hzCapHead:'Ihr Kapital über {y} Jahre', hzAmortCap:'Amortisation (Anteil am Objekt)', hzGrowth:'Wertsteigerung (~{g}%/Jahr)', hzCapTotal:'Eigentümerkapital total',
+  hzSumPos:'Über {y} Jahre ist der «verbrennende» Teil der Hypothek um <b>{saved} CHF</b> tiefer als die Miete (das sind <b>{pct}%</b> des Geldes, das für Miete weg wäre). Und das Eigentümerkapital beträgt rund <b>{cap} CHF</b>, während es beim Mieter <b>null</b> ist.',
+  hzSumNeg:'Bei den reinen Kosten ist die Hypothek hier um {over} CHF über {y} Jahre teurer als Miete, aber das Eigentümerkapital beträgt rund <b>{cap} CHF</b>, beim Mieter null.',
+  dayCostsHead:'Kosten der Kurzzeitvermietung (anpassbar)', dcOcc:'Auslastung', dcPlatform:'Plattform (Booking/Airbnb)', dcClean:'Reinigung/Wäsche pro Aufenthalt', dcStay:'Durchschnittliche Aufenthaltsdauer', dcAds:'Werbung pro Jahr', dcConsum:'Verbrauchsmaterial pro Monat', unitNights:'Nächte',
+  ybOpexPlatform:'Plattform (Booking/Airbnb)', ybOpexClean:'Reinigung und Wäsche', ybOpexAds:'Werbung', ybOpexConsum:'Verbrauchsmaterial',
+  ybColMonthYear:'pro Monat / pro Jahr', ybHeroLbl:'Ihr passives Einkommen', ybHeroSub:'≈ {y} CHF pro Jahr netto auf die Hand (nach Zinsen und Unterhalt, ohne Amortisation — die baut Ihr Kapital auf)', ybSecPayback:'Amortisation des Einsatzes', ybInvested:'Eingesetzt (Eigenkapital)', ybAnnualReturn:'Rückfluss pro Jahr (Cash + Tilgung)', ybPayback:'Zurück in etwa', ybSecIncome:'Einnahmen', ybOpex:'Betrieb und Verwaltung (−9%)', ybSecCost:'Eigentümerkosten',
+  ybInterest:'Hypothekarzinsen', ybMaint:'Unterhalt (1%)', ybAmort:'Amortisation (Schuldentilgung)', ybCostTotal:'Kosten total',
+  ybSecFlow:'Cashflow', ybCashflow:'Netto-Cashflow (mit Amortisation)', ybCashReal:'Echtes Cash in der Tasche', ybSecYield:'Rendite',
+  ybRef:'<b>So lesen Sie es.</b> Das passive Einkommen ist echtes Geld auf die Hand nach Zinsen und Unterhalt. Die Amortisation ({amort} CHF/Jahr, mit ↻ markiert) ist keine Ausgabe, sondern Tilgung Ihrer eigenen Schuld — daher zählt sie beim Rückfluss mit. Leerstand rechnen wir nicht: In der Schweiz sucht der Mieter beim Auszug meist selbst einen Nachmieter. Steuern, Wertsteigerung und genaue Zinsen — individuell, am Frankenplatz-Forum.', ybGrossIncome:'Miete pro Jahr (brutto)', ybNetIncome:'Netto nach Kosten (−15%)', ybOwnCost:'Eigentümerkosten pro Jahr', ybGrossYield:'Bruttorendite', ybEquityYield:'Eigenkapitalrendite',
+  ybCoverYes:'Die Miete deckt die Hypothek.', ybCoverYesTxt:'Die Einnahmen decken die Kosten zu {cover}% — es bleibt ein Plus von rund {cf} CHF/Jahr. Das Objekt trägt sich selbst. Genaue Rechnung mit Steuern und Leerstand — am Forum.',
+  ybCoverNo:'Die Miete reicht nicht.', ybCoverNoTxt:'Die Einnahmen decken nur {cover}% — es fehlen rund {cf} CHF/Jahr, die Differenz müssen Sie zuschiessen. Wie man ins Plus kommt — am Forum.',
+  priceLabel:'Kaufpreis der Immobilie', priceHint:'Preis des Objekts, das Sie kaufen möchten',
+  ageLabel:'Alter des Kreditnehmers',
+  ageHint:'Wichtig: Die 2. Hypothek muss in 15 Jahren ODER bis 65 (Pensionierung) getilgt sein — je nachdem, was zuerst eintritt. Je näher an 65, desto kürzer die Frist und höher die Rate.',
+  rateLabel:'Realer Hypothekarzins', rateHint:'Aktuell für eine 10-jährige Festhypothek rund 1,5–2,2%. Standardwert 2%.',
+  step3:'Eigenkapital',
+  downHint:'Gesetzlich mindestens 20% des Kaufpreises. Standardmässig je zur Hälfte: 10% harte Eigenmittel + 10% aus der Pensionskasse*. Anpassbar.', downHintSecond:'Bei Zweitwohnungen mindestens <b>40%</b> und <b>nur harte Eigenmittel</b> — die Pensionskasse ist nicht erlaubt. Mehr geht, weniger nicht.', downHintRent:'Beim Kauf zur Vermietung mindestens <b>25%</b> und <b>nur harte Eigenmittel</b> — keine Pensionskasse. Die Bank schaut nicht auf Ihren Lohn, sondern auf den Mietertrag.',
+  cashLabel:'Harte Eigenmittel<span class="star">**</span>', pensionLabel:'Aus der Pensionskasse *',
+  set2020:'20% (10+10)', setAllCash:'20% hart', cashWord:'hart', noAmort:'(ohne Amortisation)', abHint:'<b>Was lohnt sich mehr — 20% oder 33%?</b> Kommt auf Sie an. Mehr Eigenkapital = tiefere Rate und weniger Zinsen an die Bank, aber auch mehr Geld in den Wänden «gebunden». Weniger Eigenkapital lässt Geld frei — wer es höher als den Hypozins anlegen kann, für den kann das überwiegen. Wo Ihr Punkt liegt, ist individuell. Wir rechnen Ihren Fall am Frankenplatz-Forum durch.',
+  footnote:'<b>* Pensionskasse</b> — 2. Säule und Säule 3a. Beide lassen sich fürs Eigenkapital einsetzen. Die Säule 3a lohnt sich zudem, über Jahre anzusparen und dabei <b>Steuern zu sparen</b>: Einzahlungen sind vom steuerbaren Einkommen abziehbar. Wie man das richtig aufbaut — am Frankenplatz-Forum.', footnoteHard:'<b>** Harte Eigenmittel</b> — die Bank verlangt, dass mindestens 10% des Preises «hart» sind: Ersparnisse, Wertschriften oder die Säule 3a. Und hier ein wenig bekannter Trick: Die Säule 3a lässt sich <b>verpfänden statt beziehen</b> — sie zählt als harte Eigenmittel, bleibt aber Ihre und wächst weiter, und es fällt keine Bezugssteuer an. Wann sich das lohnt und wann nicht — nach der Anmeldung am Frankenplatz-Forum.',
+  abFirstLeg:'— Hypothek ohne Pflichttilgung', abSecondLeg:'— Teil mit Amortisation', abLegFirst:'— bis {f}%: keine Tilgung', abLegSecond:'— über {f}%: Amortisation',
+  go:'Berechnen',
+  start:'Los geht\u2019s',
+  unitRent:'CHF/Mt.', unitYear:'CHF/Jahr', unitMonth:'CHF/Mt.', unitAge:'Jahre', unitCHF:'CHF', unitPct:'%',
+  perMonth:'/Mt.', perYear:'/Jahr', years:'Jahre',
+  earlier:'<b>Je früher Sie starten, desto mehr sammeln Sie an.</b> Sowohl Amortisation als auch Wertsteigerung wirken über den Zinseszins: Jedes Mietjahr ist ein Jahr, das sich nicht mehr aufholen lässt. Dasselbe Geld baut entweder Ihr Kapital auf oder geht an den Vermieter.',
+  disclaimer:'Richtwert-Berechnung. Die reale Rate richtet sich nach Ihrem Satz; das nötige Einkommen rechnet die Bank mit kalkulatorischen 5% (prüft, ob Sie steigende Zinsen tragen), plus 1% Unterhalt und Amortisation der 2. Hypothek über 15 Jahre. «Kapital» meint hier nur die getilgte Schuld (Amortisation), ohne Wertänderung der Immobilie. Die realen Konditionen hängen von Bank, Kanton, Bewilligungstyp und Historie ab. Dies ist keine Finanzberatung.'
+ },
+ en:{
+  h1:'Rent or <b>mortgage</b>:<br>where does your money go?',
+  sub:'Right now you pay rent every month and get nothing back. Let\u2019s see what buying would look like — and how much of the payment actually stays yours.',
+  step1:'What you pay in rent now', step3b:'Property details', unitKCHF:'k CHF', downEmpty:'Enter the property price above — the down payment fills in automatically.', rentLabel:'Rent per month',
+  rentHint:'Your current rent (gross, incl. all Nebenkosten)',
+  step2:'What you\u2019re considering', propLabel:'Property type',
+  propHint:'For own use — a normal mortgage. Second home (holiday): down payment from 40%. Buy-to-let — an investment: down payment from 25%, and we compute the yield rather than a rent comparison.',
+  propFirst:'Primary (own use)', propSecond:'Second home',
+  propRent:'Rent out',
+  rentInLabel:'Planned rent', rentInHint:'Enter the expected rent — we\u2019ll compute the yield and how far it covers the mortgage.',
+  rentModeMonth:'per month', rentModeDay:'per night', unitDay:'CHF/night',
+  rentDayNote:'Per night we assume 60% occupancy (≈18 nights/month) — typical for holiday lets.',
+  ybHead:'Rental yield',
+  ageRetired:'<b>You\u2019re {age} — retirement age or older.</b> A new mortgage is still possible after 65, but stricter: the bank finances at most 65% of the value (not 80%) and counts pension income. Usually a large down payment is needed. The amortisation term here is set to the minimum.',
+  ageShort:'<b>Amortisation term: {aY} years</b> (not {maxY}), because {toR} remain until 65. The 2nd mortgage must be repaid by retirement — so the payment is higher than for a younger borrower.',
+  ageFull:'<b>Amortisation term: {maxY} years.</b> You still have {toR} years until 65 — the full standard term, so amortisation is spread as gently as possible.',
+  abMark:'limit {f}%',
+  abVerdNo:'<b>No amortisation.</b> Your mortgage ({loan}%) doesn\u2019t exceed the {f}% limit — no mandatory amortisation, lower payment. The Mobiliar calculator computes it the same way with a large down payment.',
+  abVerdYes:'<b>Mandatory amortisation applies.</b> The part above {f}% ({second} CHF) must be repaid — about <b>{amortY} CHF/yr</b> over {aY} years. Don\u2019t want it? Put in <b>{kill}%</b> or more — then the mortgage drops to {f2}% and mandatory amortisation disappears (but more money is locked in the property).',
+  bcPass:'With an income of <b>{hh} CHF</b> you qualify for this property. On that income the bank can broadly support a property up to about <b>{maxP} CHF</b> (with 20% down).',
+  bcFail:'With <b>{hh} CHF</b> the bank likely won\u2019t approve this property — about {req} is needed. On your income, a property up to roughly <b>{maxP} CHF</b> is realistic (with 20% down).',
+  insPos:'The «burning» part of the mortgage is <b>{diff} CHF/yr cheaper than rent</b> — that\u2019s <b>{pct}% of your annual rent</b>. And rent builds no capital: the mortgage payment is higher only because of amortisation, but that money stays <b>yours</b>.',
+  insNeg:'Here the net mortgage costs are <b>{diff} CHF/yr</b> higher than rent ({pct}% of rent). But part of the payment (amortisation and reserve) isn\u2019t an expense — it\u2019s building equity in your property.',
+  reqNote:'This is the gross minimum per household. Important: the bank computes the required income not at your rate {rate}% but at a notional <b>5%</b> — checking whether you could withstand rising rates. So the income bar is always well above the real payment: you\u2019d pay \u2248 {pay} CHF/mo, while the bank requires income as if at 5%.',
+  txPre2029Save:'Until 2029 · saving per year', txPre2029Pay:'Until 2029 · tax effect per year', txSurcharge:'CHF surcharge', perYearShort:'yr',
+  txPreSaveNote:'That\u2019s {pct}% of annual rent. At {rate}% the interest ({int} CHF) outweighs the Eigenmietwert tax ({emw} CHF).',
+  txPrePayNote:'In total {pct}% of annual rent. At the low rate {rate}% the Eigenmietwert tax ({emw} CHF) exceeds the interest deduction ({int} CHF). The «shield» is only positive above ~3.5%.',
+  tx2029Head:'From 1 January 2029 — the system changes',
+  tx2029Normal:'<b>Ordinary owner:</b> the Eigenmietwert disappears, but so does the interest and upkeep deduction. Tax effect about <b>0</b> — but today\u2019s surcharge {drop} goes away.',
+  tx2029First:'<b>First-time buyer ({who}):</b> the Eigenmietwert disappears, and interest stays deductible for 10 more years — but capped. Year 1 cap {cap} CHF, then −10% each year to zero. Year-1 saving ≈ <b>{y1} CHF</b>, over 10 years ≈ <b>{cum} CHF</b>.',
+  tx2029Married:'married', tx2029Single:'single', tx2029RefMarried:'for couples; singles 5,000', tx2029RefSingle:'for singles; couples 10,000',
+  tx2029Ref:'<b>Exact reform parameters:</b> effective 01.01.2029. Ersterwerberabzug — at most {cap} CHF in the first year ({who2}), declining 10% each year, valid up to 10 years after purchase. What it means for you and how to act before 2029 — at the Frankenplatz forum.',
+  vHeadPayout:'What the mortgage payment consists of', vLegend:'<b style="color:var(--danger)">Red</b> — money «lost», like rent. <b style="color:var(--ok)">Green</b> — stays yours: amortisation (buying a share) and repair reserve (set aside, barely touched for years on a new property).',
+  vHeadVs:'«Lost» costs: rent versus mortgage', vRentLbl:'Rent', vRentSm:'all goes to the landlord', vOwnLbl:'Mortgage «lost»', vOwnSm:'interest + running costs', vHeadHorizon:'What builds up over the years',
+  bcHead:'How much you need to earn for this property', bcIncomeLbl:'Your household income (gross, per year)', bcIncomeHint:'The household is the combined income of everyone taking the mortgage together: you + spouse/partner if applying jointly. The bank looks at the total. Enter yours — we\u2019ll estimate the price you can roughly afford.',
+  txHead:'Tax saving · interest deduction', txMargLbl:'Your marginal tax rate', txMargHint:'How much tax you pay on the last franc earned. In Switzerland 25–35% on average depending on canton and income. Default 30%.', txMarLbl:'Marital status (for deduction cap from 2029)', txMarried:'Married', txSingle:'Single',
+  txExplain:'<b>How the «tax shield» works.</b> Mortgage interest is deducted from taxable income and lowers your tax. But the owner pays tax on the <b>Eigenmietwert</b> — the imputed rent of their own home (≈3.5% of 70% of the value counts as «income»). At low rates the Eigenmietwert often outweighs the deduction, turning the benefit into a small surcharge.',
+  growthHead:'Where the appreciation in the table comes from', growthBody:'Benchmark: over the last 10 years flats in Switzerland rose about 3% a year, forecast 2026–2027 around 2–3%. The calculation uses a conservative {g}%/yr.', growthRef:'Past growth doesn\u2019t guarantee future growth, prices can fall too — a rough estimate, not a promise. The gain is «on paper» until you sell.',
+  poInterest:'Interest to the bank', poInterestD:'Cost of the loan at {rate}%. This is overpayment — it goes to the bank and doesn\u2019t come back.',
+  poMaintCur:'Upkeep: running costs', poMaintCurD:'Owner\u2019s Nebenkosten, building insurance, minor repairs. About half of 1%. This really drains away — but with renting you pay something similar on top too.',
+  poMaintRes:'Upkeep: repair reserve', poMaintResD:'The other half of 1% — money set aside for major repairs (roof, kitchen, heating every 15–20 years). On a new property it sits in your account and is barely touched for years. Essentially your own money.',
+  poAmort:'Amortisation', poAmortD:'Mandatory repayment of the 2nd mortgage. Not an expense — you buy back a share of your property. The money stays yours as capital.',
+  poTotal:'Owner\u2019s total payment', tagBurn:'lost', tagRes:'your reserve', tagCap:'to capital', perMo:'/mo',
+  hzBurnHead:'«Lost» costs over {y} years', hzRent:'<b>Rent:</b> gone entirely, nothing remains', hzOwn:'<b>Mortgage:</b> interest + running costs',
+  hzTaxPay:'Tax: surcharge (Eigenmietwert − deduction)', hzTaxSave:'Tax: saving from interest deduction',
+  hzCapHead:'Your capital over {y} years', hzAmortCap:'Amortisation (share of the property)', hzGrowth:'Property appreciation (~{g}%/yr)', hzCapTotal:'Owner\u2019s total capital',
+  hzSumPos:'Over {y} years the «burning» part of the mortgage is <b>{saved} CHF</b> less than rent (that\u2019s <b>{pct}%</b> of the money that would have gone to rent). And the owner\u2019s capital is about <b>{cap} CHF</b>, while a renter\u2019s is <b>zero</b>.',
+  hzSumNeg:'On net costs the mortgage here is {over} CHF more than rent over {y} years, but the owner\u2019s capital is about <b>{cap} CHF</b>, versus zero for a renter.',
+  dayCostsHead:'Short-let costs (editable)', dcOcc:'Occupancy', dcPlatform:'Platform (Booking/Airbnb)', dcClean:'Cleaning/laundry per stay', dcStay:'Average stay length', dcAds:'Advertising per year', dcConsum:'Supplies per month', unitNights:'nights',
+  ybOpexPlatform:'Platform (Booking/Airbnb)', ybOpexClean:'Cleaning & laundry', ybOpexAds:'Advertising', ybOpexConsum:'Supplies',
+  ybColMonthYear:'per month / per year', ybHeroLbl:'Your passive income', ybHeroSub:'≈ {y} CHF per year net in your pocket (after interest and maintenance, excluding amortisation — that builds your capital)', ybSecPayback:'Payback of your investment', ybInvested:'You invested (down payment)', ybAnnualReturn:'Return per year (cash + debt paydown)', ybPayback:'Pays back in about', ybSecIncome:'Income', ybOpex:'Operating & management (−9%)', ybSecCost:'Owner costs',
+  ybInterest:'Mortgage interest', ybMaint:'Maintenance (1%)', ybAmort:'Amortisation (paying down debt)', ybCostTotal:'Total costs',
+  ybSecFlow:'Cash flow', ybCashflow:'Net cash flow (with amortisation)', ybCashReal:'Real cash in pocket', ybSecYield:'Yield',
+  ybRef:'<b>How to read this.</b> Passive income is real cash in hand after interest and maintenance. Amortisation ({amort} CHF/yr, marked ↻) on top isn\u2019t an expense but paying down your own debt — so it counts toward payback. We don\u2019t deduct vacancy: in Switzerland a departing tenant usually finds a replacement, so flats rarely sit empty. Taxes, appreciation and exact rates — individual, at the Frankenplatz forum.', ybGrossIncome:'Rent per year (gross)', ybNetIncome:'Net after costs (−15%)', ybOwnCost:'Owner costs per year', ybGrossYield:'Gross yield', ybEquityYield:'Return on equity',
+  ybCoverYes:'Rent covers the mortgage.', ybCoverYesTxt:'Income covers costs by {cover}% — a surplus of about {cf} CHF/yr remains. The property is self-sustaining. Exact figures with taxes and vacancy — at the forum.',
+  ybCoverNo:'Rent isn\u2019t enough.', ybCoverNoTxt:'Income covers only {cover}% — about {cf} CHF/yr short, you top up the difference. How to get into the black — at the forum.',
+  priceLabel:'Property price', priceHint:'Price of the property you\u2019d like to buy',
+  ageLabel:'Borrower\u2019s age',
+  ageHint:'Important: the 2nd mortgage must be repaid within 15 years OR by age 65 (retirement) — whichever comes first. The closer to 65, the shorter the term and the higher the payment.',
+  rateLabel:'Real mortgage rate', rateHint:'Currently about 1.5–2.2% for a 10-year fixed in Switzerland. Default 2%.',
+  step3:'Down payment',
+  downHint:'By law at least 20% of the price. By default split in half: 10% hard funds + 10% from pension funds*. You can change this.', downHintSecond:'For a second home, at least <b>40%</b> and <b>hard funds only</b> — pension funds not allowed. More is fine, less isn\u2019t.', downHintRent:'For a buy-to-let, at least <b>25%</b> and <b>hard funds only</b> — no pension funds. The bank looks at the rental income, not your salary.',
+  cashLabel:'Hard funds<span class="star">**</span>', pensionLabel:'From pension funds *',
+  set2020:'20% (10+10)', setAllCash:'20% hard', cashWord:'hard', noAmort:'(no amortisation)', abHint:'<b>Which is better — 20% or 33%?</b> It depends on you. A larger down payment means a lower payment and less interest to the bank, but more money «locked» in the walls. A smaller one keeps cash free — if you can invest it above the mortgage rate, that can win out. Where your break-even sits is individual. We\u2019ll work through your case at the Frankenplatz forum.',
+  footnote:'<b>* Pension funds</b> — the 2nd pillar (Pensionskasse) and Pillar 3a. Both can be used for the down payment. Pillar 3a is also worth building up over the years to <b>save on taxes</b>: contributions are deductible from taxable income. How to do it right — at the Frankenplatz forum.', footnoteHard:'<b>** Hard funds</b> — the bank requires at least 10% of the price to be «hard»: savings, securities or Pillar 3a. And here\u2019s a little-known trick: Pillar 3a can be <b>pledged instead of withdrawn</b> — it counts as hard funds but stays yours and keeps growing, with no withdrawal tax. When it pays off and when it doesn\u2019t — after registration at the Frankenplatz forum.',
+  abFirstLeg:'— mortgage without mandatory repayment', abSecondLeg:'— part with amortisation', abLegFirst:'— up to {f}%: no repayment', abLegSecond:'— above {f}%: amortisation',
+  go:'Calculate',
+  start:'Let\u2019s go',
+  unitRent:'CHF/mo', unitYear:'CHF/yr', unitMonth:'CHF/mo', unitAge:'yrs', unitCHF:'CHF', unitPct:'%',
+  perMonth:'/mo', perYear:'/yr', years:'yrs',
+  earlier:'<b>The earlier you start, the more you build up.</b> Both amortisation and appreciation work through compounding: every year of renting is a year you can\u2019t get back. The same money either builds your capital or goes to the landlord.',
+  disclaimer:'Indicative calculation. The real payment follows your rate; the required income is computed by the bank at a notional 5% (checking whether you could withstand rising rates), plus 1% upkeep and amortisation of the 2nd mortgage over 15 years. «Capital» here means only the repaid debt (amortisation), excluding any change in the property\u2019s value. Actual terms depend on the bank, canton, permit type and history. This is not financial advice.'
+ }
+};
+function t(k){return (I18N[lang] && I18N[lang][k]!==undefined)?I18N[lang][k]:I18N.ru[k];}
+var horizonYears=10;
+function fmt(n){return Math.round(n).toLocaleString('de-CH').replace(/\u2019/g,"'");}
+/* Парсер числа: терпит запятую, пробел, неразрывный пробел и швейцарский
+   апостроф (1'200'000 — так суммы копируются из документов). Поля —
+   type="text" inputmode="decimal": type="number" ломает навигацию на мобильном. */
+function fpNum(v){
+  var s=String(v==null?'':v).replace(/[\s\u00A0\u2009'\u2019]/g,'').replace(',','.');
+  var n=parseFloat(s);
+  return isFinite(n)?n:0;
+}
+function bindCombo(rangeId,numId,cb){
+  var r=document.getElementById(rangeId),n=document.getElementById(numId);
+  r.addEventListener('input',function(){n.value=r.value;if(cb)cb();});
+  n.addEventListener('input',function(){
+    // пустое поле ползунок не двигает — человек чистит его, чтобы ввести заново
+    if(n.value.trim()){var v=fpNum(n.value);if(v>=+r.min&&v<=+r.max)r.value=v;}
+    if(cb)cb();
+  });
+}
+bindCombo('rentR','rentN');
+bindCombo('priceR','priceN',function(){autofillDown();updateDown();});
+bindCombo('rateR','rateN');
+bindCombo('hhR','hhN',updateHH);
+bindCombo('margR','margN',function(){updateTax();if(lastR)renderHorizon(lastR);});
+bindCombo('ageR','ageN',function(){updateAgeNote();updateDown();});
+document.getElementById('cashN').addEventListener('input',function(){downTouched=true;updateDown();});
+document.getElementById('pensionN').addEventListener('input',function(){downTouched=true;updateDown();});
+function getPrice(){return (fpNum(document.getElementById('priceN').value)||0)*1000;}
+function autofillDown(){
+  // авто-подставляем минимальный взнос, пока человек не правил его вручную
+  if(downTouched) return;
+  var p=getPrice();
+  if(p<=0){
+    document.getElementById('cashN').value='';
+    document.getElementById('pensionN').value='';
+    return;
+  }
+  var minD=propMinDown();
+  if(propType==='first'){
+    // 50/50 твёрдыми и кассой
+    document.getElementById('cashN').value=Math.round(p*minD/2);
+    document.getElementById('pensionN').value=Math.round(p*minD/2);
+  } else {
+    // второе/аренда: только твёрдыми
+    document.getElementById('cashN').value=Math.round(p*minD);
+    document.getElementById('pensionN').value=0;
+  }
+}
+function applyPreset(pct, mode){
+  downTouched=true;  // выбор пресета = ручной выбор взноса
+  var p=getPrice();
+  if(mode==='split'){
+    document.getElementById('cashN').value=Math.round(p*pct/2);
+    document.getElementById('pensionN').value=Math.round(p*pct/2);
+  } else { // cash
+    document.getElementById('cashN').value=Math.round(p*pct);
+    document.getElementById('pensionN').value=0;
+  }
+  updateDown();
+}
+function buildPresets(){
+  var box=document.getElementById('quickset');
+  if(!box) return;
+  var presets;
+  if(propType==='second'){
+    // второе жильё для себя: только твёрдыми; минимум 40%
+    presets=[
+      {pct:0.40, mode:'cash', label:'40% '+t('cashWord')},
+      {pct:0.50, mode:'cash', label:'50% '+t('cashWord')}
+    ];
+  } else if(propType==='rent'){
+    // под аренду: только твёрдыми; минимум 25%. Больше — вручную.
+    presets=[
+      {pct:0.25, mode:'cash', label:'25% '+t('cashWord')}
+    ];
+  } else {
+    presets=[
+      {pct:0.20, mode:'split', label:'20% (10+10)'},
+      {pct:0.33, mode:'split', label:'33% '+t('noAmort')}
+    ];
+  }
+  box.innerHTML='';
+  presets.forEach(function(ps){
+    var btn=document.createElement('button');
+    btn.textContent=ps.label;
+    btn.addEventListener('click',function(){applyPreset(ps.pct, ps.mode);});
+    box.appendChild(btn);
+  });
+}
+function applyDownHint(){
+  // подсказка про взнос зависит от типа
+  var el=document.querySelector('[data-i18n="downHint"]');
+  if(!el) return;
+  var key=(propType==='second')?'downHintSecond':(propType==='rent')?'downHintRent':'downHint';
+  el.innerHTML=t(key);
+}
+function applyMode(){
+  // в режиме 'rent' это инвестиционная покупка: прячем сравнение с арендой
+  var isRent=(propType==='rent');
+  var hide=function(id,on){var n=document.getElementById(id);if(n)n.style.display=on?'none':'';};
+  hide('step1Block', isRent);       // «сколько платите сейчас» не нужно
+  hide('resHead', isRent);          // разбор платежа
+  hide('vsBlock', isRent);          // аренда vs ипотека
+  hide('horizonsBlock', isRent);    // что накопится
+  hide('bankcheckBlock', isRent);   // сколько зарабатывать (для аренды банк смотрит доход объекта)
+  hide('taxboxBlock', isRent);      // налоговый щит
+  renumberSteps();
+  applyDownHint();
+}
+function renumberSteps(){
+  // нумеруем только видимые шаги: 1,2,3...
+  var labels=document.querySelectorAll('.step-label');
+  var i=0;
+  labels.forEach(function(lab){
+    var hidden=(lab.dataset.step==='rent' && propType==='rent');
+    if(hidden){lab.style.display='none';return;}
+    lab.style.display='';
+    i++;
+    var num=lab.querySelector('.n');
+    if(num) num.textContent=i;
+  });
+}
+document.querySelectorAll('#marSeg button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#marSeg button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    married=(b.dataset.m==='1');
+    updateTax();
+  });
+});
+document.querySelectorAll('#propSeg button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#propSeg button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    propType=b.dataset.p;
+    // взнос: если человек не правил вручную — авто-подставляем минимум для нового типа
+    if(!downTouched){
+      autofillDown();
+    } else if(!pensionAllowed()){
+      // если правил вручную, но касса теперь запрещена — переносим в твёрдые
+      var pen=fpNum(document.getElementById('pensionN').value)||0;
+      if(pen>0){
+        var curCash=fpNum(document.getElementById('cashN').value)||0;
+        document.getElementById('cashN').value=Math.round(curCash+pen);
+        document.getElementById('pensionN').value=0;
+      }
+    }
+    // показать блок аренды только в режиме 'rent'
+    document.getElementById('rentBox').style.display=(propType==='rent')?'block':'none';
+    applyMode();
+    updateAgeNote();
+    buildPresets();
+    updateDown();
+    if(lastR){lastR=calc();renderAll(lastR);}
+  });
+});
+// переключатель В месяц / Посуточно
+document.querySelectorAll('#rentModeSeg button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#rentModeSeg button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    rentMode=b.dataset.rm;
+    document.getElementById('rentInUnit').textContent=(rentMode==='day')?t('unitDay'):t('unitRent');
+    document.getElementById('rentDayNote').style.display=(rentMode==='day')?'block':'none';
+    document.getElementById('dayCosts').style.display=(rentMode==='day')?'block':'none';
+    if(lastR){lastR=calc();renderAll(lastR);}
+  });
+});
+bindCombo('rentInR','rentInN',function(){if(lastR){lastR=calc();renderAll(lastR);}});
+// поля посуточных расходов — пересчёт на ввод
+['dcOccN','dcPlatformN','dcCleanN','dcStayN','dcAdsN','dcConsumN'].forEach(function(id){
+  var n=document.getElementById(id);
+  if(n) n.addEventListener('input',function(){if(lastR){lastR=calc();renderAll(lastR);}});
+});
+function updateAgeNote(){
+  var age=getAge();
+  var aY=amortYearsByAge(age);
+  var maxY=propMaxAmortYears();
+  var el=document.getElementById('ageNote');
+  var toR=CFG.RETIRE_AGE-age;
+  if(toR<=0){
+    el.innerHTML=t('ageRetired').replace('{age}',age);
+  } else if(aY<maxY){
+    el.innerHTML=t('ageShort').replace('{aY}',aY).replace('{maxY}',maxY).replace('{toR}',toR);
+  } else {
+    el.innerHTML=t('ageFull').replace('{maxY}',maxY).replace('{toR}',toR);
+  }
+}
+function updateDown(){
+  var price=getPrice();
+  if(price<=0){
+    document.getElementById('downsum').innerHTML='<span class="downhint-empty">'+t('downEmpty')+'</span>';
+    updateAmortBar(0,0,0);
+    return;
+  }
+  var cash=fpNum(document.getElementById('cashN').value)||0;
+  var pension=fpNum(document.getElementById('pensionN').value)||0;
+  var down=cash+pension, pct=price>0?down/price:0;
+  var minDown=propMinDown();
+  var txt='Всего взнос: <b>'+fmt(down)+' CHF</b> = <b>'+Math.round(pct*100)+'%</b> от стоимости.';
+  if(pct<minDown){
+    txt+=' <span class="downwarn">Меньше минимума '+Math.round(minDown*100)+'% '+(propType==='second'?'для второго жилья':'')+' — банк не одобрит.</span>';
+  } else if(propType==='second' && pension>0){
+    txt+=' <span class="downwarn">Для второго жилья пенсионную кассу использовать нельзя — только живые деньги.</span>';
+  } else if(propType==='first' && cash<price*0.10-1){
+    txt+=' <span class="downwarn">Твёрдыми (или залогом 3a) нужно минимум 10% ('+fmt(price*0.10)+' CHF) — пенсионной кассой это не закрыть.</span>';
+  }
+  document.getElementById('downsum').innerHTML=txt;
+  updateAmortBar(price, down, pct);
+}
+function updateAmortBar(price, down, pct){
+  var floor=propFloor();
+  var floorPctLbl=Math.round(floor*100);
+  var loanPct=Math.max(0, 1-pct);
+  var firstPct=Math.min(loanPct, floor);
+  var secondPct=Math.max(0, loanPct-floor);
+  document.getElementById('abFirst').style.width=(firstPct*100)+'%';
+  document.getElementById('abSecond').style.width=(secondPct*100)+'%';
+  document.getElementById('abFirstPct').textContent=Math.round(firstPct*100)+'%';
+  document.getElementById('abSecondPct').textContent=Math.round(secondPct*100)+'%';
+  // легенда: текст зависит от границы (67% первое / 50% второе)
+  var legFirst=document.getElementById('abFirstLeg'), legSecond=document.getElementById('abSecondLeg');
+  if(legFirst) legFirst.textContent=t('abLegFirst').replace('{f}', floorPctLbl);
+  if(legSecond) legSecond.textContent=t('abLegSecond').replace('{f}', floorPctLbl);
+  // подвинуть красную отметку и подпись на текущую границу
+  var mark=document.querySelector('.amortbar .ab-mark');
+  var markLbl=document.querySelector('.amortbar .ab-marklbl');
+  if(mark){mark.style.left=floorPctLbl+'%';}
+  if(markLbl){markLbl.style.left=floorPctLbl+'%';markLbl.textContent=t('abMark').replace('{f}',floorPctLbl);}
+  var age=getAge(), aY=amortYearsByAge(age);
+  var v=document.getElementById('abVerdict');
+  if(secondPct<=0.0001){
+    v.className='ab-verdict none';
+    v.innerHTML=t('abVerdNo').replace('{loan}',Math.round(loanPct*100)).replace('{f}',floorPctLbl);
+  } else {
+    var amortKillDown=Math.round((1-floor)*100);
+    var second=price*secondPct, amortY=second/aY;
+    v.className='ab-verdict';
+    v.innerHTML=t('abVerdYes').replace('{f}',floorPctLbl).replace('{second}',fmt(second)).replace('{amortY}',fmt(amortY)).replace('{aY}',aY).replace('{kill}',amortKillDown).replace('{f2}',floorPctLbl);
+  }
+}
+function getAge(){return Math.round(fpNum(document.getElementById('ageN').value))||40;}
+function propFloor(){
+  if(propType==='second')return CFG.SEC_FLOOR;
+  if(propType==='rent')return CFG.RENT_FLOOR;
+  return CFG.FIRST_CAP;
+}
+function propMinDown(){
+  if(propType==='second')return CFG.SEC_MIN_DOWN;
+  if(propType==='rent')return CFG.RENT_MIN_DOWN;
+  return CFG.MIN_DOWN;
+}
+function propMaxAmortYears(){
+  if(propType==='second')return CFG.SEC_AMORT_YEARS;
+  if(propType==='rent')return CFG.RENT_AMORT_YEARS;
+  return CFG.AMORT_YEARS;
+}
+function pensionAllowed(){return propType==='first';}
+function amortYearsByAge(age){
+  // срок = min(стандарт, лет до 65). Стандарт: 15 (первое) или 10 (второе)
+  var maxY=propMaxAmortYears();
+  var toRetire=CFG.RETIRE_AGE-age;
+  return Math.max(1, Math.min(maxY, toRetire));
+}
+function calc(){
+  var rent=fpNum(document.getElementById('rentN').value)||0;
+  var price=getPrice();
+  var rate=(fpNum(document.getElementById('rateN').value)||2)/100;
+  var cash=fpNum(document.getElementById('cashN').value)||0;
+  var pension=fpNum(document.getElementById('pensionN').value)||0;
+  var age=getAge();
+  var down=cash+pension, loan=price-down, loanPct=price>0?loan/price:0;
+  // граница, до которой надо амортизировать: 67% (первое) или 50% (второе)
+  var floor=propFloor();
+  var second=Math.max(0,loan-price*floor);
+  var aYears=amortYearsByAge(age);
+  var amortYear=second/aYears;
+  var interestYear=loan*rate, maintYear=price*CFG.MAINT;
+  var maintRealYear=maintYear*0.5;
+  var burnYear=interestYear+maintRealYear;
+  var payYear=interestYear+maintYear+amortYear, rentYear=rent*12;
+  var reqIncome=(loan*CFG.CALC_RATE+maintYear+amortYear)/CFG.BURDEN;
+  // доход от сдачи в аренду (только режим 'rent')
+  var rentInVal=fpNum(document.getElementById('rentInN').value)||0;
+  var opexYear, rentIncomeYear, opexBreak=null;
+  if(rentMode==='day'){
+    // посуточно: выручка и расходы из редактируемых полей
+    var occ=(fpNum(document.getElementById('dcOccN').value)||60)/100;
+    var platformPct=(fpNum(document.getElementById('dcPlatformN').value)||0)/100;
+    var cleanPerStay=fpNum(document.getElementById('dcCleanN').value)||0;
+    var avgStay=Math.max(1, fpNum(document.getElementById('dcStayN').value)||3);
+    var adsYear=fpNum(document.getElementById('dcAdsN').value)||0;
+    var consumMonth=fpNum(document.getElementById('dcConsumN').value)||0;
+    var nightsYear=30*occ*12;
+    rentIncomeYear=rentInVal*nightsYear;
+    var staysYear=nightsYear/avgStay;
+    var platformCost=rentIncomeYear*platformPct;
+    var cleanCost=cleanPerStay*staysYear;
+    var consumYear=consumMonth*12;
+    opexYear=platformCost+cleanCost+adsYear+consumYear;
+    opexBreak={platform:platformCost,clean:cleanCost,ads:adsYear,consum:consumYear,nights:nightsYear,stays:staysYear};
+  } else {
+    // помесячно: эксплуатация и управление ~9% (без простоя)
+    rentIncomeYear=rentInVal*12;
+    opexYear=rentIncomeYear*0.09;
+  }
+  var rentNetYear=rentIncomeYear-opexYear;
+  var grossYield=price>0?(rentIncomeYear/price*100):0;          // валовая доходность
+  var ownCostYear=interestYear+maintYear+amortYear;             // полные расходы владельца/год
+  var cashflowYear=rentNetYear-ownCostYear;                     // с учётом амортизации (взгляд банка)
+  var cashYearNoAmort=rentNetYear-(interestYear+maintYear);     // живой пассивный кэш (амортизация остаётся вашей)
+  var coverPct=ownCostYear>0?(rentNetYear/ownCostYear*100):0;
+  var equityYield=down>0?((rentNetYear-interestYear)/down*100):0; // доходность на вложенный капитал
+  // окупаемость взноса: годовой возврат = живой кэш + амортизация (погашение долга тоже ваше)
+  var annualReturn=cashYearNoAmort+amortYear;
+  var paybackYears=(annualReturn>0&&down>0)?(down/annualReturn):0;
+  return {rent:rent,price:price,rate:rate,down:down,loan:loan,loanPct:loanPct,second:second,
+    amortYear:amortYear,aYears:aYears,age:age,floor:floor,
+    interestYear:interestYear,maintYear:maintYear,maintRealYear:maintRealYear,burnYear:burnYear,
+    payYear:payYear,rentYear:rentYear,reqIncome:reqIncome,
+    rentIncomeYear:rentIncomeYear,rentNetYear:rentNetYear,grossYield:grossYield,
+    ownCostYear:ownCostYear,cashflowYear:cashflowYear,coverPct:coverPct,equityYield:equityYield,
+    opexYear:opexYear,cashYearNoAmort:cashYearNoAmort,
+    annualReturn:annualReturn,paybackYears:paybackYears,opexBreak:opexBreak};
+}
+function maxPriceFromIncome(income){
+  // зависит от floor и срока амортизации текущего возраста
+  var age=getAge(), floor=propFloor();
+  var downPct=propMinDown();
+  var loanPct=1-downPct;
+  var secondPct=Math.max(0,loanPct-floor);
+  var aYears=amortYearsByAge(age);
+  // budget = income*BURDEN = loanPct*price*0.05 + price*0.01 + secondPct*price/aYears
+  var factor=loanPct*CFG.CALC_RATE + CFG.MAINT + secondPct/aYears;
+  return income*CFG.BURDEN/factor;
+}
+function renderPayout(r){
+  function row(cls,title,desc,yr,tag){
+    return '<div class="prow '+cls+'"><div class="pk"><div class="pt">'+title+(tag||'')+'</div><div class="pd">'+desc+'</div></div>'+
+      '<div class="pv">'+fmt(yr)+'<span class="pm">'+fmt(yr/12)+t('perMo')+'</span></div></div>';
+  }
+  var rateStr=(r.rate*100).toFixed(1).replace('.',',');
+  document.getElementById('payout').innerHTML=
+    row('burn',t('poInterest'),t('poInterestD').replace('{rate}',rateStr),r.interestYear,'<span class="tag t-burn">'+t('tagBurn')+'</span>')+
+    row('burn',t('poMaintCur'),t('poMaintCurD'),r.maintYear*0.5,'<span class="tag t-burn">'+t('tagBurn')+'</span>')+
+    row('cap',t('poMaintRes'),t('poMaintResD'),r.maintYear*0.5,'<span class="tag t-cap">'+t('tagRes')+'</span>')+
+    row('cap',t('poAmort'),t('poAmortD'),r.amortYear,'<span class="tag t-cap">'+t('tagCap')+'</span>')+
+    row('total',t('poTotal'),'',r.payYear,'');
+}
+function renderHorizon(r){
+  var y=horizonYears, rentSpent=r.rentYear*y, ownBurn=r.burnYear*y, capital=r.amortYear*y, saved=rentSpent-ownBurn;
+  var growth=r.price*Math.pow(1+CFG.GROWTH,y)-r.price;
+  var totalCap=capital+growth;
+  // налоговый эффект в год (используем текущую предельную ставку)
+  var marg=(fpNum(document.getElementById('margN').value)||30)/100;
+  var emw=r.price*CFG.EMW_TAXVALUE*CFG.EMW_RATE;
+  var taxYear=(emw-(r.interestYear+r.price*CFG.MAINT_DEDUCT))*marg; // >0 доплата, <0 экономия
+  var taxCum=taxYear*y;
+  var taxRow;
+  if(taxCum>0){taxRow='<div class="hrow burn sub"><span class="k">'+t('hzTaxPay')+'</span><span class="v">\u2212'+fmt(taxCum)+'</span></div>';}
+  else{taxRow='<div class="hrow cap sub"><span class="k">'+t('hzTaxSave')+'</span><span class="v">+'+fmt(-taxCum)+'</span></div>';}
+  var gStr=(CFG.GROWTH*100).toFixed(1).replace('.',',');
+  document.getElementById('hbody').innerHTML=
+    '<div class="hgroup">'+t('hzBurnHead').replace('{y}',y)+'</div>'+
+    '<div class="hrow burn"><span class="k">'+t('hzRent')+'</span><span class="v">\u2212'+fmt(rentSpent)+'</span></div>'+
+    '<div class="hrow burn"><span class="k">'+t('hzOwn')+'</span><span class="v">\u2212'+fmt(ownBurn)+'</span></div>'+
+    taxRow+
+    '<div class="hgroup">'+t('hzCapHead').replace('{y}',y)+'</div>'+
+    '<div class="hrow cap sub"><span class="k">'+t('hzAmortCap')+'</span><span class="v">+'+fmt(capital)+'</span></div>'+
+    '<div class="hrow cap sub"><span class="k">'+t('hzGrowth').replace('{g}',gStr)+'</span><span class="v">+'+fmt(growth)+'</span></div>'+
+    '<div class="hrow htotal"><span class="k">'+t('hzCapTotal')+'</span><span class="v">+'+fmt(totalCap)+'</span></div>';
+  var hsum=document.getElementById('hsum');
+  if(saved>0){var savedPct=rentSpent>0?(saved/rentSpent*100):0;hsum.innerHTML=t('hzSumPos').replace('{y}',y).replace('{saved}',fmt(saved)).replace('{pct}',savedPct.toFixed(0)).replace('{cap}',fmt(totalCap));}
+  else{hsum.innerHTML=t('hzSumNeg').replace('{over}',fmt(-saved)).replace('{y}',y).replace('{cap}',fmt(totalCap));}
+  // Рост стоимости — справка под таблицей
+  document.getElementById('growthnote').innerHTML=
+    '<div class="gt">'+t('growthHead')+'</div>'+
+    t('growthBody').replace('{g}',(CFG.GROWTH*100).toFixed(1).replace('.',','))+
+    '<div class="gref">'+t('growthRef')+'</div>';
+  // Чем раньше
+  document.getElementById('earlier').innerHTML=t('earlier');
+}
+function updateHH(){
+  if(!lastR)return;
+  var hh=fpNum(document.getElementById('hhN').value)||0, el=document.getElementById('hhVerdict'), maxP=maxPriceFromIncome(hh);
+  if(hh>=lastR.reqIncome){el.className='verdict-line ok';el.innerHTML=t('bcPass').replace('{hh}',fmt(hh)).replace('{maxP}',fmt(maxP));}
+  else{el.className='verdict-line';el.innerHTML=t('bcFail').replace('{hh}',fmt(hh)).replace('{req}',fmt(lastR.reqIncome)).replace('{maxP}',fmt(maxP));}
+}
+function ewDeductYear(yIdx, interestYear){ // yIdx 1..10
+  if(yIdx>CFG.EW_YEARS) return 0;
+  var cap0=married?CFG.EW_CAP_MARRIED:CFG.EW_CAP_SINGLE;
+  var cap=cap0*(1-(yIdx-1)*0.10);
+  if(cap<0)cap=0;
+  return Math.min(interestYear, cap);
+}
+function ewCumulativeSave(years, interestYear, marg){
+  var s=0;
+  for(var y=1;y<=years;y++){ s+=ewDeductYear(y,interestYear)*marg; }
+  return s;
+}
+function updateTax(){
+  if(!lastR)return;
+  var marg=(fpNum(document.getElementById('margN').value)||30)/100;
+  var rentYear=lastR.rentYear;
+  var emw=lastR.price*CFG.EMW_TAXVALUE*CFG.EMW_RATE;
+  var deduction=lastR.interestYear+lastR.price*CFG.MAINT_DEDUCT;
+  var taxNow=(emw-deduction)*marg;            // >0 доплата, <0 экономия
+  function pctRent(v){return rentYear>0?(Math.abs(v)/rentYear*100):0;}
+
+  // Блок 1: до 2029
+  var el=document.getElementById('txResult');
+  if(taxNow<0){
+    el.className='tx-result save';
+    el.innerHTML='<div class="txr-lbl">'+t('txPre2029Save')+'</div>'+
+      '<div class="txr-num" style="color:var(--ok)">\u2212'+fmt(-taxNow)+' CHF</div>'+
+      '<div class="txr-note">'+t('txPreSaveNote').replace('{pct}',pctRent(taxNow).toFixed(1)).replace('{rate}',(lastR.rate*100).toFixed(1).replace('.',',')).replace('{int}',fmt(lastR.interestYear)).replace('{emw}',fmt(emw))+'</div>';
+  } else {
+    el.className='tx-result';
+    el.innerHTML='<div class="txr-lbl">'+t('txPre2029Pay')+'</div>'+
+      '<div class="txr-num" style="color:var(--danger)">+'+fmt(taxNow)+' '+t('txSurcharge')+'</div>'+
+      '<div class="txr-note">'+t('txPrePayNote').replace('{pct}',pctRent(taxNow).toFixed(1)).replace('{rate}',(lastR.rate*100).toFixed(1).replace('.',',')).replace('{emw}',fmt(emw)).replace('{int}',fmt(lastR.interestYear))+'</div>';
+  }
+
+  // Блок 2: с 2029
+  var ewY1=ewDeductYear(1,lastR.interestYear)*marg;
+  var ewCum10=ewCumulativeSave(10,lastR.interestYear,marg);
+  var capLabel=married?'10 000':'5 000';
+  document.getElementById('tx2029').innerHTML=
+    '<div class="tx2029-h">'+t('tx2029Head')+'</div>'+
+    '<div class="tx2029-row">'+t('tx2029Normal').replace('{drop}',(taxNow>0?fmt(taxNow)+' CHF/'+t('perYearShort'):''))+'</div>'+
+    '<div class="tx2029-row save">'+t('tx2029First').replace('{who}',married?t('tx2029Married'):t('tx2029Single')).replace('{cap}',capLabel).replace('{y1}',fmt(ewY1)).replace('{cum}',fmt(ewCum10))+'</div>'+
+    '<div class="tx2029-ref">'+t('tx2029Ref').replace('{cap}',capLabel).replace('{who2}',married?t('tx2029RefMarried'):t('tx2029RefSingle'))+'</div>';
+}
+function renderAll(r){
+  renderPayout(r);
+  document.getElementById('vsRent').textContent=fmt(r.rentYear);
+  document.getElementById('vsOwn').textContent=fmt(r.burnYear);
+  var diff=r.rentYear-r.burnYear, ins=document.getElementById('insight');
+  var diffPct=r.rentYear>0?(diff/r.rentYear*100):0;
+  if(diff>0){ins.innerHTML=t('insPos').replace('{diff}',fmt(diff)).replace('{pct}',diffPct.toFixed(0));}
+  else{ins.innerHTML=t('insNeg').replace('{diff}',fmt(-diff)).replace('{pct}',(-diffPct).toFixed(0));}
+  document.getElementById('reqIncome').textContent=fmt(r.reqIncome);
+  document.getElementById('reqNote').innerHTML=t('reqNote').replace('{rate}',(r.rate*100).toFixed(1).replace('.',',')).replace('{pay}',fmt(r.payYear/12));
+  renderHorizon(r);
+  updateHH();
+  updateTax();
+  renderYield(r);
+}
+function renderYield(r){
+  var box=document.getElementById('yieldbox');
+  if(propType!=='rent'){box.style.display='none';return;}
+  box.style.display='block';
+  var body=document.getElementById('ybBody');
+  function my(v){return fmt(v/12)+' / '+fmt(v);}
+  function row(k,v,cls){return '<div class="yb-row '+(cls||'')+'"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
+  function rowMY(k,v,sign,cls){var s=(sign==='-')?'\u2212':(sign==='+'?'+':'');return '<div class="yb-row '+(cls||'')+'"><span class="k">'+k+'</span><span class="v">'+s+my(v)+'</span></div>';}
+
+  // ГЛАВНАЯ ЦИФРА: пассивный денежный поток в месяц
+  var pm=r.cashYearNoAmort, posP=(pm>=0);
+  var hero='<div class="yb-hero '+(posP?'pos':'neg')+'">'+
+    '<div class="yb-hero-lbl">'+t('ybHeroLbl')+'</div>'+
+    '<div class="yb-hero-num">'+(posP?'+':'\u2212')+fmt(Math.abs(pm)/12)+' '+t('unitRent')+'</div>'+
+    '<div class="yb-hero-sub">'+t('ybHeroSub').replace('{y}', fmt(Math.abs(pm)))+'</div></div>';
+
+  var head='<div class="yb-colhead"><span></span><span>'+t('ybColMonthYear')+'</span></div>';
+
+  var opexRows;
+  if(r.opexBreak){
+    var ob=r.opexBreak;
+    opexRows=rowMY(t('ybOpexPlatform'), ob.platform, '-', 'sub')+
+      rowMY(t('ybOpexClean'), ob.clean, '-', 'sub')+
+      (ob.ads>0?rowMY(t('ybOpexAds'), ob.ads, '-', 'sub'):'')+
+      (ob.consum>0?rowMY(t('ybOpexConsum'), ob.consum, '-', 'sub'):'');
+  } else {
+    opexRows=rowMY(t('ybOpex'), r.opexYear, '-', 'sub');
+  }
+  var income='<div class="yb-sec">'+t('ybSecIncome')+'</div>'+
+    rowMY(t('ybGrossIncome'), r.rentIncomeYear, '', '')+
+    opexRows+
+    rowMY(t('ybNetIncome'), r.rentNetYear, '', 'strong');
+
+  var costs='<div class="yb-sec">'+t('ybSecCost')+'</div>'+
+    rowMY(t('ybInterest'), r.interestYear, '-', 'sub')+
+    rowMY(t('ybMaint'), r.maintYear, '-', 'sub')+
+    (r.amortYear>0.5?rowMY(t('ybAmort'), r.amortYear, '-', 'sub cap'):'');
+
+  // окупаемость
+  var payback='';
+  if(r.paybackYears>0){
+    payback='<div class="yb-sec">'+t('ybSecPayback')+'</div>'+
+      row(t('ybInvested'), fmt(r.down)+' '+t('unitCHF'), '')+
+      row(t('ybAnnualReturn'), fmt(r.annualReturn)+' '+t('unitYear'), 'sub')+
+      row(t('ybPayback'), '<b>\u2248 '+r.paybackYears.toFixed(0)+' '+t('years')+'</b>', 'strong');
+  }
+
+  var yields='<div class="yb-sec">'+t('ybSecYield')+'</div>'+
+    row(t('ybGrossYield'), r.grossYield.toFixed(1).replace('.',',')+'%', '')+
+    row(t('ybEquityYield'), '<b>'+r.equityYield.toFixed(1).replace('.',',')+'%</b>', '');
+
+  var ref='<div class="yb-ref">'+t('ybRef')
+    .replace('{amort}', fmt(r.amortYear))
+    .replace('{payback}', r.paybackYears.toFixed(0))+'</div>';
+
+  body.innerHTML=hero+head+income+costs+payback+yields+ref;
+}
+document.getElementById('go').addEventListener('click',function(){
+  var r=calc();
+  var minDown=propMinDown();
+  if(r.price<100000||r.down<r.price*minDown){updateDown();return;}
+  lastR=r;
+  renderAll(r);
+  document.getElementById('result').classList.add('show');
+  // сюда попадаем только после проверок цены и взноса выше — расчёт состоялся
+  if(window.FPReport && FPReport.completed) FPReport.completed('calc-rent-vs-buy');
+  var resEl=document.getElementById('result');window.scrollTo({top:resEl.getBoundingClientRect().top+window.pageYOffset-16,behavior:'smooth'});
+});
+document.querySelectorAll('#htabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#htabs button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on'); horizonYears=+b.dataset.y; if(lastR)renderHorizon(lastR);
+  });
+});
+
+// Инициализация после загрузки DOM и определения всех функций
+function applyStaticLang(){
+  document.querySelectorAll('[data-i18n]').forEach(function(node){
+    var key=node.getAttribute('data-i18n');
+    var val=t(key);
+    if(val!==undefined) node.innerHTML=val;
+  });
+  // обновить единицы у числовых полей, которые не помечены отдельно
+  var setUnit=function(sel,key){var n=document.querySelector(sel);if(n)n.textContent=t(key);};
+  document.documentElement.setAttribute('lang',lang);
+  // перевести кнопки горизонта (5/10/15 лет)
+  document.querySelectorAll('#htabs button').forEach(function(b){
+    b.textContent=b.dataset.y+' '+t('years');
+  });
+  // повторно отрисовать динамику, если результат уже показан
+  updateAgeNote();updateDown();buildPresets();applyMode();
+  if(lastR){lastR=calc();renderAll(lastR);}
+}
+document.querySelectorAll('#langsw button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#langsw button').forEach(function(x){x.classList.remove('on');});
+    b.classList.add('on');
+    lang=b.dataset.lang;
+    applyStaticLang();
+  });
+});
+updateAgeNote();
+buildPresets();
+applyMode();
+updateDown();
+document.getElementById('startBtn').addEventListener('click',function(){
+  document.getElementById('body').style.display='';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+
+<script src="report-capture.js"></script>
+<script>
+  FPReport.init({
+    mount: '#report-capture',
+    formKey: 'calc-rent-vs-buy',
+    reportName: 'Аренда или ипотека',
+    title: 'Прислать расчёт на почту?',
+    getSummary: function () {
+      // Берём значения по отдельности: textContent целого блока склеивает
+      // подписи с пояснениями в нечитаемую кашу.
+      var s = {};
+      Array.from(document.querySelectorAll('#payout .prow')).forEach(function (r) {
+        var pt = r.querySelector('.pt') || r.querySelector('.pk');
+        // firstChild — только сама подпись, без вложенного тега «в никуда»/«ваш резерв»
+        var label = pt ? String((pt.firstChild || pt).textContent || '').trim() : '';
+        var pv = r.querySelector('.pv');
+        if (!label || !pv) return;
+        var year = String((pv.firstChild || pv).textContent || '').trim();
+        var pm = pv.querySelector('.pm');
+        var month = pm ? String(pm.textContent || '').trim() : '';
+        if (year) s[label] = year + ' CHF/год' + (month ? ' (' + month + ')' : '');
+      });
+      var num = document.querySelector('#txResult .txr-num');
+      var lbl = document.querySelector('#txResult .txr-lbl');
+      if (num) s[(lbl ? lbl.textContent.trim() : 'Налоговый эффект')] = num.textContent.trim();
+      return s;
+    }
+  });
+</script>
+<!-- Согласие на cookies + Google Analytics -->
+<script src="../site/cookie-consent.js"></script>
+</body>
+</html>

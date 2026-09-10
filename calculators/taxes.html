@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Калькулятор налогов в Швейцарии по кантонам — сколько остаётся после вычетов.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frankenplatz">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Frankenplatz · Steuervergleich Schweiz">
+<meta property="og:description" content="Калькулятор налогов в Швейцарии по кантонам — сколько остаётся после вычетов.">
+<meta property="og:url" content="https://frankenplatz.ch/calculators/taxes">
+<link rel="canonical" href="https://frankenplatz.ch/calculators/taxes">
+<meta property="og:image" content="https://frankenplatz.ch/site/og/frankenplatz-kalkulyator-nalogi-po-kantonam.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Frankenplatz · Steuervergleich Schweiz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Frankenplatz · Steuervergleich Schweiz">
+<meta name="twitter:description" content="Калькулятор налогов в Швейцарии по кантонам — сколько остаётся после вычетов.">
+<meta name="twitter:image" content="https://frankenplatz.ch/site/og/frankenplatz-kalkulyator-nalogi-po-kantonam.jpg">
+<title>Frankenplatz · Steuervergleich Schweiz</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap");
+  :root{
+    --navy:#B98BFF; --navy-soft:#9A6FD4; --amber:#E6B450; --amber-soft:#F5C969;
+    --ink:#F3EEF9; --paper:#140A1F; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.12);
+    --muted:#C3B7D4; --good:#8BE59B; --bad:#FF7A8A;
+    --gold:#E6B450; --gold-bright:#F5C969; --lila:#9A6FD4; --lila-bright:#B98BFF; --heading:#FFFFFF;
+    color-scheme:dark only;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:"Manrope",system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; position:relative; min-height:100vh;}
+  .backdrop{position:fixed;inset:0;z-index:-2;background:radial-gradient(90% 60% at 50% -5%,#241138 0%,#170B23 45%,#140A1F 100%)}
+  .orb{position:fixed;border-radius:50%;filter:blur(120px);z-index:-1;pointer-events:none}
+  .orb.v{width:520px;height:520px;left:-160px;top:-140px;background:rgba(123,63,228,.28);opacity:.5}
+  .orb.a{width:560px;height:560px;right:-180px;bottom:-160px;background:rgba(198,138,46,.20);opacity:.5}
+  .pattern{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1;background-size:80px 80px;background-image:linear-gradient(rgba(230,180,80,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(230,180,80,.075) 1px,transparent 1px)}
+  .pat-x{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(6 8) scale(0.62)' stroke='%23E6B450'%3E%3Cpath d='M14 14 L56 56'/%3E%3Ccircle cx='18' cy='18' r='6'/%3E%3Ccircle cx='52' cy='52' r='6'/%3E%3C/g%3E%3Cg transform='translate(78 74) scale(0.62)' stroke='%23B98BFF'%3E%3Cpath d='M14 14 L56 56'/%3E%3Ccircle cx='18' cy='18' r='6'/%3E%3Ccircle cx='52' cy='52' r='6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+  .wrap{max-width:780px; margin:0 auto; padding:24px 18px 64px;}
+  header.top{padding:30px 28px; border:1px solid var(--line-strong); border-radius:24px; background:linear-gradient(160deg,rgba(123,63,228,.28),rgba(230,180,80,.10)); backdrop-filter:blur(8px); margin-bottom:18px;}
+  .startbtn{display:block;width:100%;text-align:center;font-family:"Manrope",sans-serif;font-size:16px;font-weight:700;padding:16px 34px;border:none;border-radius:40px;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#2A1A05;transition:transform .2s,box-shadow .2s;margin-top:18px;}
+  .startbtn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(230,180,80,.34);}
+  .brand{font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); font-weight:700;}
+  h1{font-family:"Unbounded","Manrope",sans-serif; font-weight:700; font-size:clamp(32px,6vw,50px); line-height:1.1; margin:6px 0 6px; letter-spacing:-.02em; color:var(--heading);}
+  .sub{color:var(--muted); font-size:15px; margin:0;}
+  .lang{float:right; display:flex; gap:4px; margin-top:2px;}
+  .lang button{border:1px solid var(--line); background:var(--card); color:var(--muted); font-size:12px; font-weight:700; padding:5px 9px; border-radius:20px; cursor:pointer; font-family:inherit;}
+  .lang button.on{background:var(--gold); color:#2A1A05; border-color:var(--gold);}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px; margin-top:18px; backdrop-filter:blur(8px);}
+  .card h2{font-family:"Unbounded","Manrope",sans-serif; font-size:19px; margin:0 0 14px;}
+  label{display:block; font-size:13px; font-weight:700; margin:0 0 6px; color:var(--ink);}
+  .hint{font-weight:400; color:var(--muted); font-size:12px;}
+  input[type=number],input[type=text],select{width:100%; padding:11px 12px; font-size:16px; border:1px solid var(--line); border-radius:11px; background:rgba(255,255,255,.05); color:var(--ink); -webkit-appearance:none; appearance:none; font-family:inherit;}
+  input:focus,select:focus{outline:none; border-color:var(--lila-bright); box-shadow:0 0 0 3px rgba(185,139,255,.18);}
+  select option{background:#1C1029; color:var(--ink);}
+  select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23C3B7D4' stroke-width='1.6' fill='none'/></svg>"); background-repeat:no-repeat; background-position:right 12px center;}
+  input[type=range]{width:100%; accent-color:var(--amber);}
+  img,video,iframe{max-width:100%;height:auto}
+  .seg{display:flex; gap:8px; flex-wrap:wrap;}
+  .seg button{flex:1; min-width:90px; min-height:44px; padding:10px 8px; border:1px solid var(--line); background:rgba(255,255,255,.05); border-radius:11px; font-size:13px; font-weight:700; color:var(--ink); cursor:pointer; font-family:inherit;}
+  .seg button.on{background:rgba(230,180,80,.16); border-color:var(--gold); color:var(--gold-bright);}
+  .addrow{display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap;}
+  .addrow > div{flex:1; min-width:150px;}
+  .add-btn{flex:none; padding:11px 18px; background:linear-gradient(135deg,var(--gold),var(--gold-bright)); color:#2A1A05; border:none; border-radius:40px; font-weight:700; font-size:14px; cursor:pointer; height:44px; font-family:inherit;}
+  .add-btn:disabled{opacity:.4; cursor:not-allowed;}
+  .chips{display:flex; flex-direction:column; gap:8px; margin-top:14px;}
+  .chip{display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.05);}
+  .chip.base{border-color:var(--gold); background:rgba(230,180,80,.12);}
+  .chip .nm{font-weight:700; font-size:14px;}
+  .chip .ct{font-size:12px; color:var(--muted);}
+  .chip .ff{margin-left:auto; font-size:12px; color:var(--muted);}
+  .chip .rm{flex:none; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--muted); width:26px; height:26px; border-radius:7px; cursor:pointer; font-size:15px; line-height:1; margin-left:8px;}
+  .chip .basebtn{flex:none; border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--muted); font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px; cursor:pointer;}
+  .chip.base .basebtn{background:var(--gold); color:#2A1A05; border-color:var(--gold);}
+  .baseline-tag{font-size:10px; font-weight:700; color:#2A1A05; background:var(--gold); padding:2px 6px; border-radius:5px; letter-spacing:.05em;}
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:4px;}
+  th,td{text-align:right; padding:9px 6px; border-bottom:1px solid var(--line);}
+  th:first-child,td:first-child{text-align:left;}
+  th{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700;}
+  td.muni-name{font-weight:700; color:var(--heading);}
+  .delta-good{color:var(--good); font-weight:700;}
+  .delta-bad{color:var(--bad); font-weight:700;}
+  .delta-zero{color:var(--muted);}
+  .bars{margin-top:16px; display:flex; flex-direction:column; gap:9px;}
+  .bar-row{display:flex; align-items:center; gap:10px;}
+  .bar-row .bl{width:120px; font-size:13px; font-weight:700; color:var(--heading); flex:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .bar-track{flex:1; background:rgba(255,255,255,.07); border-radius:6px; overflow:hidden; height:22px;}
+  .bar-fill{height:100%; background:linear-gradient(90deg,var(--lila),var(--lila-bright)); border-radius:6px 0 0 6px; transition:width .35s ease;}
+  .bar-row.base .bar-fill{background:linear-gradient(90deg,var(--amber),var(--amber-soft));}
+  .bar-val{width:78px; text-align:right; font-size:13px; font-variant-numeric:tabular-nums; flex:none;}
+  .empty{color:var(--muted); font-size:14px; padding:8px 0;}
+  .note{font-size:12px; color:var(--muted); margin-top:16px; line-height:1.55;}
+  .note b{color:var(--heading);}
+  .prog-legend{display:flex; flex-wrap:wrap; gap:8px 16px; margin-bottom:12px; font-size:12px;}
+  .prog-legend .lg{display:flex; align-items:center; gap:6px;}
+  .prog-legend .sw{width:16px; height:3px; border-radius:2px; display:inline-block;}
+  .prog-legend .sw.dash{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px); height:0; border-top:2px dashed;}
+  #prog-chart svg{max-width:100%; height:auto; display:block;}
+  #prog-table th,#prog-table td{font-variant-numeric:tabular-nums;}
+  .prog-hi{background:rgba(230,180,80,.1);}
+  .prog-jump{background:rgba(255,122,138,.1);}
+  .prog-jump.prog-hi{background:rgba(255,122,138,.16);}
+  .jump-badge{font-size:12px;}
+  #t-prog-jump-legend{font-size:12px; color:var(--bad); margin-top:10px; font-weight:600;}
+  .cta{margin-top:22px; background:linear-gradient(160deg,rgba(123,63,228,.22),rgba(230,180,80,.10)); border:1px solid rgba(255,255,255,.16); color:var(--heading); border-radius:20px; padding:20px;}
+  .cta h3{font-family:"Unbounded","Manrope",sans-serif; margin:0 0 6px; font-size:18px;}
+  .cta p{margin:0 0 14px; font-size:14px; color:var(--muted);}
+  .cta a{display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold-bright)); color:#2A1A05; text-decoration:none; font-weight:700; padding:11px 20px; border-radius:40px; font-size:14px; transition:transform .2s,box-shadow .2s;}
+  .cta a:hover{transform:translateY(-2px); box-shadow:0 14px 36px rgba(230,180,80,.34);}
+  a{color:var(--lila-bright);} a:hover{color:var(--gold-bright);}
+  @media(min-width:820px){
+    body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 0}
+    .wrap{max-width:880px;width:100%;padding:38px 40px 48px;border-radius:30px;
+      background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 50px 130px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);backdrop-filter:blur(22px)}
+    h1{font-size:52px}
+    .sub{font-size:17px}
+    .card h2{font-size:23px}
+    label{font-size:15px}
+    .hint{font-size:13px}
+    .seg button{font-size:15px}
+    table{font-size:15px}
+    .note{font-size:13px}
+    .cta h3{font-size:22px}
+    .cta p{font-size:15.5px}
+  }
+/* узкие экраны: плашки навигации не наезжают */
+@media(max-width:430px){
+  a[href="/calculators"][style*="position:fixed"],a[href="/"][style*="position:fixed"]{font-size:13px!important;padding:0 10px!important;gap:5px!important}
+  a[href="/calculators"][style*="position:fixed"]{left:12px!important}
+  a[href="/"][style*="position:fixed"]{right:12px!important}
+}
+@media(max-width:360px){
+  a[href="/"][style*="position:fixed"]{font-size:0!important;padding:0 12px!important;min-width:44px!important;justify-content:center!important}
+  a[href="/"][style*="position:fixed"]::after{content:"→";font-size:17px}
+}
+</style>
+</head>
+<body>
+<!-- Меню сайта. Подключено в начале <body> намеренно: скрипт строит шапку,
+     и в конце страницы она появлялась уже после первой отрисовки —
+     на полсекунды меню просто не было. При ре-синке дизайна вернуть сюда. -->
+<script src="../site/nav.js"></script>
+<script src="../site/calc-nav.js"></script>
+<a href="/calculators" style="position:fixed;top:18px;left:22px;z-index:50;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#C3B7D4;text-decoration:none;background:rgba(20,10,31,.55);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 16px;backdrop-filter:blur(8px);white-space:nowrap" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#C3B7D4'">← Все калькуляторы</a>
+<a href="/" style="position:fixed;top:18px;right:22px;z-index:50;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;font-size:15px;font-weight:700;color:#C3B7D4;text-decoration:none;background:rgba(20,10,31,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap">Frankenplatz.ch →</a>
+<div class="backdrop"></div>
+<div class="pattern"></div>
+<div class="orb v"></div>
+<div class="orb a"></div>
+<div class="wrap">
+  <header class="top">
+    <div class="lang">
+      <button data-lang="ru" class="on">RU</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <div class="brand">Frankenplatz</div>
+    <h1 id="t-title">Сравнение налогов:<br>Швейцария</h1>
+    <p class="sub" id="t-sub">Выберите кантон и общину — добавьте в сравнение и смотрите разницу</p>
+    <button id="startBtn" class="startbtn">Поехали</button>
+  </header>
+
+  <div class="card">
+    <h2 id="t-inputs">Ваши данные</h2>
+    <div id="income-wrap">
+      <label id="t-income-l">Налогооблагаемый доход в год <span class="hint" id="t-income-h">после вычетов</span></label>
+      <input type="text" id="income" value="200" inputmode="decimal">
+      <span class="hint" id="income-unit" style="margin-left:2px;">× 1000 CHF</span>
+      <input type="range" id="income-range" value="200000" min="20000" max="500000" step="5000" style="margin-top:10px;">
+      <p class="hint" id="t-income-explain" style="margin-top:8px; line-height:1.5;"></p>
+    </div>
+    <div style="margin-top:16px;">
+      <label id="t-status-l">Семейный статус</label>
+      <div class="seg" id="status-seg">
+        <button data-status="married" class="on" id="t-married">В браке / совместно</button>
+        <button data-status="single" id="t-single">Одинокий/ая</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="wealth-card">
+    <h2 id="t-wealth-h">Ваше имущество</h2>
+    <p class="hint" id="t-wealth-intro" style="margin:-8px 0 14px;"></p>
+    <div id="wealth-fields"></div>
+    <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-weight:700;">
+      <span id="t-wealth-net">Чистое имущество</span>
+      <span id="wealth-net-val">—</span>
+    </div>
+    <p class="hint" id="t-wealth-note" style="margin-top:10px;"></p>
+  </div>
+
+  <div class="card">
+    <h2 id="t-add">Добавить место в сравнение</h2>
+    <div class="addrow">
+      <div>
+        <label id="t-canton-l">Кантон</label>
+        <select id="canton-sel"></select>
+      </div>
+      <div>
+        <label id="t-muni-l">Община</label>
+        <select id="muni-sel"></select>
+      </div>
+      <button class="add-btn" id="add-btn">+</button>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="card">
+    <h2 id="t-result-h">Налог в год</h2>
+    <div style="overflow-x:auto;"><table id="result-table"></table></div>
+    <div class="bars" id="bars"></div>
+    <div class="empty" id="empty-msg"></div>
+    <p class="note" id="t-note"></p>
+  </div>
+
+  <div id="report-capture"></div>
+
+  <div class="card" id="prog-card">
+    <h2 id="t-prog-h">Как растёт налог с дохода</h2>
+    <p class="hint" id="t-prog-intro" style="margin:-8px 0 14px;"></p>
+    <div class="prog-legend" id="prog-legend"></div>
+    <div style="overflow-x:auto;"><div id="prog-chart"></div></div>
+    <p class="hint" id="t-prog-your" style="margin-top:6px;"></p>
+    <div style="overflow-x:auto; margin-top:16px;"><table id="prog-table"></table></div>
+    <div id="t-prog-jump-legend"></div>
+    <p class="note" id="t-prog-note"></p>
+  </div>
+
+  <div class="cta">
+    <h3 id="t-cta-h">Где система спрятала ваши деньги?</h3>
+    <p id="t-cta-p">Налог по месту жительства — лишь один слой. На форуме собираем доход, пенсию и Säule 3a в единую картину.</p>
+    <a href="#" id="t-cta-btn">Узнать про форум →</a>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   Multi-canton Swiss income tax — estimate model, 2026.
+   Each canton: own progressive "base curve" (effective % of taxable
+   income) calibrated to 2026 ESTV reference points, times the
+   canton+municipality multiplier where that canton works that way.
+   Federal tax added separately (same everywhere, depends only on income).
+   Married = income splitting (tax on half, doubled) for cantons that
+   use a married tariff via splitting/Vollsplitting (ZG, LU) or a
+   separate married tariff approximated the same way (AG, ZH, BL).
+   BS uses its own married tariff (no municipal multiplier).
+   THIS IS AN ESTIMATE, surfaced in the UI.
+========================================================= */
+
+/* ---- Federal direct tax (dBSt) 2026, simplified married/single curves ---- */
+function federalTax(income, married){
+  // smooth approximation of dBSt 2026 (max 11.5%); married tariff ~ lower.
+  var x=income;
+  function single(x){
+    if(x<=18500) return 0;
+    var t=[[18500,0],[33200,0.0077],[72500,0.0297],[78100,0.059],[103600,0.066],[134600,0.0880],[176000,0.110],[783200,0.115]];
+    var tax=0;
+    for(var i=0;i<t.length-1;i++){var lo=t[i][0],hi=t[i+1][0],r=t[i+1][1]; if(x>lo) tax+=(Math.min(x,hi)-lo)*r;}
+    if(x>t[t.length-1][0]) tax+=(x-t[t.length-1][0])*0.115;
+    return tax;
+  }
+  if(married) return 2*single(x/2)*0.9; // married tariff lower; rough
+  return single(x);
+}
+
+/* ---- Cantonal "einfache Steuer / base" curves (100% / 1.0 unit) ---- */
+/* Output = base tax at multiplier 1.0; calibrated so total matches refs. */
+function baseCurve(points, x){
+  var tax=0;
+  for(var i=0;i<points.length-1;i++){var lo=points[i][0],hi=points[i+1][0],r=points[i+1][1]; if(x>lo) tax+=(Math.min(x,hi)-lo)*r;}
+  var last=points[points.length-1]; if(x>last[0]) tax+=(x-last[0])*last[1];
+  return tax;
+}
+/* Each canton: {base(income), kanton multiplier, married handling} */
+var CANTON_BASE={
+  AG:function(x){return baseCurve([[0,0],[6000,.005],[12000,.012],[20000,.022],[30000,.034],[40000,.046],[55000,.06],[75000,.074],[100000,.086],[140000,.098],[200000,.106],[320000,.11]],x);},
+  ZH:function(x){return baseCurve([[0,0],[6900,.02],[13500,.03],[19700,.04],[28300,.05],[38600,.06],[50300,.07],[68300,.08],[92900,.09],[122900,.10],[169300,.11],[259900,.12],[383200,.13]],x);},
+  ZG:function(x){return baseCurve([[0,0],[12000,.01],[24000,.02],[40000,.03],[60000,.045],[90000,.06],[130000,.07],[200000,.08],[400000,.085]],x);},
+  LU:function(x){return baseCurve([[0,0],[8000,.006],[16000,.015],[26000,.025],[40000,.038],[58000,.05],[80000,.062],[110000,.07],[160000,.076],[280000,.08]],x);},
+  BS:function(x){return baseCurve([[0,0],[12000,0],[20000,.04],[35000,.06],[55000,.08],[80000,.105],[120000,.125],[200000,.145],[400000,.155]],x);},
+  BL:function(x){return baseCurve([[0,0],[10000,.005],[20000,.015],[30000,.04],[50000,.07],[80000,.10],[120000,.13],[200000,.16],[400000,.18]],x);},
+  SZ:function(x){return baseCurve([[0,0],[10000,.007],[20000,.017],[35000,.028],[55000,.038],[80000,.048],[120000,.056],[200000,.062],[400000,.066]],x);},
+  TI:function(x){return baseCurve([[0,0],[20400,0],[30000,.02],[45000,.045],[65000,.075],[90000,.095],[130000,.11],[200000,.12],[400000,.128]],x);},
+  VD:function(x){return baseCurve([[0,0],[16000,0],[28000,.03],[45000,.06],[65000,.09],[90000,.115],[130000,.135],[200000,.15],[400000,.155]],x);},
+  VS:function(x){return baseCurve([[0,0],[15000,0],[28000,.025],[45000,.05],[65000,.075],[90000,.095],[130000,.11],[200000,.12],[400000,.125]],x);},
+  FR:function(x){return baseCurve([[0,0],[16000,0],[28000,.028],[45000,.055],[65000,.08],[90000,.10],[130000,.115],[200000,.125],[400000,.13]],x);},
+  GE:function(x){return baseCurve([[0,0],[18000,0],[30000,.09],[50000,.16],[75000,.20],[110000,.23],[160000,.245],[250000,.255],[500000,.26]],x);},
+  SG:function(x){return baseCurve([[0,0],[12000,0],[24000,.03],[40000,.055],[60000,.08],[85000,.10],[120000,.115],[200000,.125],[400000,.13]],x);},
+  TG:function(x){return baseCurve([[0,0],[13000,0],[26000,.028],[42000,.05],[62000,.072],[88000,.09],[125000,.104],[200000,.113],[400000,.118]],x);},
+  GR:function(x){return baseCurve([[0,0],[14000,0],[28000,.03],[45000,.055],[65000,.08],[90000,.10],[130000,.115],[200000,.125],[400000,.13]],x);}
+};
+/* Calibration multipliers to align absolute level to 2026 refs */
+var CANTON_CALIB={ AG:1.30, ZH:1.0, ZG:1.0, LU:1.0, BS:1.0, BL:1.0, SZ:1.0, TI:1.0, VD:1.0, VS:1.0, FR:1.0, GE:1.0, SG:1.05, TG:1.0, GR:1.0 };
+
+/* ---- Cantons data: how the multiplier works + municipalities ---- */
+/* mult = cantonal multiplier (applied to base). muniMult = list. BS: muni=0 (city=canton). */
+var CANTONS={
+  AG:{name:'Aargau', kanton:1.00, splitting:false, munis:[
+    ['Baden',0.89,'5400'],['Seengen',0.72,'5707'],['Lengnau (AG)',1.03,'5426'],['Windisch',1.15,'5210'],['Wohlen (AG)',1.16,'5610'],
+    ['Oberwil-Lieli',0.48,'8966'],['Wettingen',0.95,'5430'],['Aarau',0.97,'5000'],['Lenzburg',1.05,'5600'],['Brugg',1.07,'5200'],['Mellingen',1.10,'5507'],
+    ['Mülligen',1.09,'5243'],['Birr',1.17,'5242'],['Lupfig',1.10,'5242'],['Mägenwil',1.13,'5506'],['Möriken-Wildegg',0.94,'5103'],['Birrhard',1.09,'5244'],['Ennetbaden',0.92,'5408']
+  ]},
+  ZH:{name:'Zürich', kanton:0.95, splitting:false, munis:[
+    ['Zürich (Stadt)',1.19,'8000'],['Winterthur',1.25,'8400'],['Zumikon',0.71,'8126'],['Kilchberg',0.72,'8802'],['Küsnacht',0.73,'8700'],
+    ['Uster',1.07,'8610'],['Dübendorf',0.99,'8600'],['Regensdorf',1.19,'8105'],['Wetzikon',1.13,'8620'],['Dietikon',1.21,'8953'],['Richterswil',1.09,'8805']
+  ]},
+  ZG:{name:'Zug', kanton:0.78, splitting:true, munis:[
+    ['Zug (Stadt)',0.52,'6300'],['Baar',0.475,'6340'],['Cham',0.60,'6330'],['Hünenberg',0.53,'6331'],['Steinhausen',0.53,'6312'],
+    ['Walchwil',0.51,'6318'],['Risch (Rotkreuz)',0.55,'6343'],['Unterägeri',0.59,'6314'],['Neuheim',0.59,'6345'],['Menzingen',0.63,'6313']
+  ]},
+  LU:{name:'Luzern', kanton:1.45, splitting:true, munis:[
+    ['Luzern (Stadt)',1.45,'6000'],['Meggen',0.90,'6045'],['Horw',1.45,'6048'],['Kriens',1.80,'6010'],['Emmen',2.00,'6020'],
+    ['Ebikon',1.55,'6030'],['Weggis',1.30,'6353'],['Vitznau',1.45,'6354'],['Schenkon',1.25,'6214'],['Sursee',1.55,'6210']
+  ]},
+  BS:{name:'Basel-Stadt', kanton:1.00, splitting:false, noMuni:true, munis:[
+    ['Basel (Stadt)',0.00,'4000'],['Riehen',0.00,'4125'],['Bettingen',0.00,'4126']
+  ]},
+  BL:{name:'Basel-Landschaft', kanton:1.00, splitting:false, munis:[
+    ['Liestal',0.65,'4410'],['Bottmingen',0.45,'4103'],['Binningen',0.49,'4102'],['Arlesheim',0.47,'4144'],['Reinach',0.545,'4153'],
+    ['Münchenstein',0.60,'4142'],['Muttenz',0.56,'4132'],['Pratteln',0.585,'4133'],['Allschwil',0.58,'4123'],['Sissach',0.57,'4450']
+  ]},
+  SZ:{name:'Schwyz', kanton:0.00, splitting:false, fullFuss:true, munis:[
+    ['Wollerau',1.74,'8832'],['Freienbach',1.74,'8807'],['Feusisberg',1.79,'8835'],['Altendorf',2.25,'8852'],['Lachen',2.35,'8853'],
+    ['Küssnacht',2.55,'6403'],['Oberiberg',2.35,'8843'],['Riemenstalden',2.45,'6452'],['Gersau',2.55,'6442'],['Galgenen',2.65,'8854'],
+    ['Arth',2.55,'6415'],['Innerthal',2.50,'8858'],['Muotathal',2.85,'6436'],['Tuggen',2.64,'8856'],['Rothenthurm',2.65,'6418'],
+    ['Alpthal',2.65,'8849'],['Ingenbohl',2.75,'6440'],['Unteriberg',2.65,'8842'],['Steinerberg',2.65,'6416'],['Sattel',2.65,'6417'],
+    ['Wangen',2.75,'8855'],['Einsiedeln',2.80,'8840'],['Vorderthal',2.75,'8857'],['Schwyz (Stadt)',2.85,'6430'],['Morschach',2.75,'6443'],
+    ['Lauerz',2.85,'6424'],['Reichenburg',2.90,'8864'],['Schübelbach',2.90,'8862'],['Steinen',3.05,'6422'],['Illgau',3.05,'6434']
+  ]},
+  TI:{name:'Ticino', kanton:1.00, splitting:false, munis:[
+    ['Porza',0.56,'6948'],['Paradiso',0.58,'6900'],['Collina d\'Oro',0.60,'6926'],['Lugano',0.80,'6900'],['Bellinzona',0.93,'6500'],
+    ['Locarno',0.90,'6600'],['Chiasso',0.88,'6830'],['Mendrisio',0.85,'6850'],['Massagno',0.75,'6900'],['Ascona',0.80,'6612'],
+    ['Muralto',0.80,'6600'],['Losone',0.83,'6616'],['Minusio',0.85,'6648'],['Castel San Pietro',0.70,'6874'],['Bosco Gurin',1.00,'6685']
+  ]},
+  VD:{name:'Vaud', kanton:1.00, splitting:false, munis:[
+    ['Lausanne',1.545,'1000'],['Bourg-en-Lavaux',0.68,'1091'],['Lutry',1.29,'1095'],['Montreux',1.61,'1820'],['Nyon',1.53,'1260'],
+    ['Morges',1.51,'1110'],['Vevey',1.585,'1800'],['Prangins',0.60,'1197'],['Buchillon',0.55,'1164'],['Rolle',1.42,'1180'],
+    ['Perroy',0.62,'1166'],['Founex',0.58,'1297'],['Coppet',0.72,'1296'],['Pully',0.735,'1009'],['Bussigny',1.31,'1030']
+  ]},
+  VS:{name:'Valais', kanton:1.00, splitting:false, munis:[
+    ['Sion',1.15,'1950'],['Sierre',1.20,'3960'],['Martigny',1.15,'1920'],['Monthey',1.18,'1870'],['Zermatt',1.10,'3920'],
+    ['Bagnes (Verbier)',1.05,'1934'],['Crans-Montana',1.15,'3963'],['Brig-Glis',1.20,'3900'],['Collombey-Muraz',1.20,'1868'],['Conthey',1.20,'1964']
+  ]},
+  FR:{name:'Fribourg', kanton:1.00, splitting:false, munis:[
+    ['Fribourg',0.812,'1700'],['Bulle',0.775,'1630'],['Villars-sur-Glâne',0.77,'1752'],['Marly',0.85,'1723'],['Estavayer',0.86,'1470'],
+    ['Gruyères',0.70,'1663'],['Morat/Murten',0.75,'3280'],['Châtel-St-Denis',0.85,'1618'],['Givisiez',0.75,'1762'],['Granges-Paccot',0.70,'1763']
+  ]},
+  GE:{name:'Genève', kanton:0.475, splitting:false, munis:[
+    ['Genève (ville)',0.455,'1200'],['Cologny',0.29,'1223'],['Genthod',0.25,'1294'],['Anières',0.31,'1247'],['Collonge-Bellerive',0.31,'1245'],
+    ['Vandœuvres',0.30,'1253'],['Carouge',0.42,'1227'],['Meyrin',0.44,'1217'],['Lancy',0.47,'1212'],['Versoix',0.475,'1290']
+  ]},
+  SG:{name:'St. Gallen', kanton:1.05, splitting:false, munis:[
+    ['St. Gallen (Stadt)',1.44,'9000'],['Untereggen',1.05,'9033'],['Rapperswil-Jona',0.77,'8640'],['Wil',1.41,'9500'],['Gossau',1.28,'9200'],
+    ['Wittenbach',1.29,'9300'],['Rorschach',1.55,'9400'],['Uzwil',1.19,'9240'],['Mörschwil',0.75,'9402'],['Eggersriet',1.12,'9034'],
+    ['Jona',0.77,'8645'],['Bad Ragaz',0.90,'7310'],['Sargans',1.05,'7320'],['Buchs (SG)',1.16,'9470'],['Altstätten',1.30,'9450']
+  ]},
+  TG:{name:'Thurgau', kanton:1.09, splitting:false, munis:[
+    ['Frauenfeld',0.56,'8500'],['Kreuzlingen',0.57,'8280'],['Arbon',0.70,'9320'],['Warth-Weiningen',0.34,'8532'],['Tägerwilen',0.36,'8274'],
+    ['Bottighofen',0.37,'8598'],['Amriswil',0.63,'8580'],['Romanshorn',0.70,'8590'],['Weinfelden',0.55,'8570'],['Gottlieben',0.42,'8274']
+  ]},
+  GR:{name:'Graubünden', kanton:1.00, splitting:false, munis:[
+    ['Chur',0.90,'7000'],['Davos',0.85,'7260'],['St. Moritz',0.65,'7500'],['Celerina',0.60,'7505'],['Pontresina',0.70,'7504'],
+    ['Flims',0.75,'7017'],['Laax',0.80,'7031'],['Arosa',0.95,'7050'],['Klosters',0.85,'7250'],['Silvaplana',0.62,'7513']
+  ]}
+};
+/* BS note: city of Basel has no separate communal income-tax multiplier;
+   Riehen & Bettingen levy reduced communal tax, approximated within base. */
+
+/* ---- Wealth tax (Vermögenssteuer) effective model, 2026 ----
+   Effective per-mille rate on NET wealth incl. municipal share, calibrated
+   to 2026 references (~1M, married). Two rate steps approximate progression.
+   Freibetrag (married approx). Säule 3a & BVG are NOT taxable wealth. */
+var WEALTH={
+  AG:{frei:200000, lo:1.1, hi:2.0, knee:600000},
+  ZH:{frei:159000, lo:1.0, hi:3.0, knee:700000},
+  ZG:{frei:200000, lo:0.5, hi:1.9, knee:600000},
+  LU:{frei:120000, lo:0.75, hi:2.0, knee:500000},
+  BS:{frei:150000, lo:3.0, hi:8.0, knee:500000},
+  BL:{frei:150000, lo:2.0, hi:4.6, knee:500000},
+  SZ:{frei:200000, lo:0.4, hi:1.8, knee:600000},
+  TI:{frei:200000, lo:1.5, hi:3.5, knee:500000},
+  VD:{frei:56000, lo:3.0, hi:5.0, knee:500000},
+  VS:{frei:30000, lo:1.5, hi:3.0, knee:500000},
+  FR:{frei:50000, lo:1.8, hi:3.3, knee:500000},
+  GE:{frei:82000, lo:3.5, hi:6.0, knee:500000},
+  SG:{frei:75000, lo:1.4, hi:2.6, knee:500000},
+  TG:{frei:75000, lo:1.3, hi:2.4, knee:500000},
+  GR:{frei:100000, lo:1.5, hi:2.8, knee:500000}
+};
+function wealthTax(cantonKey, netWealth){
+  var W=WEALTH[cantonKey]; if(!W) return 0;
+  var taxable=Math.max(0, netWealth - W.frei);
+  if(taxable<=0) return 0;
+  var lowPart=Math.min(taxable, W.knee);
+  var highPart=Math.max(0, taxable - W.knee);
+  return lowPart*W.lo/1000 + highPart*W.hi/1000;
+}
+
+function computeTax(cantonKey, muniMult, income, married){
+  var C=CANTONS[cantonKey];
+  var baseFn=CANTON_BASE[cantonKey];
+  var calib=CANTON_CALIB[cantonKey];
+  var base;
+  if(married && C.splitting){ base=2*baseFn(income/2)*calib; }
+  else if(married){ base=2*baseFn(income/2)*calib; } // splitting approx for married tariff too
+  else { base=baseFn(income)*calib; }
+  var mult;
+  if(C.noMuni){ mult=C.kanton; }      // BS: cantonal only
+  else if(C.fullFuss){ mult=muniMult; } // SZ: fuss already includes canton+district+municipality
+  else { mult=C.kanton+muniMult; }    // base × (kanton + gemeinde)
+  var cantonal=base*mult;
+  var federal=federalTax(income,married);
+  return {cantonal:cantonal, federal:federal, total:cantonal+federal};
+}
+
+/* ---------- i18n ---------- */
+var I18N={
+  ru:{title:'Сравнение налогов:<br>Швейцария', sub:'Выберите кантон и общину — добавьте в сравнение и смотрите разницу',
+    inputs:'Ваши данные', incomeL:'Налогооблагаемый доход в год', incomeH:'после вычетов',
+    inThousands:'в тыс. CHF',
+    incomeExplain:'Это не брутто-зарплата. Налогооблагаемый доход (steuerbares Einkommen) — то, что остаётся после вычетов: Säule 3a, взносы в пенсионную кассу, профессиональные расходы, страховки, вычеты на детей. Обычно он на 15–25% ниже брутто. Точную цифру видно в налоговой декларации.',
+    statusL:'Семейный статус', married:'В браке / совместно', single:'Одинокий/ая',
+    modeL:'Что сравниваем', modeIncome:'Налог на доход', modeWealth:'Налог на имущество',
+    wealthH:'Ваше имущество', wealthIntro:'Укажите примерные суммы. Облагается чистое имущество — активы минус долги.',
+    wealthNet:'Чистое имущество',
+    wealthNote:'Важно: накопления в Säule 3a и пенсионной кассе (BVG) НЕ входят в облагаемое имущество в фазе накопления — это легальный способ уменьшить налог на богатство. Ипотека вычитается как долг.',
+    w_cash:'Наличные, счета, депозиты', w_cash_h:'банковские счета, сбережения',
+    w_securities:'Ценные бумаги', w_securities_h:'акции, фонды, облигации, крипто',
+    w_property:'Недвижимость (налоговая стоимость)', w_property_h:'Steuerwert, обычно 60–85% от рыночной',
+    w_mortgage:'Ипотека / долги', w_mortgage_h:'вычитается из имущества',
+    w_business:'Доля в своей компании', w_business_h:'GmbH/AG, оценка по балансу',
+    w_other:'Прочее', w_other_h:'выкупная стоимость страховок, ценности',
+    add:'Добавить место в сравнение', cantonL:'Кантон', muniL:'Община',
+    resultH:'Налог в год', thMuni:'Место', thFuss:'Множитель', thIncome:'Доход', thWealth:'Имущество', thCant:'Кант.+общ.', thTotal:'Итого/год', thDelta:'Разница', perMonth:'мес',
+    progH:'Как растёт налог с дохода', progIntro:'Сплошная линия — предельная ставка (сколько берут со следующего франка), пунктир — средняя (весь налог к доходу). Где сплошная выполаживается — там рост нагрузки замедляется.', progMarg:'предельная', progAvg:'средняя', progYour:'Красная линия — ваш доход ({inc} CHF).', progIncome:'Доход', progJump:'Точки резкого роста налога: здесь предельная ставка скачком растёт — каждый следующий франк дохода облагается заметно жёстче.', progNote:'Средняя ставка всегда ниже предельной. Резкий подъём предельной означает, что каждая надбавка к зарплате облагается всё жёстче; плато — где кантон почти перестаёт прогрессировать. В каждой ячейке: средняя % / предельная %, ниже — налог в год и в месяц. Ставки включают кантон + общину + федеральный налог, модель оценочная.',
+    base:'база', setbase:'базой', empty:'Добавьте хотя бы два места, чтобы сравнить.',
+    ctaH:'Где система спрятала ваши деньги?', ctaP:'Налог по месту жительства — лишь один слой. На форуме собираем доход, пенсию и Säule 3a в единую картину.', ctaBtn:'Узнать про форум →',
+    noteHead:'Как это считается.',
+    note:'Показан кантональный + общинный + федеральный подоходный налог. У каждого кантона своя прогрессивная шкала и свой механизм множителя (Aargau/Zürich — Steuerfuss в %, Zug/Luzern — единицы, Basel-Stadt — единый кантональный тариф без общинного множителя). Шкалы аппроксимированы и откалиброваны по реперам ESTV 2026; множители общин — данные 2026. Церковный сбор не включён. Это оценка, не официальный расчёт: личные вычеты (Säule 3a, докупки BVG, профрасходы) меняют базу. Межкантональные сравнения — порядок величины.'},
+  de:{title:'Steuervergleich:<br>Schweiz', sub:'Kanton und Gemeinde wählen, zum Vergleich hinzufügen und Differenz sehen',
+    inputs:'Ihre Angaben', incomeL:'Steuerbares Einkommen pro Jahr', incomeH:'nach Abzügen',
+    inThousands:'in Tsd. CHF',
+    incomeExplain:'Nicht der Bruttolohn. Das steuerbare Einkommen bleibt nach Abzügen übrig: Säule 3a, Pensionskasse, Berufskosten, Versicherungen, Kinderabzüge. Meist 15–25% tiefer als brutto. Der genaue Wert steht in der Steuererklärung.',
+    statusL:'Zivilstand', married:'Verheiratet / gemeinsam', single:'Alleinstehend',
+    modeL:'Was vergleichen', modeIncome:'Einkommenssteuer', modeWealth:'Vermögenssteuer',
+    wealthH:'Ihr Vermögen', wealthIntro:'Ungefähre Beträge eingeben. Besteuert wird das Reinvermögen — Aktiven minus Schulden.',
+    wealthNet:'Reinvermögen',
+    wealthNote:'Wichtig: Guthaben in Säule 3a und Pensionskasse (BVG) zählen in der Ansparphase NICHT zum steuerbaren Vermögen — ein legaler Hebel gegen die Vermögenssteuer. Die Hypothek wird als Schuld abgezogen.',
+    w_cash:'Bargeld, Konten, Sparguthaben', w_cash_h:'Bankkonten, Ersparnisse',
+    w_securities:'Wertschriften', w_securities_h:'Aktien, Fonds, Obligationen, Krypto',
+    w_property:'Immobilien (Steuerwert)', w_property_h:'Steuerwert, meist 60–85% des Marktwerts',
+    w_mortgage:'Hypothek / Schulden', w_mortgage_h:'wird vom Vermögen abgezogen',
+    w_business:'Anteil an eigener Firma', w_business_h:'GmbH/AG, Bewertung nach Bilanz',
+    w_other:'Übriges', w_other_h:'Rückkaufswert Versicherungen, Wertsachen',
+    add:'Ort zum Vergleich hinzufügen', cantonL:'Kanton', muniL:'Gemeinde',
+    resultH:'Steuer pro Jahr', thMuni:'Ort', thFuss:'Faktor', thIncome:'Einkommen', thWealth:'Vermögen', thCant:'Kt.+Gde.', thTotal:'Total/Jahr', thDelta:'Differenz', perMonth:'Mt.',
+    progH:'Wie die Steuer mit dem Einkommen steigt', progIntro:'Durchgezogene Linie — Grenzsteuersatz (nächster Franken), gestrichelt — Durchschnittssatz. Wo die durchgezogene flacher wird, verlangsamt sich die Belastung.', progMarg:'Grenzsatz', progAvg:'Durchschnitt', progYour:'Rote Linie — Ihr Einkommen ({inc} CHF).', progIncome:'Einkommen', progJump:'Punkte mit starkem Steueranstieg: hier springt der Grenzsatz — jeder weitere Franken wird deutlich härter besteuert.', progNote:'Der Durchschnittssatz liegt immer unter dem Grenzsatz. Ein steiler Grenzsatz heisst: jede Lohnerhöhung wird stärker besteuert; ein Plateau heisst kaum Progression. In jeder Zelle: Durchschnitt % / Grenzsatz %, darunter Steuer pro Jahr und pro Monat. Sätze inkl. Kanton + Gemeinde + Bund, Schätzmodell.',
+    base:'Basis', setbase:'als Basis', empty:'Fügen Sie mindestens zwei Orte hinzu, um zu vergleichen.',
+    ctaH:'Wo hat das System Ihr Geld versteckt?', ctaP:'Die Steuer am Wohnort ist nur eine Schicht. Am Forum verbinden wir Einkommen, Vorsorge und Säule 3a zu einem Bild.', ctaBtn:'Mehr zum Forum →',
+    noteHead:'So wird gerechnet.',
+    note:'Gezeigt wird Kantons- + Gemeinde- + Bundessteuer. Jeder Kanton hat einen eigenen Tarif und Multiplikator-Mechanismus (Aargau/Zürich Steuerfuss in %, Zug/Luzern Einheiten, Basel-Stadt einheitlicher Kantonstarif ohne Gemeindefaktor). Tarife approximiert und an ESTV-Eckpunkten 2026 kalibriert; Gemeindefaktoren 2026. Ohne Kirchensteuer. Schätzwert, keine amtliche Veranlagung. Interkantonale Vergleiche sind Grössenordnungen.'},
+  en:{title:'Tax comparison:<br>Switzerland', sub:'Pick a canton and municipality, add to compare, see the difference',
+    inputs:'Your details', incomeL:'Taxable income per year', incomeH:'after deductions',
+    inThousands:'in ’000 CHF',
+    incomeExplain:'Not your gross salary. Taxable income is what remains after deductions: pillar 3a, pension fund, work expenses, insurance, child deductions. Usually 15–25% below gross. The exact figure is on your tax return.',
+    statusL:'Marital status', married:'Married / joint', single:'Single',
+    modeL:'What to compare', modeIncome:'Income tax', modeWealth:'Wealth tax',
+    wealthH:'Your wealth', wealthIntro:'Enter approximate amounts. Net wealth is taxed — assets minus debts.',
+    wealthNet:'Net wealth',
+    wealthNote:'Note: pillar 3a and pension fund (BVG) balances are NOT taxable wealth during the saving phase — a legal lever against wealth tax. The mortgage is deducted as debt.',
+    w_cash:'Cash, accounts, savings', w_cash_h:'bank accounts, savings',
+    w_securities:'Securities', w_securities_h:'shares, funds, bonds, crypto',
+    w_property:'Property (tax value)', w_property_h:'Steuerwert, usually 60–85% of market value',
+    w_mortgage:'Mortgage / debts', w_mortgage_h:'deducted from wealth',
+    w_business:'Stake in your company', w_business_h:'GmbH/AG, balance-sheet valuation',
+    w_other:'Other', w_other_h:'surrender value of insurance, valuables',
+    add:'Add a place to compare', cantonL:'Canton', muniL:'Municipality',
+    resultH:'Tax per year', thMuni:'Place', thFuss:'Factor', thIncome:'Income', thWealth:'Wealth', thCant:'Cant.+mun.', thTotal:'Total/yr', thDelta:'Difference', perMonth:'mo',
+    progH:'How tax grows with income', progIntro:'Solid line — marginal rate (next franc), dashed — average rate (total tax over income). Where the solid line flattens, the burden stops rising as fast.', progMarg:'marginal', progAvg:'average', progYour:'Red line — your income ({inc} CHF).', progIncome:'Income', progJump:'Points of steep tax increase: the marginal rate jumps here — each additional franc is taxed noticeably harder.', progNote:'The average rate is always below the marginal. A steep marginal means each raise is taxed harder; a plateau means little progression. Each cell: average % / marginal %, below the tax per year and per month. Rates include canton + municipality + federal, estimate model.',
+    base:'base', setbase:'as base', empty:'Add at least two places to compare.',
+    ctaH:'Where did the system hide your money?', ctaP:'Tax at your residence is just one layer. At the forum we connect income, pension and pillar 3a into one picture.', ctaBtn:'About the forum →',
+    noteHead:'How this is calculated.',
+    note:'Shows cantonal + municipal + federal income tax. Each canton has its own progressive tariff and multiplier mechanism (Aargau/Zürich tax-foot in %, Zug/Luzern units, Basel-Stadt single cantonal tariff with no municipal multiplier). Tariffs are approximated and calibrated to 2026 ESTV reference points; municipal factors are 2026. Church tax excluded. Estimate, not an official assessment. Inter-cantonal comparisons are order-of-magnitude.'}
+};
+
+/* ---------- Ввод чисел ----------
+   Регламент: поля type="text" inputmode="decimal" (type="number" ломает
+   навигацию на мобильном), парсер терпит запятую, пробел, неразрывный пробел
+   и швейцарский апостроф — 1'200'000 приходит вставкой из документов. */
+function fpNum(v){
+  var s=String(v==null?'':v).replace(/[\s\u00A0\u2009'\u2019]/g,'').replace(',','.');
+  var n=parseFloat(s);
+  return isFinite(n)?n:0;
+}
+
+/* ---------- State ---------- */
+var state={lang:'ru', income:200000, married:true, mode:'income', items:[], nextId:1, baseId:null,
+  selCanton:'AG', selMuni:0,
+  wealth:{cash:0, securities:0, property:0, mortgage:0, business:0, other:0}};
+
+/* Wealth asset categories. key -> i18n label keys. property positive, mortgage negative. */
+var WEALTH_FIELDS=[
+  {key:'cash',       sign:+1},
+  {key:'securities', sign:+1},
+  {key:'property',   sign:+1},
+  {key:'mortgage',   sign:-1},
+  {key:'business',   sign:+1},
+  {key:'other',      sign:+1}
+];
+function netWealth(){
+  var n=0; WEALTH_FIELDS.forEach(function(f){ n+=f.sign*(state.wealth[f.key]||0); });
+  return Math.max(0,n);
+}
+/* seed: Baden(AG) base, Seengen(AG), Zürich city, Zug city */
+function seed(){
+  addItem('AG',0); state.baseId=state.items[0].id;
+  addItem('ZH',0); addItem('ZG',0);
+}
+function addItem(ck,mi){
+  var C=CANTONS[ck]; var m=C.munis[mi];
+  state.items.push({id:state.nextId++, canton:ck, muniIdx:mi, name:m[0], mult:m[1], plz:m[2]||''});
+}
+
+/* ---------- Helpers ---------- */
+function fmt(n){ return Math.round(n).toLocaleString('de-CH').replace(/,/g,'\u2019'); }
+function t(k){ return I18N[state.lang][k]; }
+function factorLabel(ck,mult){
+  var C=CANTONS[ck];
+  if(C.noMuni) return '—';
+  var total = C.fullFuss ? mult : (C.kanton+mult);
+  var pct = Math.round(total*100)+'%';
+  // Zug/Luzern officially expressed in units (Einheiten) — show original in parentheses
+  if(ck==='LU'||ck==='ZG') return pct+' ('+total.toFixed(2)+')';
+  return pct;
+}
+
+/* ---------- Build selects ---------- */
+function buildCantonSel(){
+  var s=document.getElementById('canton-sel'); s.innerHTML='';
+  Object.keys(CANTONS).forEach(function(k){
+    var o=document.createElement('option'); o.value=k; o.textContent=CANTONS[k].name; s.appendChild(o);
+  });
+  s.value=state.selCanton;
+}
+function buildMuniSel(){
+  var s=document.getElementById('muni-sel'); s.innerHTML='';
+  var munis=CANTONS[state.selCanton].munis;
+  // cheapest = lowest multiplier in this canton
+  var minMult=Math.min.apply(null,munis.map(function(m){return m[1];}));
+  munis.forEach(function(m,i){
+    var o=document.createElement('option'); o.value=i;
+    var plz=m[2]?' ('+m[2]+')':'';
+    var star=(m[1]===minMult)?'\u2b50 ':'';
+    o.textContent=star+m[0]+plz;
+    s.appendChild(o);
+  });
+  s.value=state.selMuni;
+}
+
+/* ---------- Render ---------- */
+function applyText(){
+  var L=I18N[state.lang];
+  document.getElementById('t-title').innerHTML=L.title;
+  document.getElementById('t-sub').textContent=L.sub;
+  document.getElementById('t-inputs').textContent=L.inputs;
+  document.getElementById('t-income-l').childNodes[0].textContent=L.incomeL+' ';
+  document.getElementById('t-income-h').textContent=L.incomeH;
+  document.getElementById('t-income-explain').textContent=L.incomeExplain;
+  document.getElementById('t-status-l').textContent=L.statusL;
+  document.getElementById('t-married').textContent=L.married;
+  document.getElementById('t-single').textContent=L.single;
+  document.getElementById('t-wealth-h').textContent=L.wealthH;
+  document.getElementById('t-wealth-intro').textContent=L.wealthIntro;
+  document.getElementById('t-wealth-net').textContent=L.wealthNet;
+  document.getElementById('t-wealth-note').textContent=L.wealthNote;
+  document.getElementById('t-add').textContent=L.add;
+  document.getElementById('t-canton-l').textContent=L.cantonL;
+  document.getElementById('t-muni-l').textContent=L.muniL;
+  document.getElementById('t-result-h').textContent=L.resultH;
+  document.getElementById('t-cta-h').textContent=L.ctaH;
+  document.getElementById('t-cta-p').textContent=L.ctaP;
+  document.getElementById('t-cta-btn').textContent=L.ctaBtn;
+  document.getElementById('t-note').innerHTML='<b>'+L.noteHead+'</b> '+L.note;
+  document.getElementById('t-prog-h').textContent=L.progH;
+  document.getElementById('t-prog-intro').textContent=L.progIntro;
+  document.getElementById('t-prog-note').innerHTML='<b>'+L.noteHead+'</b> '+L.progNote;
+}
+function renderWealthFields(){
+  var L=I18N[state.lang]; var box=document.getElementById('wealth-fields'); box.innerHTML='';
+  WEALTH_FIELDS.forEach(function(f){
+    var wrap=document.createElement('div'); wrap.style.marginBottom='12px';
+    var val=state.wealth[f.key]? (state.wealth[f.key]/1000) : '';
+    wrap.innerHTML='<label>'+L['w_'+f.key]+' <span class="hint">'+L['w_'+f.key+'_h']+' · '+L.inThousands+'</span></label>'+
+      '<input type="text" data-w="'+f.key+'" value="'+val+'" placeholder="0" inputmode="decimal">';
+    box.appendChild(wrap);
+  });
+  box.querySelectorAll('[data-w]').forEach(function(inp){
+    inp.oninput=function(){ state.wealth[this.dataset.w]=fpNum(this.value)*1000; updateWealthNet(); renderResults(); };
+  });
+  updateWealthNet();
+}
+function updateWealthNet(){
+  document.getElementById('wealth-net-val').textContent=fmt(netWealth())+' CHF';
+}
+function renderChips(){
+  var L=I18N[state.lang]; var c=document.getElementById('chips'); c.innerHTML='';
+  state.items.forEach(function(it){
+    var isBase=(it.id===state.baseId);
+    var d=document.createElement('div'); d.className='chip'+(isBase?' base':'');
+    d.innerHTML='<span class="nm">'+it.name+'</span>'+
+      '<span class="ct">'+CANTONS[it.canton].name+'</span>'+
+      '<span class="ff">'+factorLabel(it.canton,it.mult)+'</span>'+
+      '<button class="basebtn" data-base="'+it.id+'">'+(isBase?L.base:L.setbase)+'</button>'+
+      '<button class="rm" data-rm="'+it.id+'">\u00d7</button>';
+    c.appendChild(d);
+  });
+  c.querySelectorAll('[data-rm]').forEach(function(b){ b.onclick=function(){
+    var id=+this.dataset.rm; state.items=state.items.filter(function(x){return x.id!==id;});
+    if(state.baseId===id){ state.baseId=state.items.length?state.items[0].id:null; }
+    renderAll();
+  };});
+  c.querySelectorAll('[data-base]').forEach(function(b){ b.onclick=function(){
+    state.baseId=+this.dataset.base; renderAll();
+  };});
+}
+function renderResults(){
+  var L=I18N[state.lang];
+  var tbl=document.getElementById('result-table');
+  var bars=document.getElementById('bars');
+  var emptyMsg=document.getElementById('empty-msg');
+  if(state.items.length<1){ tbl.innerHTML=''; bars.innerHTML=''; emptyMsg.textContent=L.empty; return; }
+  emptyMsg.textContent = state.items.length<2 ? L.empty : '';
+
+  var nw=netWealth();
+  var rows=state.items.map(function(it){
+    var inc=computeTax(it.canton,it.mult,state.income,state.married).total;
+    var wlth=wealthTax(it.canton, nw);
+    return {it:it, inc:inc, wlth:wlth, total:inc+wlth};
+  });
+  var baseRow=rows.find(function(r){return r.it.id===state.baseId;}) || rows[0];
+  var baseTotal=baseRow.total;
+  rows.sort(function(a,b){return a.total-b.total;});
+  var maxTotal=Math.max.apply(null,rows.map(function(r){return r.total;}));
+
+  var html='<thead><tr><th>'+L.thMuni+'</th><th>'+L.thIncome+'</th><th>'+L.thWealth+'</th><th>'+L.thTotal+'</th><th>'+L.thDelta+'</th></tr></thead><tbody>';
+  rows.forEach(function(r){
+    var isBase=(r.it.id===state.baseId);
+    var d=r.total-baseTotal;
+    var dcls=Math.abs(d)<1?'delta-zero':(d<0?'delta-good':'delta-bad');
+    var sign=d<0?'\u2212':'+';
+    var dtxt=Math.abs(d)<1?'—':(sign+fmt(Math.abs(d))+'<br><span style="font-weight:400;font-size:11px;">'+sign+fmt(Math.abs(d)/12)+'/'+L.perMonth+'</span>');
+    html+='<tr><td class="muni-name">'+r.it.name+'<br><span class="ct" style="font-weight:400;color:var(--muted);font-size:12px;">'+CANTONS[r.it.canton].name+' · '+factorLabel(r.it.canton,r.it.mult)+'</span>'+(isBase?' <span class="baseline-tag">'+L.base+'</span>':'')+'</td>'+
+      '<td>'+fmt(r.inc)+'</td>'+
+      '<td>'+(nw>0?fmt(r.wlth):'—')+'</td>'+
+      '<td style="font-weight:700;">'+fmt(r.total)+'</td>'+
+      '<td class="'+dcls+'">'+dtxt+'</td></tr>';
+  });
+  html+='</tbody>'; tbl.innerHTML=html;
+
+  bars.innerHTML='';
+  rows.forEach(function(r){
+    var w=Math.max(4,(r.total/maxTotal)*100);
+    var row=document.createElement('div'); row.className='bar-row'+(r.it.id===state.baseId?' base':'');
+    row.innerHTML='<div class="bl">'+r.it.name+'</div><div class="bar-track"><div class="bar-fill" style="width:'+w+'%"></div></div><div class="bar-val">'+fmt(r.total)+'</div>';
+    bars.appendChild(row);
+  });
+}
+function renderProgression(){
+  var L=I18N[state.lang];
+  var legend=document.getElementById('prog-legend');
+  var chart=document.getElementById('prog-chart');
+  var tbl=document.getElementById('prog-table');
+  // choose up to 3 items to plot; prefer base + first others
+  var items=state.items.slice();
+  var baseItem=items.find(function(x){return x.id===state.baseId;});
+  var ordered=[]; if(baseItem) ordered.push(baseItem);
+  items.forEach(function(x){ if(x.id!==state.baseId && ordered.length<3) ordered.push(x); });
+  if(ordered.length===0){ legend.innerHTML=''; chart.innerHTML=''; tbl.innerHTML=''; return; }
+
+  var COLORS=['#B98BFF','#E6B450','#8BE59B'];
+  var maxInc=Math.max(300000, Math.round(state.income*1.4/50000)*50000);
+  var minInc=0, N=60;
+  // build data: for each item, array of {inc, avg, marg}
+  var series=ordered.map(function(it,idx){
+    var pts=[];
+    var prevTax=null, prevInc=null;
+    for(var i=0;i<=N;i++){
+      var inc=minInc + (maxInc-minInc)*i/N;
+      var tax=computeTax(it.canton,it.mult,inc,state.married).total;
+      var avg = inc>0 ? tax/inc*100 : 0;
+      var marg = (prevInc!==null && inc>prevInc) ? (tax-prevTax)/(inc-prevInc)*100 : 0;
+      pts.push({inc:inc, avg:avg, marg:marg, tax:tax});
+      prevTax=tax; prevInc=inc;
+    }
+    return {it:it, color:COLORS[idx], pts:pts};
+  });
+
+  // legend
+  var lh='';
+  series.forEach(function(s){
+    lh+='<span class="lg" style="color:'+s.color+'"><span class="sw" style="background:'+s.color+'"></span><b style="color:var(--ink)">'+s.it.name+'</b></span>';
+  });
+  lh+='<span class="lg" style="color:var(--muted)"><span class="sw" style="background:var(--muted)"></span>'+L.progMarg+'</span>';
+  lh+='<span class="lg" style="color:var(--muted)"><span class="sw dash"></span>'+L.progAvg+'</span>';
+  legend.innerHTML=lh;
+
+  // SVG chart
+  var W=680,H=300,pad={l:44,r:14,t:14,b:34};
+  var plotW=W-pad.l-pad.r, plotH=H-pad.t-pad.b;
+  var maxRate=0;
+  series.forEach(function(s){s.pts.forEach(function(p){ if(p.marg>maxRate)maxRate=p.marg; if(p.avg>maxRate)maxRate=p.avg; });});
+  maxRate=Math.ceil((maxRate+2)/5)*5;
+  function X(inc){ return pad.l + (inc/maxInc)*plotW; }
+  function Y(r){ return pad.t + plotH - (r/maxRate)*plotH; }
+  var svg='<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg">';
+  // grid Y
+  for(var g=0; g<=maxRate; g+=5){
+    var yy=Y(g);
+    svg+='<line x1="'+pad.l+'" y1="'+yy+'" x2="'+(W-pad.r)+'" y2="'+yy+'" stroke="rgba(255,255,255,.12)" stroke-width="1"/>';
+    svg+='<text x="'+(pad.l-6)+'" y="'+(yy+3)+'" text-anchor="end" font-size="10" fill="#9A8BB3">'+g+'%</text>';
+  }
+  // grid X labels every 50k
+  for(var xg=0; xg<=maxInc; xg+=50000){
+    var xx=X(xg);
+    svg+='<text x="'+xx+'" y="'+(H-12)+'" text-anchor="middle" font-size="10" fill="#9A8BB3">'+(xg/1000)+'k</text>';
+  }
+  // your-income vertical marker
+  if(state.income>0 && state.income<=maxInc){
+    var xm=X(state.income);
+    svg+='<line x1="'+xm+'" y1="'+pad.t+'" x2="'+xm+'" y2="'+(pad.t+plotH)+'" stroke="#FF7A8A" stroke-width="1.2" stroke-dasharray="3 3"/>';
+  }
+  // lines
+  function pathFor(s,key){
+    var d='';
+    s.pts.forEach(function(p,i){ d+=(i?'L':'M')+X(p.inc).toFixed(1)+' '+Y(p[key]).toFixed(1)+' '; });
+    return d;
+  }
+  series.forEach(function(s){
+    svg+='<path d="'+pathFor(s,'marg')+'" fill="none" stroke="'+s.color+'" stroke-width="2.2"/>';
+    svg+='<path d="'+pathFor(s,'avg')+'" fill="none" stroke="'+s.color+'" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.85"/>';
+  });
+  svg+='</svg>';
+  chart.innerHTML=svg;
+
+  document.getElementById('t-prog-your').textContent = L.progYour.replace('{inc}', fmt(state.income));
+
+  // table by income steps
+  var steps=[50000,80000,100000,120000,150000,200000,250000,300000];
+  var th='<thead><tr><th>'+L.progIncome+'</th>';
+  series.forEach(function(s){ th+='<th>'+s.it.name+'</th>'; });
+  th+='</tr></thead><tbody>';
+  // reference series for detecting progression jumps = base (first) series
+  var refS = series[0];
+  function margAt(s,inc){ var d=2000; var a=computeTax(s.it.canton,s.it.mult,inc,state.married).total; var b=computeTax(s.it.canton,s.it.mult,inc+d,state.married).total; return (b-a)/d*100; }
+  var prevMarg=null;
+  steps.forEach(function(inc){
+    if(inc>maxInc) return;
+    var refMarg=margAt(refS,inc);
+    var jump = (prevMarg!==null) ? (refMarg-prevMarg) : 0;
+    var isJump = jump >= 4; // steep progression step (>=4 pts on the next franc)
+    prevMarg=refMarg;
+    var cls=[];
+    if(Math.abs(inc-state.income) < 15000) cls.push('prog-hi');
+    if(isJump) cls.push('prog-jump');
+    var clsAttr = cls.length ? ' class="'+cls.join(' ')+'"' : '';
+    th+='<tr'+clsAttr+'><td>'+fmt(inc)+(isJump?' <span class="jump-badge">\u26A1</span>':'')+'</td>';
+    series.forEach(function(s){
+      var tax=computeTax(s.it.canton,s.it.mult,inc,state.married).total;
+      var avg=(tax/inc*100).toFixed(1);
+      var d=5000; var tax2=computeTax(s.it.canton,s.it.mult,inc+d,state.married).total;
+      var marg=((tax2-tax)/d*100).toFixed(0);
+      var margStyle = isJump ? 'color:var(--bad);font-weight:700;font-size:11px;' : 'color:var(--muted);font-size:11px;';
+      th+='<td>'+avg+'% <span style="'+margStyle+'">/ '+marg+'%</span>'+
+        '<br><span style="font-weight:400;font-size:11px;color:var(--ink);">'+fmt(tax)+'</span>'+
+        '<span style="color:var(--muted);font-size:11px;"> · '+fmt(tax/12)+'/'+L.perMonth+'</span></td>';
+    });
+    th+='</tr>';
+  });
+  th+='</tbody>'; tbl.innerHTML=th;
+  document.getElementById('t-prog-jump-legend').innerHTML = '<span class="jump-badge">\u26A1</span> '+L.progJump;
+}
+function renderAll(){
+  applyText();
+  renderWealthFields();
+  renderChips(); renderResults(); renderProgression();
+}
+
+/* ---------- Events ---------- */
+document.querySelectorAll('.lang button').forEach(function(b){ b.onclick=function(){
+  state.lang=this.dataset.lang;
+  document.querySelectorAll('.lang button').forEach(function(x){x.classList.remove('on');});
+  this.classList.add('on'); document.documentElement.lang=state.lang; renderAll();
+};});
+var inc=document.getElementById('income'), incR=document.getElementById('income-range');
+inc.oninput=function(){ state.income=Math.round(fpNum(this.value)*1000); incR.value=Math.min(500000,Math.max(20000,state.income)); renderResults(); renderProgression(); markCompleted(); };
+incR.oninput=function(){ state.income=+this.value; inc.value=this.value/1000; renderResults(); renderProgression(); };
+document.querySelectorAll('#status-seg button').forEach(function(b){ b.onclick=function(){
+  state.married=(this.dataset.status==='married');
+  document.querySelectorAll('#status-seg button').forEach(function(x){x.classList.remove('on');});
+  this.classList.add('on'); renderResults(); renderProgression();
+};});
+document.getElementById('canton-sel').onchange=function(){ state.selCanton=this.value; state.selMuni=0; buildMuniSel(); };
+document.getElementById('muni-sel').onchange=function(){ state.selMuni=+this.value; };
+document.getElementById('add-btn').onclick=function(){
+  addItem(state.selCanton, state.selMuni);
+  if(state.baseId===null) state.baseId=state.items[0].id;
+  renderAll();
+  markCompleted();
+};
+
+/* Здесь таблица показана с самого начала (общины подставлены заранее),
+   поэтому «расчёт завершён» = первое осмысленное действие: свой доход
+   или добавленная для сравнения община. Дальше событие не повторяется. */
+function markCompleted(){
+  if(window.FPReport && FPReport.completed) FPReport.completed('calc-taxes');
+}
+
+/* ---------- Init ---------- */
+buildCantonSel(); buildMuniSel(); seed(); renderAll();
+(function(){
+  var kids=[].slice.call(document.querySelectorAll('.wrap > *'));
+  kids.forEach(function(el){ if(!el.classList.contains('top')) el.style.display='none'; });
+  document.getElementById('startBtn').addEventListener('click',function(){
+    kids.forEach(function(el){ if(!el.classList.contains('top')) el.style.display=''; });
+    this.style.display='none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+
+<script src="report-capture.js"></script>
+<script>
+  FPReport.init({
+    mount: '#report-capture',
+    formKey: 'calc-taxes',
+    reportName: 'Сравнение налогов',
+    title: 'Прислать сравнение налогов на почту?',
+    getSummary: function () {
+      // Разбираем таблицу по ячейкам: её textContent целиком склеивается
+      // в нечитаемую строку («МестоДоходИмуществоИтого/год...»).
+      var s = {};
+      var w = document.getElementById('wealth-net-val');
+      if (w && w.textContent.trim() && w.textContent.trim() !== '—' && w.textContent.trim() !== '0 CHF') {
+        s['Чистое имущество'] = w.textContent.trim();
+      }
+      var t = document.getElementById('result-table');
+      if (t) {
+        Array.from(t.rows).slice(1).forEach(function (row) {   // slice(1) — без шапки
+          if (row.cells.length < 4) return;
+          var c0 = row.cells[0];
+          // firstChild — название места без строки «Kanton · 130%»
+          var name = String((c0.firstChild || c0).textContent || '').trim();
+          var total = String(row.cells[3].textContent || '').trim();
+          if (!name || !total) return;
+          // В ячейке разницы слиплись годовая и месячная («−14'128−1'177/мес»).
+          // Месячная лежит отдельным элементом — берём её.
+          var diff = '';
+          if (row.cells[4]) {
+            var monthEl = Array.prototype.slice
+              .call(row.cells[4].querySelectorAll('*'))
+              .reverse()
+              .filter(function (el) { return /\/мес\s*$/.test(el.textContent || ''); })[0];
+            var d = monthEl
+              ? String(monthEl.textContent || '').trim()
+              : (String(row.cells[4].textContent || '').match(/[−+\-][^−+\-\s]*\/мес\s*$/) || [''])[0].trim();
+            if (d) diff = ' (' + d + ')';
+          }
+          s[name] = total + ' CHF/год' + diff;
+        });
+      }
+      return s;
+    }
+  });
+</script>
+<!-- Согласие на cookies + Google Analytics -->
+<script src="../site/cookie-consent.js"></script>
+</body>
+</html>
