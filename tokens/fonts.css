@@ -1,0 +1,6 @@
+/* Frankenplatz webfonts
+   Display: Unbounded (Google Fonts, weights 600/700/800)
+   Body:    Manrope  (Google Fonts, weights 400/500/600/700/800)
+   Both are genuine Google Fonts used by the source pages — loaded from the
+   Google Fonts CSS2 endpoint, which returns the @font-face rules the compiler reads. */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap");

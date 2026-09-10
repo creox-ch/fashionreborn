@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MEGACAMPUS Summit 2026 в Дубае, 18–21 ноября — крупнейшее лекционное событие в мире. Едем группой: билеты, логистика, продление поездки.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frankenplatz">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="MEGACAMPUS Summit 2026 — Дубай, 18–21 ноября">
+<meta property="og:description" content="MEGACAMPUS Summit 2026 в Дубае, 18–21 ноября — крупнейшее лекционное событие в мире. Едем группой: билеты, логистика, продление поездки.">
+<meta property="og:url" content="https://frankenplatz.ch/trips/megacampus">
+<link rel="canonical" href="https://frankenplatz.ch/trips/megacampus">
+<meta property="og:image" content="https://frankenplatz.ch/site/og/frankenplatz-megacampus-summit-dubai.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="MEGACAMPUS Summit 2026 — Дубай, 18–21 ноября">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MEGACAMPUS Summit 2026 — Дубай, 18–21 ноября">
+<meta name="twitter:description" content="MEGACAMPUS Summit 2026 в Дубае, 18–21 ноября — крупнейшее лекционное событие в мире. Едем группой: билеты, логистика, продление поездки.">
+<meta name="twitter:image" content="https://frankenplatz.ch/site/og/frankenplatz-megacampus-summit-dubai.jpg">
+<title>MEGACAMPUS Summit 2026 — Дубай, 18–21 ноября</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2A1049;
+  --ink-2:#331457;
+  --ink-3:#3E1A68;
+  --ash:#4B2480;
+  --smoke:#B2A3D2;
+  --bone:#F4F1FC;
+  --paper:#F4F1FC;
+  --ember:#F26A2B;
+  --ember-lo:#5A2E93;
+  --flare:#FF8542;
+  --line:rgba(255,255,255,.12);
+  --gut:var(--fp-gutter);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--bone);
+  font-family:'Manrope',system-ui,sans-serif;
+  font-size:18px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.disp{font-family:'Unbounded','Manrope',sans-serif;font-weight:600;letter-spacing:-.01em}
+
+/* grain substrate, behind everything */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;opacity:.5;
+}
+.wrap{position:relative;z-index:1}
+
+/* собственная навигация страницы убрана — используются канонические шапка и футер */
+
+/* ── hero ── */
+.mc-hero{
+  min-height:100svh;display:grid;
+  grid-template-rows:1fr auto;
+  padding:96px var(--gut) 0;
+  position:relative;overflow:hidden;
+}
+/* directional light, single source, top-right — not a symmetric halo */
+/* панорама Дубая — светящейся полосой по низу героя, белая размывка снимков срезана маской */
+.mc-hero::before{
+  content:'';position:absolute;left:50%;bottom:0;width:min(1560px,132%);aspect-ratio:2400/1263;
+  transform:translateX(-50%);z-index:0;pointer-events:none;
+  background:url("img/dubai-skyline.png") center bottom/contain no-repeat;
+  mix-blend-mode:screen;opacity:.5;
+  -webkit-mask-image:radial-gradient(58% 62% at 50% 76%,#000 0%,#000 40%,rgba(0,0,0,.35) 62%,transparent 82%);
+  mask-image:radial-gradient(58% 62% at 50% 76%,#000 0%,#000 40%,rgba(0,0,0,.35) 62%,transparent 82%);
+}
+/* передний слой панорамы — темные силуэты ближе к зрителю */
+.mc-skyline{position:absolute;left:50%;bottom:0;width:min(1720px,142%);aspect-ratio:2160/908;
+  transform:translateX(-50%);z-index:1;pointer-events:none;
+  background:url("img/dubai-front.png") center bottom/contain no-repeat;
+  mix-blend-mode:multiply;opacity:.92;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 34%,#000 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 34%,#000 100%);
+}
+/* планшет и телефон: панорама крупнее — примерно в полтора раза выше */
+@media(max-width:1023px){
+  .mc-hero::before{opacity:.44;width:200%;height:78%;bottom:0;background-size:cover;background-position:center bottom}
+  .mc-skyline{width:210%;opacity:.88;background-size:cover;background-position:center bottom;aspect-ratio:auto;height:72%}
+}
+@media(max-width:767px){
+  .mc-hero::before{opacity:.42;width:320%;height:84%}
+  .mc-skyline{width:340%;opacity:.85;height:78%}
+}
+.mc-hero::after{
+  content:'';position:absolute;top:-30%;right:-14%;width:76%;height:96%;
+  background:radial-gradient(ellipse 52% 60% at 62% 30%,rgba(150,70,190,.42),rgba(242,106,43,.14) 46%,transparent 72%);
+  pointer-events:none;z-index:0;
+}
+.hero-in{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-start;max-width:var(--fp-col);width:100%;margin:0 auto}
+.datemark{
+  font-size:18px;color:var(--flare);
+  letter-spacing:.16em;margin-bottom:clamp(20px,3vw,30px);
+}
+.datemark span{color:var(--smoke);letter-spacing:.16em}
+h1{
+  font-size:clamp(40px,8.6vw,116px);line-height:.94;
+  letter-spacing:-.025em;max-width:15ch;
+}
+h1 .acc{color:var(--ember)}
+.hero-foot{display:block;padding:clamp(90px,13vw,180px) 0 0}
+@media(max-width:767px){.mc-hero{min-height:auto;padding-bottom:clamp(30px,6vw,48px)}.hero-foot{padding-top:clamp(190px,58vw,300px)}}
+.lede{color:#D8CDF0;max-width:70ch;font-size:19px;line-height:1.55;text-wrap:pretty}
+.lede b,.why-p b,.p-txt b,.org-txt b{color:#fff;font-weight:700}
+/* цифры героя — панелью со стеклом и разделителями, поверх панорамы читаются */
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(32px,4vw,52px);border-top:1px solid rgba(255,255,255,.16)}
+@media(max-width:639px){.figs{grid-template-columns:1fr}}
+.fig{padding:clamp(20px,2.4vw,28px) clamp(20px,2.4vw,30px) clamp(24px,3vw,34px) 0}
+.fig+.fig{border-left:1px solid rgba(255,255,255,.12);padding-left:clamp(20px,2.6vw,34px)}
+@media(max-width:639px){.fig+.fig{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding-left:0}}
+.fig .n{font-family:'Unbounded',sans-serif;font-size:clamp(36px,4.6vw,58px);line-height:1;letter-spacing:-.01em;background:linear-gradient(96deg,#FF8542,#F26A2B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fig .l{font-size:18px;color:var(--bone);margin-top:10px;max-width:26ch;line-height:1.35;text-wrap:pretty}
+
+/* ── section frame ── */
+section{padding:clamp(70px,9vw,124px) var(--gut);position:relative}
+.inner{max-width:var(--fp-col);margin:0 auto}
+.rule{height:1px;background:var(--line);max-width:var(--fp-col);margin:0 auto}
+h2{font-size:clamp(28px,4.4vw,53px);line-height:1.04;letter-spacing:-.022em;max-width:18ch}
+h2 .acc{color:var(--ember)}
+.sub{color:var(--smoke);max-width:74ch;margin-top:20px;font-size:18px;text-wrap:pretty}
+
+/* ── arena: the signature ── */
+#bowl{background:linear-gradient(178deg,var(--ink) 0%,var(--ink-2) 38%,var(--ink-2) 62%,var(--ink) 100%)}
+.arena-grid{display:grid;gap:clamp(30px,4vw,60px);margin-top:clamp(38px,5vw,64px);grid-template-columns:1fr;border-top:1px solid var(--line);padding-top:clamp(26px,3vw,38px)}
+@media(min-width:1024px){.arena-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:start}}
+.arena-stage{position:relative;z-index:1;overflow:visible;padding-top:6px}
+.arena-stage svg{width:100%;max-width:560px;height:auto;display:block;margin:0;overflow:visible}
+.tier-band{cursor:pointer;transition:opacity .3s ease, filter .3s ease}
+.arena-stage.has-sel .tier-band{opacity:.34}
+.arena-stage.has-sel .tier-band.on{opacity:1;filter:drop-shadow(0 0 14px rgba(242,106,43,.45))}
+.tier-lbl{font-family:'Manrope',sans-serif;font-size:18px;fill:var(--bone);letter-spacing:.08em;pointer-events:none}
+.tier-lbl.dim{fill:#A493C9}
+
+/* tier readout */
+.readout{padding-top:0}
+@media(min-width:1024px){.readout{min-height:0}}
+.r-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.r-name{font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.1vw,37px);line-height:1}
+.r-price{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.4vw,27px);color:var(--flare);white-space:nowrap}
+.r-note{color:var(--smoke);font-size:18px;margin-top:12px}
+.r-list{list-style:none;margin-top:24px;display:grid;gap:11px}
+.r-list li{display:grid;grid-template-columns:15px 1fr;gap:13px;font-size:18px;color:#D3C7EC;line-height:1.42}
+.r-list li::before{
+  content:'';width:9px;height:9px;margin-top:8px;
+  background:var(--ember-lo);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+}
+.r-list li.new::before{background:var(--flare)}
+.r-hint{color:#A493C9;font-size:18px;margin-top:24px;}
+
+/* ── programme: 4 days, horizontal, not a numbered rail ── */
+.days{display:grid;gap:1px;background:var(--line);margin-top:clamp(38px,5vw,60px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+@media(min-width:640px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1180px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.day{background:#1B0B33;padding:clamp(24px,3vw,34px) clamp(20px,2.4vw,28px);display:flex;flex-direction:column;align-items:flex-start;min-height:236px;transition:background .3s}
+.day:hover{background:#251550}
+.d-num{font-family:'Unbounded',sans-serif;font-size:clamp(34px,4.2vw,52px);line-height:.85;color:var(--ash)}
+.day:hover .d-num{color:var(--ember-lo)}
+.d-date{font-size:18px;font-weight:800;color:var(--flare);margin-top:14px;letter-spacing:.1em}
+.d-body{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.d-ttl{font-family:'Unbounded','Manrope',sans-serif;font-size:22px;color:var(--bone);line-height:1.25;letter-spacing:-.01em}
+.d-txt{font-size:18px;color:var(--smoke);margin-top:9px;line-height:1.45}
+.d-tag{font-size:18px;color:var(--flare);margin-top:11px}
+
+/* ── speakers ── */
+#speakers{background:linear-gradient(180deg,#1B0B33 0%,#160828 60%,#1B0B33 100%)}
+.spk{margin-top:clamp(34px,4.4vw,54px);border-top:1px solid var(--line)}
+.spk-row{
+  display:grid;grid-template-columns:1fr;gap:6px;
+  padding:clamp(22px,2.9vw,32px) 0;border-bottom:1px solid var(--line);
+  transition:background .3s;
+}
+@media(min-width:768px){
+  /* три колонки фиксированной доли: имена, роли и факты стоят по своим линиям */
+  .spk-row{grid-template-columns:minmax(0,1.35fr) minmax(0,1.75fr) minmax(0,1.15fr);gap:clamp(18px,3vw,40px);align-items:start}
+  .spk-row:hover{background:rgba(255,255,255,.03)}
+  /* первые строки всех трёх колонок садятся на одну оптическую линию */
+  .s-role,.s-fact{padding-top:5px}
+}
+.s-name{font-family:'Unbounded',sans-serif;font-size:clamp(22px,2.7vw,32px);line-height:1.05;letter-spacing:-.012em}
+.s-role{color:var(--smoke);font-size:18px;line-height:1.42}
+.s-fact{color:var(--flare);font-size:18px;line-height:1.42;text-wrap:pretty}
+
+.spk-more{margin-top:26px;color:var(--smoke);font-size:18px}
+
+/* ── logistics ── */
+.log{display:grid;gap:1px;background:var(--line);margin-top:clamp(38px,5vw,58px);border:1px solid var(--line)}
+@media(min-width:640px){.log{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.log{grid-template-columns:repeat(3,1fr)}}
+.log-c{background:#1B0B33;padding:clamp(24px,3vw,34px)}
+.log-h{font-family:'Unbounded','Manrope',sans-serif;font-size:19px;font-weight:700;color:var(--bone);letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--flare)}
+.log-l{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:18px;line-height:1.4}
+.log-l:last-child{border-bottom:0}
+.log-l span:first-child{color:#D3C7EC}
+.log-l span:last-child{color:var(--bone);white-space:nowrap;font-weight:700}
+.log-note{font-size:18px;color:var(--smoke);margin-top:16px;line-height:1.5}
+
+/* ── why ── */
+.why-cols{display:grid;gap:clamp(20px,3vw,54px);margin-top:clamp(30px,3.6vw,46px);grid-template-columns:1fr}
+@media(min-width:900px){.why-cols{grid-template-columns:1fr 1fr}}
+.why-p{color:#D8CDF0;font-size:clamp(18px,1.6vw,17.5px);line-height:1.62;max-width:46ch}
+
+/* ── extended stay — строки «когда / что», всё по одной сетке ── */
+.plus-grid{margin-top:clamp(34px,4.4vw,54px);border-top:1px solid var(--line)}
+.plus-c{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:10px clamp(24px,4vw,56px);
+  padding:clamp(24px,3vw,32px) 0;border-bottom:1px solid var(--line);align-items:start}
+@media(max-width:767px){.plus-c{grid-template-columns:1fr;gap:8px}}
+.p-when{grid-column:1;font-family:'Unbounded','Manrope',sans-serif;font-size:18px;font-weight:700;color:var(--flare);letter-spacing:.04em;text-transform:uppercase;margin:0;padding-top:8px;overflow-wrap:anywhere;line-height:1.3}
+@media(min-width:768px){.p-when{grid-row:1 / span 3}}
+.p-ttl{grid-column:2;font-family:'Unbounded',sans-serif;font-size:clamp(21px,2.4vw,28px);line-height:1.12;letter-spacing:-.012em}
+@media(min-width:768px){.p-ttl{grid-row:1}}
+.p-txt{grid-column:2;color:#D8CDF0;font-size:18px;margin-top:6px;line-height:1.55;max-width:72ch}
+@media(min-width:768px){.p-txt{grid-row:2}}
+.p-tag{grid-column:2;font-size:18px;color:var(--smoke);margin-top:8px}
+@media(min-width:768px){.p-tag{grid-row:3}}
+@media(max-width:767px){.p-when,.p-ttl,.p-txt,.p-tag{grid-column:1}}
+.plus-note{margin-top:clamp(30px,3.4vw,44px);color:var(--smoke);font-size:18px;max-width:66ch;line-height:1.55}
+
+/* ── organizer ── */
+#org{background:linear-gradient(172deg,#1A0A31 0%,#130722 58%,#180A2C 100%)}
+.org-grid{display:grid;gap:clamp(28px,4vw,58px);grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.org-grid{grid-template-columns:.8fr 1.2fr}}
+.org-ph{
+  aspect-ratio:4/5;background:linear-gradient(160deg,var(--ink-3),var(--ink));
+  border:1px solid var(--line);display:flex;align-items:flex-end;padding:24px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%);
+}
+.org-ph span{font-size:18px;color:#A493C9;line-height:1.5}
+.org-q{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.5vw,28px);line-height:1.32;letter-spacing:-.01em}
+.org-role{color:var(--flare);font-size:18px;letter-spacing:.1em;margin-bottom:20px}
+.org-txt{color:#D8CDF0;margin-top:22px;font-size:18px;max-width:50ch}
+.org-cred{margin-top:24px;display:grid;gap:8px}
+.org-cred div{font-size:18px;color:var(--smoke)}
+.org-cred b{color:var(--bone);font-weight:600}
+
+/* ── close ── */
+#go{padding-bottom:clamp(40px,6vw,72px);background:linear-gradient(180deg,#2A1049 0%,#1C0B36 62%,#160828 100%)}
+.go-h{font-size:clamp(30px,5.4vw,68px);line-height:1;letter-spacing:-.025em;max-width:14ch}
+.go-h .acc{color:var(--ember)}
+.acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(30px,4vw,46px)}
+@media(max-width:539px){.acts{display:grid;grid-template-columns:1fr}.act{width:100%}}
+.act{
+  display:inline-flex;align-items:center;gap:12px;
+  min-height:50px;padding:14px 26px;text-decoration:none;font-size:18px;
+  background:#F26A2B;color:#fff;font-weight:700;
+  border-radius:999px;
+  transition:background .28s;
+}
+.act:hover{background:#FF8542}
+.act svg{transition:transform .32s cubic-bezier(.2,.7,.3,1)}
+.act:hover svg{transform:translate(3px,-3px)}
+.act.two{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.act.two:hover{background:rgba(255,255,255,.07);color:var(--bone)}
+.promo{margin-top:24px;font-size:18px;color:var(--smoke)}
+.promo b{color:var(--bone);font-weight:600;letter-spacing:.08em}
+
+/* ── footer ── */
+
+.wordmark{
+  max-width:var(--fp-col);margin:clamp(36px,5vw,60px) auto -1.2%;
+  display:block;width:100%;height:auto;
+}
+.wordmark text{
+  font-family:'Unbounded',sans-serif;fill:var(--ink-3);
+  font-size:150px;letter-spacing:.055em;
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ── ПРАВИЛА ВЕТКИ: акцентная типографика от 18px, кнопки от 50px ── */
+.r-hint,.d-date,.d-tag,.p-when,.sub{font-size:18px}
+.act,.go-b{min-height:50px;display:inline-flex;align-items:center;justify-content:center}
+/* длинные названия поездок не режем на две строки */
+.fp-foot__nav{grid-template-columns:minmax(0,1fr)!important;gap:2px!important}
+</style>
+<link rel="stylesheet" href="../site/chrome.css">
+<link rel="stylesheet" href="../site/layout-rules.css">
+<script src="../site/chrome.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+<!-- canonical header — держать синхронно с site/chrome.html -->
+<header class="fp-top">
+  <a class="fp-top__logo" href="/">Frankenplatz.ch</a>
+  <nav class="fp-top__nav">
+    <a class="fp-top__link" href="/">Форум в Baden</a>
+    <a class="fp-top__link" href="/trips/tony-robbins">Тони Роббинс · Кёльн</a>
+    <a class="fp-top__link fp-top__link--active" href="/trips/megacampus" aria-current="page">MEGACAMPUS · Дубай</a>
+  </nav>
+  <button class="fp-top__burger" aria-label="Открыть меню" aria-expanded="false"></button>
+  <div class="fp-top__menu">
+    <a class="fp-top__link" href="/">Форум в Baden</a>
+    <a class="fp-top__link" href="/trips/tony-robbins">Тони Роббинс · Кёльн</a>
+    <a class="fp-top__link fp-top__link--active" href="/trips/megacampus" aria-current="page">MEGACAMPUS · Дубай</a>
+  </div>
+</header>
+
+<header class="mc-hero">
+  <div class="mc-skyline"></div>
+  <div class="hero-in">
+    <div class="datemark">18–21 НОЯБРЯ 2026 &nbsp;<span>/ COCA-COLA ARENA, ДУБАЙ</span></div>
+    <h1>Четыре дня<br>в центре<br><span class="acc">мирового</span> зала</h1>
+  </div>
+  <div class="hero-in hero-foot">
+    <p class="lede">Крупнейшее в мире интеллектуальное событие для предпринимателей, внесённое в <b>Книгу рекордов Гиннесса</b>. Приезжают не за инструкцией, а за <b>другим масштабом мышления</b> — и уезжают с планом, которого не было.</p>
+    <div class="figs">
+      <div class="fig"><div class="n">102</div><div class="l">страны мира</div></div>
+      <div class="fig"><div class="n">45%</div><div class="l">владельцы компаний</div></div>
+      <div class="fig"><div class="n">16</div><div class="l">мировых спикеров</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="rule"></div>
+
+<!-- ── WHY ── -->
+<section id="why">
+  <div class="inner why-in">
+    <h2>Четыре дня, после которых <span class="acc">меняется масштаб</span></h2>
+    <div class="why-cols">
+      <p class="why-p">В зале на 17 тысяч мест почти половина — владельцы компаний из 102 стран. Разговор в очереди за кофе здесь стоит дороже иного консалтинга: рядом стоят те, кто уже прошёл этап, на котором ты застрял.</p>
+      <p class="why-p">Это не формат «бери и делай». Это событие про смыслы, энергию и снятие потолка — про то, как перестать считать свой бизнес маленьким. Одни увозят отсюда план масштабирования, другие — идею, которая до этого даже не приходила в голову.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── SIGNATURE: the arena bowl ── -->
+<section id="bowl">
+  <div class="inner">
+    <h2>Выбираешь не билет,<br>а <span class="acc">место в зале</span></h2>
+    <p class="sub">Членство на год: доступ к платформе, закрытым чатам и записям — плюс сам саммит. Нажми на сектор, чтобы посмотреть, что входит.</p>
+
+    <div class="arena-grid">
+      <div class="arena-stage" id="stage">
+        <svg viewBox="0 0 520 372" role="img" aria-label="Схема зала Coca-Cola Arena по тарифам">
+          <defs>
+            <linearGradient id="gStage" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#F26A2B"/><stop offset="100%" stop-color="#FF8542"/>
+            </linearGradient>
+          </defs>
+          <g class="tier-band" data-t="standard"><path d="M10 114 A104 104 0 0 1 114 10 H406 A104 104 0 0 1 510 114 V246 A104 104 0 0 1 406 350 H114 A104 104 0 0 1 10 246 Z M46 132 A88 88 0 0 1 134 44 H386 A88 88 0 0 1 474 132 V228 A88 88 0 0 1 386 316 H134 A88 88 0 0 1 46 228 Z" fill-rule="evenodd" fill="#2A1049" stroke="#B2A3D2" stroke-width="1" stroke-opacity=".28"/></g>
+          <g class="tier-band" data-t="business"><path d="M46 132 A88 88 0 0 1 134 44 H386 A88 88 0 0 1 474 132 V228 A88 88 0 0 1 386 316 H134 A88 88 0 0 1 46 228 Z M86 150 A72 72 0 0 1 158 78 H362 A72 72 0 0 1 434 150 V210 A72 72 0 0 1 362 282 H158 A72 72 0 0 1 86 210 Z" fill-rule="evenodd" fill="#331457" stroke="#B2A3D2" stroke-width="1" stroke-opacity=".34"/></g>
+          <g class="tier-band" data-t="vip"><path d="M86 150 A72 72 0 0 1 158 78 H362 A72 72 0 0 1 434 150 V210 A72 72 0 0 1 362 282 H158 A72 72 0 0 1 86 210 Z M128 168 A56 56 0 0 1 184 112 H336 A56 56 0 0 1 392 168 V192 A56 56 0 0 1 336 248 H184 A56 56 0 0 1 128 192 Z" fill-rule="evenodd" fill="#3E1A68" stroke="#5A2E93" stroke-width="1" stroke-opacity=".6"/></g>
+          <g class="tier-band" data-t="platinum"><path d="M128 168 A56 56 0 0 1 184 112 H336 A56 56 0 0 1 392 168 V192 A56 56 0 0 1 336 248 H184 A56 56 0 0 1 128 192 Z" fill="#4B2480" stroke="#F26A2B" stroke-width="1.2" stroke-opacity=".6"/></g>
+          <g style="pointer-events:none">
+            <rect x="212" y="158" width="96" height="34" rx="4" fill="url(#gStage)"/>
+            <text x="260" y="176" text-anchor="middle" dominant-baseline="central" font-family="Manrope,sans-serif" font-weight="700" font-size="18" letter-spacing="1.6" fill="#FFFFFF">СЦЕНА</text>
+          </g>
+          <text class="tier-lbl" x="260" y="222" text-anchor="middle" dominant-baseline="central">PLATINUM</text>
+          <text class="tier-lbl" x="260" y="266" text-anchor="middle" dominant-baseline="central">VIP</text>
+          <text class="tier-lbl dim" x="260" y="300" text-anchor="middle" dominant-baseline="central">BUSINESS</text>
+          <text class="tier-lbl dim" x="260" y="334" text-anchor="middle" dominant-baseline="central">STANDARD</text>
+        </svg>
+      </div>
+
+      <div class="readout" id="readout"></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── PROGRAMME ── -->
+<section id="prog">
+  <div class="inner">
+    <h2>Программа <span class="acc">четырёх</span> дней</h2>
+    <p class="sub">Порядок выступлений организаторы не раскрывают заранее — расписание появится ближе к саммиту. Старт программы каждый день в 10:00, обеденный перерыв 1,5 часа.</p>
+    <div class="days">
+      <div class="day">
+        <div class="d-num">01</div><div class="d-date">18 НОЯБРЯ</div>
+        <div class="d-body">
+          <div class="d-ttl">Отраслевые кампусы</div>
+          <div class="d-txt">Marketing, HR и Founders — по 100 человек в каждом, 3 часа закрытой работы.</div>
+          <div class="d-tag">+ питч-сессия с Draper</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-num">02</div><div class="d-date">19 НОЯБРЯ</div>
+        <div class="d-body">
+          <div class="d-ttl">5000 шагов счастья</div>
+          <div class="d-txt">Прогулка по Kite Beach с Ицхаком Пинтосевичем и Григорием Аветовым. Нужны наушники.</div>
+          <div class="d-tag">+ пре-пати</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-num">03</div><div class="d-date">20 НОЯБРЯ</div>
+        <div class="d-body">
+          <div class="d-ttl">Мастер-классы спикеров</div>
+          <div class="d-txt">Основная сцена Coca-Cola Arena. Синхронный перевод на русский.</div>
+          <div class="d-tag">Platinum: завтрак с Ульрихом + гала-ужин</div>
+        </div>
+      </div>
+      <div class="day">
+        <div class="d-num">04</div><div class="d-date">21 НОЯБРЯ</div>
+        <div class="d-body">
+          <div class="d-ttl">Финал программы</div>
+          <div class="d-txt">Продолжение мастер-классов и закрытие саммита.</div>
+          <div class="d-tag">Афтепати: Business, VIP, Platinum</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPEAKERS ── -->
+<section id="speakers">
+  <div class="inner">
+    <h2>Кто на сцене</h2>
+    <p class="sub">Все, кто перечислен, уже подтверждены организаторами.<br>Список будет пополняться вплоть до самого саммита.</p>
+    <div class="spk">
+      <div class="spk-row">
+        <div class="s-name">Джеймс Кэмерон</div>
+        <div class="s-role">Кинорежиссёр, CEO Lightstorm Entertainment. Трёхкратный обладатель «Оскара»</div>
+        <div class="s-fact">$2,8 млрд — самый кассовый фильм в истории</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Магнус Карлсен</div>
+        <div class="s-role">Величайший шахматист в истории</div>
+        <div class="s-fact">Рейтинг 2882 — рекорд всех времён</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Хабиб Нурмагомедов</div>
+        <div class="s-role">Специальный гость. Непобеждённый чемпион UFC</div>
+        <div class="s-fact">13+ млн проданных трансляций</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Дэйв Ульрих</div>
+        <div class="s-role">Отец современного HR, автор более 30 книг</div>
+        <div class="s-fact">Создатель модели HR Business Partner</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Иссам Казим</div>
+        <div class="s-role">CEO Корпорации Дубая по туризму и маркетингу (Visit Dubai)</div>
+        <div class="s-fact">15+ лет строит бренд Дубая</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Кристоф Адами</div>
+        <div class="s-role">Профессор Michigan State University: микробиология, генетика, физика</div>
+        <div class="s-fact">Медаль NASA, создатель системы Avida</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Вим Хоф</div>
+        <div class="s-role">Метод Вима Хофа. Ставит рекорд по массовому погружению в лёд</div>
+        <div class="s-fact">Участвовать можно лично</div>
+      </div>
+      <div class="spk-row">
+        <div class="s-name">Григорий Аветов</div>
+        <div class="s-role">Основатель Megacampus, организатор саммита</div>
+        <div class="s-fact">Рекорд Гиннесса 2024</div>
+      </div>
+    </div>
+    <p class="spk-more">Заявлено 10 мировых спикеров и ещё 6 — имена раскроют ближе к событию.<br>По опыту прошлого года: после анонса первого спикера цены заметно растут.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── LOGISTICS ── -->
+<section>
+  <div class="inner">
+    <h2>Как <span class="acc">доехать</span> и где жить</h2>
+    <p class="sub">Площадка — Coca-Cola Arena в районе City Walk. Рядом Downtown Dubai, Business Bay, Jumeirah и Al Wasl: пешком или короткое такси.</p>
+    <div class="log">
+      <div class="log-c">
+        <div class="log-h">ПЕРЕЛЁТ ИЗ ЦЮРИХА</div>
+        <div class="log-l"><span>Прямой рейс</span><span>от CHF 571</span></div>
+        <div class="log-l"><span>Emirates</span><span>CHF 784</span></div>
+        <div class="log-l"><span>С пересадкой</span><span>от CHF 220</span></div>
+        <div class="log-note">Цены ориентировочные, проверяй на дату вылета.</div>
+      </div>
+      <div class="log-c">
+        <div class="log-h">ПЕРЕЛЁТ ИЗ МОСКВЫ</div>
+        <div class="log-l"><span>Прямой рейс</span><span>от ₽28 000</span></div>
+        <div class="log-note">Около CHF 270 по текущему курсу. Прямое сообщение Москва — Дубай выполняется несколькими перевозчиками.</div>
+      </div>
+      <div class="log-c">
+        <div class="log-h">ЖИЛЬЁ — ДВА ВАРИАНТА</div>
+        <div class="log-l"><span>Вариант 1: большие апарты / вилла / дом</span><span>$100 / ночь</span></div>
+        <div class="log-l"><span>Саммит, 4 ночи</span><span>≈ $400</span></div>
+        <div class="log-l"><span>С ранним заездом, 6 ночей</span><span>≈ $600</span></div>
+        <div class="log-l"><span>Вариант 2: номера в одном отеле</span><span>по запросу</span></div>
+        <div class="log-note">Вариант 1 — селимся группой: спальни, гостиная, общие завтраки и инсайты. Вариант 2 — каждый в своём номере, но все в одном отеле. Кто прилетает 16-го — берём ночи с 16 по 22 ноября.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── EXTENDED STAY ── -->
+<section id="plus">
+  <div class="inner">
+    <h2>Часть группы прилетает <span class="acc">на два дня раньше</span></h2>
+    <p class="sub">16 и 17 ноября — до того, как начнётся саммит. Дубай в эти дни работает на тебя: искусство, город, съёмка и стол, за которым знакомятся по-настоящему. Присоединиться можно к любому дню.</p>
+
+    <div class="plus-grid">
+      <div class="plus-c">
+        <div class="p-when">16–17 НОЯБРЯ</div>
+        <div class="p-ttl">Экскурсии по городу</div>
+        <div class="p-txt">Смотрим Дубай как предприниматели, а не как туристы: как устроен город, который за 30 лет собрал сюда весь мир. Старый город и рынки специй, Downtown, набережные.</div>
+      </div>
+      <div class="plus-c">
+        <div class="p-when">19–22 НОЯБРЯ</div>
+        <div class="p-ttl">World Art Dubai</div>
+        <div class="p-txt">Крупнейшая ярмарка современного искусства MENA идёт параллельно саммиту: 400+ галерей и художников из 65 стран, 10 000 работ. Вход свободный, открыто с 13:00 до 21:00.</div>
+        <div class="p-tag">Dubai Exhibition Centre, Expo City</div>
+      </div>
+      <div class="plus-c">
+        <div class="p-when">ПО ДОГОВОРЁННОСТИ</div>
+        <div class="p-ttl">Фотосеты</div>
+        <div class="p-txt">Съёмка на локациях Дубая: небоскрёбы, пустыня, набережная. Личный бренд, обложки, контент на год вперёд — забираешь готовый материал, а не пару кадров с телефона.</div>
+      </div>
+      <div class="plus-c">
+        <div class="p-when">ВСЮ ПОЕЗДКУ</div>
+        <div class="p-ttl">Шопинг и гастрономия</div>
+        <div class="p-txt">Dubai Mall и восточные рынки с золотом, текстилем и специями. Кухни со всего мира — от уличной еды до мишленовских ресторанов. Ужины группой, где и происходит нетворкинг.</div>
+      </div>
+    </div>
+
+    <p class="plus-note">Состав программы формируется по группе. Что интересно именно тебе — обсуждаем в чате поездки.</p>
+  </div>
+</section>
+
+<!-- ── ORGANIZER ── -->
+<section id="org">
+  <div class="inner org-grid">
+    <div style="display:flex;flex-direction:column;gap:14px;justify-content:center">
+      <a href="https://www.instagram.com/reel/DbGZBpuK1xb/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:10px;justify-content:center;align-items:center;text-align:center;aspect-ratio:4/5;background:linear-gradient(160deg,var(--ink-3),var(--ink));border:1px solid var(--line);text-decoration:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%)">
+        <span style="font-size:44px">▶</span>
+        <span style="font-family:'Unbounded',sans-serif;font-size:18px;color:var(--bone);max-width:20ch;line-height:1.4">Как это было на MOTO-ZÜRICH — смотри reel</span>
+        <span style="font-size:18px;color:var(--smoke)">Instagram · 1 мин</span>
+      </a>
+      <a href="https://chudina.me/proekty" target="_blank" rel="noopener" style="display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:15px 22px;font-size:18px;font-weight:600;color:var(--ink);background:var(--flare);text-decoration:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%)">Больше о Ксении и её проектах →</a>
+    </div>
+    <div>
+      <div class="org-role">ОРГАНИЗАТОР ПО ШВЕЙЦАРИИ И ЕВРОПЕ</div>
+      <div class="org-q">Именно после MEGACAMPUS Summit 2024 я вышла на новый масштаб и запустила MOTO-ZÜRICH.</div>
+      <p class="org-txt">Ксения Чудина — официальный партнёр MEGACAMPUS. Объединяет бизнес, искусство и комьюнити в Европе и Швейцарии. Поехали вместе: помогу с билетом, тарифом и поиском соседей по апартаментам.</p>
+      <div class="org-cred">
+        <div><b>Владелица</b> галереи Kunstwerkstube, Baden</div>
+        <div><b>Основатель</b> сообщества и бизнес-клуба «Свои Люди»</div>
+        <div><b>Сооснователь</b> выставки MOTO-ZÜRICH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── CLOSE ── -->
+<section id="go">
+  <div class="inner">
+    <h2 class="go-h">Место в зале<br>берут <span class="acc">заранее</span></h2>
+    <div class="acts">
+      <a class="act" href="https://summit.megacampus.ru/dubai26/?roistat=partners_FIRE&utm_source=partners&utm_medium=refferal&utm_campaign=FIRE&promo=FIRE&partner=FIRE" target="_blank" rel="noopener">
+        Оплата в рублях
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 10.5L10.5 2.5M10.5 2.5H4.2M10.5 2.5V8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </a>
+      <a class="act" href="https://megacampus.com/summit/dubai26/?roistat=partners_FIRE&utm_source=partners&utm_medium=refferal&utm_campaign=FIRE&promo=FIRE&partner=FIRE" target="_blank" rel="noopener">
+        Оплата в валюте
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 10.5L10.5 2.5M10.5 2.5H4.2M10.5 2.5V8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </a>
+      <a class="act two" href="https://t.me/+iWYDmTHIhsAxYjIy" target="_blank" rel="noopener">
+        Группа поездки в Telegram
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 10.5L10.5 2.5M10.5 2.5H4.2M10.5 2.5V8.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </a>
+    </div>
+    <p class="promo">Промокод <b>FIRE</b> уже активирован в кнопках — дополнительные 5% к текущей цене.</p>
+  </div>
+</section>
+
+<!-- canonical footer — держать синхронно с site/chrome.html -->
+<footer class="fp-foot">
+  <div class="fp-foot__grid">
+    <div><p class="fp-foot__name"><a href="/">Frankenplatz.ch</a></p></div>
+    <nav>
+      <p class="fp-foot__h">Страницы</p>
+      <div class="fp-foot__nav">
+        <a href="/">Форум в Baden</a>
+        <a href="/trips/tony-robbins">Тони Роббинс · Кёльн</a>
+        <a href="/trips/megacampus">MEGACAMPUS · Дубай</a>
+      </div>
+    </nav>
+    <div>
+      <p class="fp-foot__h">Соцсети</p>
+      <div class="fp-foot__soc">
+        <a href="https://www.instagram.com/frankenplatz.ch/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div>
+      <p class="fp-foot__h">Новости форума</p>
+      <form class="fp-foot__form">
+        <input class="fp-foot__input" type="email" required placeholder="Твой e-mail" aria-label="E-mail">
+        <button class="fp-foot__send" type="submit">Подписаться</button>
+      </form>
+      <p class="fp-foot__note">Никакого спама — только программа и спикеры.</p>
+    </div>
+  </div>
+  <div class="fp-foot__bottom">
+    <span>© 2026 Frankenplatz.ch · Форум о деньгах в Швейцарии · 24–25.10.2026 · Baden <svg class="fp-flag" viewBox="0 0 32 32" role="img" aria-label="Швейцария"><rect width="32" height="32" fill="#FF0000"></rect><rect x="13" y="6" width="6" height="20" fill="#FFFFFF"></rect><rect x="6" y="13" width="20" height="6" fill="#FFFFFF"></rect></svg> · 15 мин от Zürich HB</span>
+    <span class="fp-foot__legal"><a href="/legal#impressum">Impressum</a> · <a href="/legal#agb">AGB</a> · <a href="/legal#datenschutz">Datenschutz</a></span>
+    <span><a href="https://www.instagram.com/frankenplatz.ch/" target="_blank" rel="noopener">@frankenplatz.ch</a></span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const TIERS = {
+  standard:{
+    name:'Standard', price:'11 000 ₽', note:'за год',
+    items:[
+      {t:'Членство Megacampus People'},
+      {t:'Доступ на Megacampus Summit'},
+      {t:'Приложение Megacampus с глобальным чатом'},
+      {t:'10 эфиров с мировыми мыслителями'},
+      {t:'Золотая коллекция мастер-классов'}
+    ]
+  },
+  business:{
+    name:'Business', price:'26 000 ₽', note:'за год — всё из Standard, плюс:',
+    items:[
+      {t:'Закрытый Business-чат в приложении',n:1},
+      {t:'Сектор Business в зале',n:1},
+      {t:'Фиксация конкретного места на выбор',n:1},
+      {t:'Доступ на Afterparty',n:1}
+    ]
+  },
+  vip:{
+    name:'VIP', price:'по запросу', note:'за год — всё из Business, плюс:',
+    items:[
+      {t:'Закрытый VIP-чат в приложении',n:1},
+      {t:'Сектор VIP у сцены',n:1},
+      {t:'VIP Pre-party',n:1},
+      {t:'VIP Lounge с кофе-брейками и обедами',n:1},
+      {t:'Отдельный вход на площадку',n:1}
+    ]
+  },
+  platinum:{
+    name:'Platinum', price:'по запросу', note:'за год — всё из VIP, плюс:',
+    items:[
+      {t:'Platinum Camp: расширенная 5-дневная программа',n:1},
+      {t:'Бизнес-завтрак с Дэйвом Ульрихом',n:1},
+      {t:'Гала-ужин со спикерами за одним столом',n:1},
+      {t:'Бизнес-миссия в Департамент экономики Дубая',n:1},
+      {t:'Фото- и автограф-сессия со спикерами',n:1},
+      {t:'PR бренда на ресурсах Megacampus',n:1},
+      {t:'Platinum Lounge с премиальным кейтерингом',n:1}
+    ]
+  }
+};
+const ORDER=['standard','business','vip','platinum'];
+const out=document.getElementById('readout');
+const stage=document.getElementById('stage');
+const bands=[...document.querySelectorAll('.tier-band')];
+
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function render(key){
+  const d=TIERS[key];
+  out.innerHTML=
+    '<div class="r-top"><div class="r-name">'+esc(d.name)+'</div><div class="r-price">'+esc(d.price)+'</div></div>'+
+    '<div class="r-note">'+esc(d.note)+'</div>'+
+    '<ul class="r-list">'+d.items.map(i=>'<li'+(i.n?' class="new"':'')+'>'+esc(i.t)+'</li>').join('')+'</ul>'+
+    '<div class="r-hint">Нажми другой сектор на схеме зала</div>';
+  stage.classList.add('has-sel');
+  bands.forEach(b=>b.classList.toggle('on',b.dataset.t===key));
+}
+
+bands.forEach(b=>{
+  b.setAttribute('tabindex','0');
+  b.setAttribute('role','button');
+  b.setAttribute('aria-label','Тариф '+TIERS[b.dataset.t].name);
+  b.addEventListener('click',()=>render(b.dataset.t));
+  b.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();render(b.dataset.t);}
+  });
+});
+
+render('standard');
+</script>
+<script src="../site/cookie-consent.js"></script>
+<script src="../site/help-widget.js" defer></script>
+</body>
+</html>

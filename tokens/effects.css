@@ -1,0 +1,41 @@
+/* ============================================================
+   Frankenplatz — Effects: gradients, shadows, blur, motion
+   The brand's signature look lives here.
+   ============================================================ */
+:root {
+  /* ---- Signature gradients ---- */
+  /* gold→lilac diagonal — headline highlights, stat numbers, taglines (clip to text) */
+  --grad-gold-lila:   linear-gradient(120deg, var(--gold), var(--lila-bright));  /* @kind other */
+  /* gold button fill */
+  --grad-gold:        linear-gradient(135deg, var(--gold), var(--gold-bright));  /* @kind other */
+  /* frosted tinted card fills */
+  --grad-card-lila:   linear-gradient(160deg, rgba(154,111,212,.12) 0%, rgba(230,180,80,.06) 100%);  /* @kind other */
+  --grad-card-gold:   linear-gradient(160deg, rgba(230,180,80,.15) 0%, rgba(198,138,46,.06) 100%);  /* @kind other */
+  /* warm band fill */
+  --grad-band:        linear-gradient(135deg, rgba(230,180,80,.18) 0%, rgba(154,111,212,.09) 100%);  /* @kind other */
+  /* final card fill */
+  --grad-final:       linear-gradient(160deg, rgba(123,63,228,.22), rgba(230,180,80,.10));  /* @kind other */
+  /* page backdrop radials */
+  --grad-backdrop:    radial-gradient(90% 60% at 50% -5%, #241138 0%, #170B23 45%, #140A1F 100%);  /* @kind other */
+  --grad-hero:        radial-gradient(120% 95% at 50% -8%, rgba(36,17,56,.92) 0%, rgba(22,11,34,.42) 52%, rgba(20,10,31,0) 100%);  /* @kind other */
+
+  /* ---- Shadows (colored glows, no hard drop-shadows) ---- */
+  --shadow-gold:      0 14px 36px rgba(230,180,80,.34);  /* @kind shadow */
+  --shadow-gold-sm:   0 8px 24px rgba(230,180,80,.30);   /* @kind shadow */
+  --shadow-lila:      0 20px 50px rgba(123,63,228,.20);  /* @kind shadow */
+  --shadow-gold-soft: 0 20px 50px rgba(230,180,80,.12);  /* @kind shadow */
+
+  /* ---- Blur ---- */
+  --blur-nav:    14px;   /* @kind other */
+  --blur-glass:  8px;    /* @kind other */
+  --blur-glow:   120px;  /* @kind other */
+
+  /* ---- Motion ---- */
+  --ease-out:     cubic-bezier(.2, .7, .3, 1);  /* @kind other */
+  --dur-fast:     .18s;             /* @kind other */
+  --dur-base:     .25s;             /* @kind other */
+  --dur-btn:      .20s;             /* @kind other */
+  --dur-reveal:   .70s;             /* @kind other */
+  --lift:         translateY(-2px); /* @kind other */
+  --lift-card:    translateY(-5px); /* @kind other */
+}

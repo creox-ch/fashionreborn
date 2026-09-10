@@ -1,0 +1,73 @@
+/* ============================================================
+   Frankenplatz — base resets & shared helpers
+   Kept minimal: brand primitives live in components.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display type helper */
+.fp-display {
+  font-family: var(--font-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+}
+
+/* Gold→lilac gradient text — the brand's signature text treatment */
+.fp-grad-text {
+  background: var(--grad-gold-lila);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The deep-violet page backdrop + radial wash (fixed layer) */
+.fp-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: -2;
+}
+.fp-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-backdrop);
+}
+
+/* Медиа: не вылезать за родителя и не дёргать вёрстку при загрузке */
+img, video { max-width: 100%; height: auto; }
+iframe { max-width: 100%; }
+
+/* Ambient blurred glow orbs */
+.fp-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(var(--blur-glow));
+  opacity: .32;
+  z-index: 0;
+  pointer-events: none;
+}
+.fp-glow--violet { width: 520px; height: 520px; background: var(--violet-deep); top: -160px; left: -120px; }
+.fp-glow--amber  { width: 560px; height: 560px; background: var(--gold-amber); bottom: 10%; right: -180px; opacity: .40; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
+/* Флаг Швейцарии вместо эмодзи: вектор, поэтому резкий на любом кегле и
+   одинаковый во всех системах. Размер — по кеглю строки, как у символа. */
+.fp-flag{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.16em;flex:none}
+
+/* Неразрывный фрагмент строки: переносим только по разделителям, не внутри */
+.fp-nb{white-space:nowrap}

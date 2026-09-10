@@ -1,0 +1,52 @@
+/* ============================================================
+   Frankenplatz — Color tokens
+   Dark-only palette. Deep violet base, gold + lilac accents.
+   ============================================================ */
+:root {
+  /* ---- Base surfaces (deep violet) ---- */
+  --bg:            #140A1F;  /* app background — deep dark violet */
+  --bg-2:          #1C1029;  /* raised background */
+  --panel:         #231634;  /* panel / solid card fill */
+
+  /* ---- Accent · Lilac (primary brand hue) ---- */
+  --lila:          #9A6FD4;  /* accent lilac */
+  --lila-bright:   #B98BFF;  /* bright lilac — links, highlights */
+  --violet-deep:   #7B3FE4;  /* saturated violet — glows, deep gradients */
+
+  /* ---- Accent · Gold (secondary / CTA hue) ---- */
+  --gold:          #E6B450;  /* gold — eyebrows, CTAs, accents */
+  --gold-bright:   #F5C969;  /* bright gold — gradient top-stop */
+  --gold-amber:    #C68A2E;  /* amber — ambient glow */
+
+  /* ---- Text ---- */
+  --text:          #F3EEF9;  /* primary text (near-white violet-tinted) */
+  --heading:       #FFFFFF;  /* pure white — headings */
+  --muted:         #C3B7D4;  /* secondary text */
+  --muted-2:       #9A8BB3;  /* tertiary / captions */
+
+  /* ---- Semantic ---- */
+  --red:           #FF7A8A;  /* pain / negative / "чего не будет" */
+  --green:         #8BE59B;  /* free badge / positive fill */
+  --green-text:    #9DEFAD;  /* positive text on dark */
+  --ink-on-gold:   #2A1A05;  /* text on gold surfaces */
+  --ink-on-green:  #0E2A12;  /* text on green surfaces */
+
+  /* ---- Lines & glass (translucent whites) ---- */
+  --line:          rgba(255,255,255,.10);   /* hairline border */
+  --line-strong:   rgba(255,255,255,.16);   /* stronger border */
+  --glass:         rgba(255,255,255,.045);  /* frosted card fill */
+  --glass-2:       rgba(255,255,255,.06);   /* frosted hover fill */
+
+  /* ---- Semantic aliases (use these in product code) ---- */
+  --surface-app:      var(--bg);
+  --surface-card:     var(--glass);
+  --surface-panel:    var(--panel);
+  --text-primary:     var(--text);
+  --text-heading:     var(--heading);
+  --text-secondary:   var(--muted);
+  --text-tertiary:    var(--muted-2);
+  --border-default:   var(--line);
+  --accent-primary:   var(--lila);
+  --accent-cta:       var(--gold);
+  --focus-ring:       var(--lila-bright);
+}
