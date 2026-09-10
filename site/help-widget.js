@@ -120,7 +120,7 @@
     root.className = 'fp-hw';
     root.innerHTML =
       '<div class="fp-hw__panel" role="dialog" aria-label="Быстрые ответы" aria-hidden="true">' +
-        '<div class="fp-hw__head"><div class="fp-hw__eyebrow">Frankenplatz</div><p class="fp-hw__h">Быстрые ответы</p>' +
+        '<div class="fp-hw__head"><div class="fp-hw__eyebrow">FASHION REBORN</div><p class="fp-hw__h">Быстрые ответы</p>' +
         '<p class="fp-hw__sub">Нажми на вопрос — ответ сразу. Не нашёл своего — напиши, ответим в течение 24 часов.</p></div>' +
         '<div class="fp-hw__body">' + QA.map(itemHTML).join('') +
           '<div class="fp-hw__item fp-hw__other"><button type="button" class="fp-hw__q" aria-expanded="false">Другое — задать свой вопрос</button>' +

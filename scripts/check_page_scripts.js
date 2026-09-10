@@ -23,7 +23,7 @@ const ROOT = path.join(__dirname, '..');
 
 /** страница → модули, без которых она сломана по сути, а не по виду. */
 const REQUIRED = {
-  'brand-market.html': [
+  'index.html': [
     'site/market-buy.js', // покупка пакета маркета → Payrexx
     'site/forum-form.js', // вопрос о маркете (#bmForm) → /api/forms
     'site/newsletter-form.js',
@@ -36,33 +36,10 @@ const REQUIRED = {
     'site/cookie-consent.js',
     'site/help-widget.js',
   ],
-  'tickets.html': [
-    'site/tickets-buy.js', // покупка билета форума → Payrexx
-    'site/cookie-consent.js',
-    'site/help-widget.js',
-  ],
-  'sponsor.html': ['site/forum-form.js', 'site/cookie-consent.js'],
-  'collaboration.html': ['site/forum-form.js', 'site/cookie-consent.js'],
-  'okaziya.html': ['site/okaziya-form.js', 'site/cookie-consent.js'],
-  // «Быстрые ответы» (help-widget) — канал вопросов на страницах поездок;
-  // на tony-robbins ещё и forum-form (запись в группу, .gform).
-  'trips.html': ['site/help-widget.js', 'site/cookie-consent.js'],
-  'trips/tony-robbins.html': ['site/forum-form.js', 'site/cookie-consent.js', 'site/help-widget.js'],
-  'trips/megacampus.html': ['site/cookie-consent.js', 'site/help-widget.js'],
-  'anketa.html': ['site/anketa-form.js', 'site/cookie-consent.js'],
-  // «Предложить спикера» — модуль перехватывает ссылку на анкету и открывает
-  // форму на два поля. Без него ссылка снова ведёт на 37 вопросов о самом
-  // отправителе, и рекомендация теряется. Та же выгрузка 11.08 вырезала и его —
-  // вместе с market-buy.js, только заметили позже.
-  // Ссылка сейчас есть на index (Landing.jsx) и day1 (Day1.jsx); day2 и speakers
-  // держим в списке, потому что формулировка кочует между страницами спикеров с
-  // каждой выгрузкой, а без ссылки модуль просто молчит.
-  // «Быстрые ответы» (site/help-widget.js) — канал вопросов с ключевых страниц:
-  // без подключения заявки просто не поступают, а страница выглядит целой.
-  'index.html': ['site/suggest-speaker.js', 'site/help-widget.js'],
-  'day1.html': ['site/suggest-speaker.js', 'site/help-widget.js'],
-  'day2.html': ['site/suggest-speaker.js', 'site/help-widget.js'],
-  'speakers.html': ['site/suggest-speaker.js', 'site/help-widget.js'],
+  'brand-market-philosophy.html': ['site/newsletter-form.js', 'site/cookie-consent.js'],
+  'brand-market-authenticity.html': ['site/newsletter-form.js', 'site/cookie-consent.js'],
+  'brand-market-agb.html': ['site/newsletter-form.js', 'site/cookie-consent.js'],
+  'legal.html': ['site/newsletter-form.js', 'site/cookie-consent.js'],
 };
 
 const problems = [];

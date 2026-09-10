@@ -24,6 +24,16 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SKIP_DIRS = new Set(['node_modules', '.git', '.github', 'scripts']);
 const SKIP_FILES = /vendor|ds\.bundle\.js|babel-standalone/;
+/* Legacy forum sources remain for provenance but are not entry points of the
+   independent Fashion Reborn site. They are intentionally excluded until a
+   separate decision is made to archive or delete them. */
+const LEGACY_FRONTEND = new Set([
+  'site/Anketa.jsx', 'site/Day1.jsx', 'site/Day2.jsx', 'site/Landing.jsx',
+  'site/SpeakerDetail.jsx', 'site/Speakers.jsx', 'site/anketa-data.js',
+  'site/anketa-form.js', 'site/blog-data.js', 'site/blog.js', 'site/calc-nav.js',
+  'site/registration-form.js', 'site/speaker-form.js', 'site/speakers-data.js',
+  'site/speakers-ui.jsx', 'site/suggest-speaker.js', 'site/tickets-buy.js'
+]);
 
 /** Все файлы, где могут быть ссылки. */
 function walk(dir, out = []) {
@@ -31,7 +41,10 @@ function walk(dir, out = []) {
     if (entry.name.startsWith('.') || SKIP_DIRS.has(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full, out);
-    else if (/\.(html|js|jsx)$/.test(entry.name) && !SKIP_FILES.test(full)) out.push(full);
+    else if (/\.(html|js|jsx)$/.test(entry.name) && !SKIP_FILES.test(full)) {
+      const rel = path.relative(ROOT, full).replace(/\\/g, '/');
+      if (!LEGACY_FRONTEND.has(rel)) out.push(full);
+    }
   }
   return out;
 }

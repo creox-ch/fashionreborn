@@ -2,29 +2,10 @@
 <!-- Публичные страницы сайта, чистые URL (cleanUrls). lastmod = дата последнего коммита файла.
      Не включены: /speaker (шаблон, живёт по параметру), /blog (пока нет статей), blog/_template. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://frankenplatz.ch/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://frankenplatz.ch/tickets</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://frankenplatz.ch/day1</loc><lastmod>2026-08-17</lastmod><priority>0.8</priority></url>
-  <url><loc>https://frankenplatz.ch/day2</loc><lastmod>2026-08-17</lastmod><priority>0.8</priority></url>
-  <url><loc>https://frankenplatz.ch/speakers</loc><lastmod>2026-08-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://frankenplatz.ch/anketa</loc><lastmod>2026-08-15</lastmod><priority>0.5</priority></url>
-  <url><loc>https://frankenplatz.ch/sponsor</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/collaboration</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/brand-market</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://frankenplatz.ch/market-catalog</loc><lastmod>2026-09-06</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://frankenplatz.ch/brand-market-philosophy</loc><lastmod>2026-08-15</lastmod><priority>0.5</priority></url>
-  <url><loc>https://frankenplatz.ch/brand-market-authenticity</loc><lastmod>2026-08-15</lastmod><priority>0.5</priority></url>
-  <url><loc>https://frankenplatz.ch/brand-market-agb</loc><lastmod>2026-08-17</lastmod><priority>0.3</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators</loc><lastmod>2026-08-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators/budget</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators/pension</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators/rent-vs-buy</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators/shares</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/calculators/taxes</loc><lastmod>2026-08-15</lastmod><priority>0.6</priority></url>
-  <url><loc>https://frankenplatz.ch/trips</loc><lastmod>2026-08-15</lastmod><priority>0.5</priority></url>
-  <url><loc>https://frankenplatz.ch/trips/megacampus</loc><lastmod>2026-08-15</lastmod><priority>0.4</priority></url>
-  <url><loc>https://frankenplatz.ch/trips/tony-robbins</loc><lastmod>2026-08-15</lastmod><priority>0.3</priority></url>
-  <url><loc>https://frankenplatz.ch/okaziya</loc><lastmod>2026-08-15</lastmod><priority>0.4</priority></url>
-  <url><loc>https://frankenplatz.ch/cows</loc><lastmod>2026-08-15</lastmod><priority>0.3</priority></url>
-  <url><loc>https://frankenplatz.ch/legal</loc><lastmod>2026-08-15</lastmod><priority>0.2</priority></url>
+  <url><loc>https://www.fashionreborn.ch/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.fashionreborn.ch/market-catalog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fashionreborn.ch/brand-market-philosophy</loc><priority>0.6</priority></url>
+  <url><loc>https://www.fashionreborn.ch/brand-market-authenticity</loc><priority>0.6</priority></url>
+  <url><loc>https://www.fashionreborn.ch/brand-market-agb</loc><priority>0.4</priority></url>
+  <url><loc>https://www.fashionreborn.ch/legal</loc><priority>0.3</priority></url>
 </urlset>

@@ -324,9 +324,9 @@ function __fpFlagify(t) {
   return out;
 }
 function Footer({
-  brandLine = "Форум о деньгах в Швейцарии · 24–25.10.2026 · Baden 🇨🇭 · 15 мин от Zürich HB",
+  brandLine = "27.09.2026 · Baden 🇨🇭",
   links = [],
-  instagram = "https://www.instagram.com/frankenplatz.ch/",
+  instagram = "https://www.instagram.com/fashionreborn.ch/",
   socials = [
     { id: "instagram", label: "Instagram", href: instagram },
   ],
@@ -342,19 +342,17 @@ function Footer({
   const fromNav = typeof window !== "undefined" && window.FP_NAV
     ? window.FP_NAV(null, { footer: true }).filter((l) => !l.cta).map((l) => ({ label: l.label, href: l.href }))
     : [
-        { label: "Программа", href: "index.html#program" },
-        { label: "День №1", href: "day1.html" },
-        { label: "День №2", href: "day2.html" },
-        { label: "Спикерам", href: "speakers.html" },
-        { label: "Маркет", href: "brand-market.html" },
-        { label: "Сотрудничество", href: "collaboration.html" },
-        { label: "Другие форумы", href: "trips.html" },
+        { label: "Маркет", href: "/" },
+        { label: "Каталог", href: "/market-catalog" },
+        { label: "Философия", href: "/brand-market-philosophy" },
+        { label: "Проверка подлинности", href: "/brand-market-authenticity" },
+        { label: "Условия участия", href: "/brand-market-agb" },
       ];
   const nav = links.length ? links : fromNav;
   return h("footer", _extends({ className: ["fp-foot", className].filter(Boolean).join(" ") }, rest),
     h("div", { className: "fp-foot__grid" },
       h("div", null,
-                h("p", { className: "fp-foot__name" }, h("a", { href: "index.html", style: { color: "inherit", textDecoration: "none" } }, "Frankenplatz.ch"))),
+                h("p", { className: "fp-foot__name" }, h("a", { href: "/", style: { color: "inherit", textDecoration: "none" } }, "FASHION REBORN"))),
       h("nav", null,
         h("p", { className: "fp-foot__h" }, "Страницы"),
         h("div", { className: "fp-foot__nav" }, nav.map((l, i) => h("a", { key: i, href: l.href }, l.label)))),
@@ -365,16 +363,16 @@ function Footer({
             ? h("a", { key: i, href: s.href, target: "_blank", rel: "noopener" }, s.label)
             : h("span", { key: i, className: "soon" }, s.label)))),
       h("div", null,
-        h("p", { className: "fp-foot__h" }, "Новости форума"),
+        h("p", { className: "fp-foot__h" }, "Новости маркета"),
         sent
-          ? h("p", { className: "fp-foot__done" }, "Спасибо! Напишем, когда будут новости о программе и спикерах.")
+          ? h("p", { className: "fp-foot__done" }, "Спасибо! Напишем, когда будут новости FASHION REBORN.")
           : h("form", { className: "fp-foot__form", onSubmit: (e) => { e.preventDefault(); setSent(true); } },
               h("input", { className: "fp-foot__input", type: "email", required: true, placeholder: "Твой e-mail", "aria-label": "E-mail" }),
               h("button", { className: "fp-foot__send", type: "submit" }, "Подписаться")),
-        !sent && h("p", { className: "fp-foot__note" }, "Никакого спама — только программа и спикеры."))),
+        !sent && h("p", { className: "fp-foot__note" }, "Никакого спама — только новости маркета."))),
     h("div", { className: "fp-foot__bottom" },
-      h("span", null, "© 2026 Frankenplatz.ch · ", __fpFlagify(brandLine)), h("span", { className: "fp-foot__legal" }, h("a", { href: "legal.html#impressum" }, "Impressum"), " · ", h("a", { href: "legal.html#agb" }, "AGB"), " · ", h("a", { href: "legal.html#datenschutz" }, "Datenschutz")),
-      h("span", null, h("a", { href: instagram || "#", target: "_blank", rel: "noopener" }, "@frankenplatz.ch"))));
+      h("span", null, "© 2026 FASHION REBORN · ", __fpFlagify(brandLine)), h("span", { className: "fp-foot__legal" }, h("a", { href: "/legal#impressum" }, "Impressum"), " · ", h("a", { href: "/brand-market-agb" }, "AGB"), " · ", h("a", { href: "/legal#datenschutz" }, "Datenschutz")),
+      instagram ? h("span", null, h("a", { href: instagram, target: "_blank", rel: "noopener" }, "Instagram")) : null));
 }
 
 Object.assign(__ds_scope, { Footer });
@@ -470,9 +468,9 @@ const CSS = `
  * `links`: Array<{ label, href, cta?: boolean }>.
  */
 function TopBar({
-  brand = "Frankenplatz.ch",
+  brand = "FASHION REBORN",
   logoGlyph = null,
-  brandHref = "index.html",
+  brandHref = "/",
   links = [],
   className = "",
   ...rest
@@ -507,23 +505,12 @@ function TopBar({
     className: ["fp-top__menu", open ? "is-open" : ""].filter(Boolean).join(" ")
   }, linkEls, /*#__PURE__*/React.createElement("div", {
     className: "fp-top__menu-foot"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "fp-top__menu-ig",
-    href: "https://www.instagram.com/frankenplatz.ch/",
-    target: "_blank",
-    rel: "noopener",
-    "aria-label": "Instagram Frankenplatz"
-  }, /*#__PURE__*/React.createElement("svg", {
-    viewBox: "0 0 24 24",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/React.createElement("path", {
-    d: "M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.23 1 .5 1.5.95.45.45.72.9.95 1.5.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.23.6-.5 1-.95 1.5-.45.45-.9.72-1.5.95-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.23-1-.5-1.5-.95-.45-.45-.72-.9-.95-1.5-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.23-.6.5-1 .95-1.5.45-.45.9-.72 1.5-.95.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.07-1 .04-1.5.2-1.9.35-.4.15-.7.34-1 .64-.3.3-.5.6-.64 1-.15.4-.3.9-.35 1.9C3.24 9.3 3.2 9.7 3.2 12s0 2.7.07 4c.04 1 .2 1.5.35 1.9.15.4.34.7.64 1 .3.3.6.5 1 .64.4.15.9.3 1.9.35 1.3.06 1.7.07 4.8.07s3.5 0 4.8-.07c1-.04 1.5-.2 1.9-.35.4-.15.7-.34 1-.64.3-.3.5-.6.64-1 .15-.4.3-.9.35-1.9.06-1.3.07-1.7.07-4s0-2.7-.07-4c-.04-1-.2-1.5-.35-1.9a2.7 2.7 0 0 0-.64-1 2.7 2.7 0 0 0-1-.64c-.4-.15-.9-.3-1.9-.35-1.3-.06-1.7-.07-4.8-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.1-2.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"
-  }))), links.some(l => l.cta) ? null : /*#__PURE__*/React.createElement("a", {
+  }, null, links.some(l => l.cta) ? null : /*#__PURE__*/React.createElement("a", {
     className: "fp-top__menu-cta",
     href: menuCtaHref
   }, "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F \u043D\u0430 \u0444\u043E\u0440\u0443\u043C"), /*#__PURE__*/React.createElement("p", {
     className: "fp-top__menu-legal"
-  }, "Frankenplatz \u00B7 24\u201325.10.2026 \u00B7 Baden", /*#__PURE__*/React.createElement("br", null), "\u00A9 2026 Frankenplatz.ch \u2014 \u0432\u0441\u0435 \u043F\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043D\u044B"))));
+  }, "FASHION REBORN \u00B7 27.09.2026 \u00B7 Baden", /*#__PURE__*/React.createElement("br", null), "\u00A9 2026 FASHION REBORN \u2014 \u0432\u0441\u0435 \u043F\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043D\u044B"))));
 }
 Object.assign(__ds_scope, { TopBar });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/chrome/TopBar.jsx", error: String((e && e.message) || e) }); }

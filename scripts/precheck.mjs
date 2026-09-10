@@ -11,8 +11,7 @@
  *   1. секреты          — ключи в отслеживаемых файлах
  *   2. Ссылки           — scripts/check_links.js
  *   3. Подключения      — scripts/check_page_scripts.js
- *   4. Калькуляторы     — scripts/validate_calc.js по каждому + test_parsers.js
- *   5. вес графики      — предупреждение, не провал (см. CLAUDE.md: выгрузка
+ *   4. вес графики      — предупреждение, не провал (см. CLAUDE.md: выгрузка
  *                         дизайна возвращает несжатые оригиналы, 10.08 графика
  *                         выросла с 16 до 33 МБ)
  */
@@ -79,7 +78,16 @@ const SECRET_PATTERNS = [
 ];
 
 step('секреты в файлах', () => {
-  const files = execSync('git ls-files', { encoding: 'utf8' }).split(NL).filter(Boolean);
+  const files = [];
+  const collect = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name === '.git' || entry.name === 'node_modules') continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) collect(full);
+      else files.push(full);
+    }
+  };
+  collect('.');
   const hits = [];
   let scanned = 0;
   for (const f of files) {
@@ -100,28 +108,11 @@ step('секреты в файлах', () => {
   return `${scanned} файлов`;
 });
 
-// ─── 2-4. то же, что в workflow ──────────────────────────────────────────────
+// ─── 2-3. проверки независимого сайта FASHION REBORN ─────────────────────────
 step('внутренние ссылки', () => { node('scripts/check_links.js'); return null; });
 step('обязательные модули на страницах', () => { node('scripts/check_page_scripts.js'); return null; });
 
-const CALCULATORS = [
-  'calculators/budget.html',
-  'calculators/pension.html',
-  'calculators/rent-vs-buy.html',
-  'calculators/taxes.html',
-  'calculators/shares.html',
-];
-step('калькуляторы (DOM-stub)', () => {
-  const broken = [];
-  for (const f of CALCULATORS) {
-    try { node('scripts/validate_calc.js', [f]); } catch (e) { broken.push(`${f}${NL}${e.message}`); }
-  }
-  if (broken.length) throw new Error(broken.join(NL));
-  return `${CALCULATORS.length} шт.`;
-});
-step('парсер чисел', () => { node('scripts/test_parsers.js'); return null; });
-
-// ─── 5. вес графики (предупреждение) ─────────────────────────────────────────
+// ─── 4. вес графики (предупреждение) ─────────────────────────────────────────
 step('вес графики', () => {
   const LIMIT_MB = 20;
   let total = 0;

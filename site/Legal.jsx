@@ -1,4 +1,4 @@
-/* Frankenplatz — Impressum · AGB · Datenschutz. Экспортирует window.Legal. */
+/* FASHION REBORN — Impressum · AGB · Datenschutz. Экспортирует window.Legal. */
 (() => {
 const { TopBar, Footer, Eyebrow } = window.FrankenplatzDesignSystem_144b92;
 
@@ -42,21 +42,21 @@ function Legal() {
       <header className="hero gridbg" style={{ paddingBottom: 0 }}>
         <div className="inner">
           <h1 style={{ fontSize: "clamp(34px,5vw,56px)" }}>Правовая информация</h1>
-          <p className="sub">Impressum · AGB · Datenschutz — юридические данные форума Frankenplatz.ch.</p>
+          <p className="sub">Impressum · AGB · Datenschutz — правовая информация FASHION REBORN.</p>
         </div>
       </header>
 
       <Block id="impressum" eyebrow="Impressum" title="Impressum">
         <p className="legal-note" style={{ color: "var(--muted-2)" }}>Angaben gemäss schweizerischem Recht</p>
         <p><strong>Kseniia Chudina Art + Event</strong><br />Inhaberin: Kseniia Chudina<br />Bäderstrasse 28<br />5400 Baden<br />Schweiz <SwissFlag /></p>
-        <p><strong>Kontakt</strong><br />Website: frankenplatz.ch<br />E-Mail: info@frankenplatz.ch</p>
+        <p><strong>Kontakt</strong><br />Website: fashionreborn.ch<br />E-Mail: info@frankenplatz.ch</p>
         <p><strong>Handelsregister</strong><br />Unternehmens-Identifikationsnummer (UID): CHE-202.191.691</p>
       </Block>
 
       <Block id="agb" eyebrow="AGB" title="Условия участия (AGB)">
         <p className="legal-sub">Frankenplatz.ch — форум о деньгах в Швейцарии</p>
         <P h="§ 1. Организатор">
-          <p>Форум Frankenplatz.ch организует Kseniia Chudina Art+Event, Bäderstrasse 28, 5400 Baden, Швейцария (далее — «Организатор», «мы»).<br />Контакт: info@frankenplatz.ch · frankenplatz.ch · @frankenplatz.ch</p>
+          <p>Форум Frankenplatz.ch организует Kseniia Chudina Art+Event, Bäderstrasse 28, 5400 Baden, Швейцария (далее — «Организатор», «мы»).<br />Контакт: info@frankenplatz.ch · fashionreborn.ch · @fashionreborn.ch</p>
           <p>Настоящие условия (AGB) действуют для всех билетов и участия в форуме. Покупая билет, ты соглашаешься с ними.</p>
         </P>
         <P h="§ 2. Билет и участие">
@@ -107,7 +107,7 @@ function Legal() {
           <p>Если спикер или Организатор просит удалить опубликованный материал, нарушающий эти правила, ты обязуешься удалить его без промедления.</p>
         </P>
         <P h="§ 11. Бренд-маркет (секонд-маркет)">
-          <p>Frankenplatz проводит отдельные офлайн-маркеты (в т.ч. бренд-секонд-маркет FASHION REBORN в Baden) с онлайн-каталогом. Для продавцов действуют условия:</p>
+          <p>Организатор проводит бренд-секонд-маркет FASHION REBORN в Baden с онлайн-каталогом. Для продавцов действуют условия:</p>
           <p>— Участие оформляется одним из пакетов; актуальные цены и состав пакетов указаны на странице маркета. Взнос оплачивается при регистрации, количество размещаемых вещей не ограничено.</p>
           <p>— С каждой зафиксированной продажи удерживается комиссия в размере, указанном на странице маркета. Комиссия начисляется только с фактически проданных вещей и выставляется отдельным счётом после маркета.</p>
           <p>— Покупатель платит продавцу напрямую — наличными или прямым переводом. Организатор платежи покупателей не принимает, не хранит и выплат продавцам не производит.</p>
@@ -124,12 +124,12 @@ function Legal() {
         <P h="§ 13. Заключительные положения">
           <p>Действует швейцарское право. Место подсудности — Baden (Aargau), Швейцария.</p>
           <p>Если отдельное положение этих условий окажется недействительным, остальные сохраняют силу. Недействительное положение заменяется тем, что ближе всего к его смыслу и допустимо по закону.</p>
-          <p>Актуальная редакция AGB опубликована на frankenplatz.ch.<br />Дата версии: 20 августа 2026.</p>
+          <p>Актуальная редакция AGB опубликована на fashionreborn.ch.<br />Дата версии: 20 августа 2026.</p>
         </P>
       </Block>
 
       <Block id="datenschutz" eyebrow="Datenschutz" title="Политика конфиденциальности (Datenschutzerklärung)">
-        <p className="legal-sub">Frankenplatz.ch</p>
+        <p className="legal-sub">FASHION REBORN</p>
         <P h="1. Кто отвечает за твои данные">
           <p>Ответственный за обработку данных:<br />Kseniia Chudina Art+Event, Bäderstrasse 28, 5400 Baden, Швейцария<br />info@frankenplatz.ch</p>
           <p>Мы обрабатываем персональные данные согласно швейцарскому Закону о защите данных (revDSG). Если на тебя распространяется GDPR ЕС, применяются также его положения.</p>
@@ -161,7 +161,7 @@ function Legal() {
           <p>Чтобы воспользоваться правами, напиши на info@frankenplatz.ch. Если считаешь, что мы нарушили твои права, ты можешь обратиться к Федеральному уполномоченному по защите данных Швейцарии (EDÖB).</p>
         </P>
         <P h="8. Изменения">
-          <p>Мы можем обновлять эту политику. Актуальная версия всегда опубликована на frankenplatz.ch.<br />Дата версии: 20 августа 2026.</p>
+          <p>Мы можем обновлять эту политику. Актуальная версия всегда опубликована на fashionreborn.ch.<br />Дата версии: 20 августа 2026.</p>
         </P>
       </Block>
 
